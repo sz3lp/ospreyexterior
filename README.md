@@ -8,6 +8,7 @@ This repository contains the RainWise and permaculture landing page for Osprey E
 - `assets/css/main.css` – Stylesheet implementing the Pacific Northwest inspired theme and responsive layout.
 - `assets/js/main.js` – Client-side enhancements, including the RainWise rebate calculator and dynamic footer year.
 - `assets/images/` – Brand assets used across the page.
+- `MARKETING_FUNNEL.md` – Full marketing strategy outlining how RainWise leads flow into permaculture and exterior remodel upsells.
 
 ## Local Development
 
