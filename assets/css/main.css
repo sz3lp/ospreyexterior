@@ -358,6 +358,29 @@ img {
   color: var(--color-slate);
 }
 
+.rainwise-embed {
+  margin-top: 2rem;
+  background: var(--color-white);
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.rainwise-embed iframe {
+  width: 100%;
+  min-height: 520px;
+  border: 0;
+}
+
+.embed-note {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-slate);
+  background: rgba(0, 128, 128, 0.08);
+}
+
 .rebate-calculator {
   background: var(--color-white);
   padding: 2rem;
@@ -772,6 +795,14 @@ img {
   .lead-form,
   .rebate-calculator {
     padding: 1.75rem;
+  }
+
+  .rainwise-embed iframe {
+    min-height: 420px;
+  }
+
+  .embed-note {
+    font-size: 0.85rem;
   }
 }
 
