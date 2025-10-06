@@ -196,6 +196,16 @@ img {
   transform: translateY(-2px);
 }
 
+.btn-link span {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.btn-link:hover span,
+.btn-link:focus span {
+  transform: translateY(4px);
+}
+
 .hero-meta {
   font-size: 0.95rem;
   color: var(--color-slate);
@@ -348,14 +358,78 @@ img {
 
 .rebate-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
+}
+
+.rebate-content {
+  display: grid;
+  gap: 1.5rem;
+  align-content: start;
 }
 
 .process-list {
   padding-left: 1.2rem;
   color: var(--color-slate);
+}
+
+.rainwise-embed {
+  margin-top: 2rem;
+  background: var(--color-white);
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+  animation: floatUp 0.7s ease 0.1s both;
+}
+
+@media (min-width: 960px) {
+  .rebate-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .rebate-content {
+    padding-right: clamp(0rem, 2.5vw, 1.5rem);
+  }
+}
+
+.rainwise-embed iframe {
+  width: 100%;
+  min-height: clamp(420px, 65vh, 680px);
+  border: 0;
+}
+
+.embed-note {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-slate);
+  background: rgba(0, 128, 128, 0.08);
+}
+
+.rainwise-embed:hover,
+.rainwise-embed:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 128, 128, 0.35);
+}
+
+#rainwise-check {
+  scroll-margin-top: 120px;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .rebate-calculator {
@@ -772,6 +846,14 @@ img {
   .lead-form,
   .rebate-calculator {
     padding: 1.75rem;
+  }
+
+  .rainwise-embed iframe {
+    min-height: clamp(360px, 70vh, 520px);
+  }
+
+  .embed-note {
+    font-size: 0.85rem;
   }
 }
 

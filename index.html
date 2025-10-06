@@ -34,7 +34,9 @@
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class="eligibility-banner">
-    <p>Are you in a RainWise eligible basin? <a href="https://rainwise.seattle.gov/city/existing-projects" target="_blank" rel="noopener">Check your address on the official map.</a></p>
+    <p>
+      Are you in a RainWise eligible basin? <a href="#rainwise-check">Use the built-in eligibility tool below to find out instantly.</a>
+    </p>
   </div>
   <header class="site-header" role="banner">
     <div class="container header-inner">
@@ -171,11 +173,20 @@
           <h2 id="rebate-title">RainWise Rebates Made Easy: $7.90 per Square Foot Covered.</h2>
           <p class="section-intro">Qualifying Seattle homeowners can be reimbursed up to <strong>$7.90 per square foot of roof area</strong> that is managed by RainWise systems. We make eligibility, design, and paperwork effortless.</p>
           <ol class="process-list">
-            <li><strong>Check Eligibility:</strong> Use the official RainWise basin map to confirm your property qualifies.</li>
+            <li><strong>Check Eligibility:</strong> Use the embedded RainWise basin tool below to confirm your property qualifies.</li>
             <li><strong>Osprey Audit &amp; Design:</strong> We complete a whole-property water audit, permaculture plan, and RainWise-ready design.</li>
             <li><strong>Installation &amp; Rebate Submission:</strong> Our team builds your integrated system and submits every document for reimbursement.</li>
           </ol>
-          <a class="btn btn-link" href="https://rainwise.seattle.gov/city/existing-projects" target="_blank" rel="noopener">View the RainWise Eligibility Map</a>
+          <a class="btn btn-link" href="#rainwise-check">Launch the RainWise Eligibility Finder <span aria-hidden="true">↓</span></a>
+          <div id="rainwise-check" class="rainwise-embed" role="region" aria-label="RainWise eligibility service">
+            <iframe
+              src="https://www.700milliongallons.org/rainwise/eligibility/"
+              title="RainWise program eligibility map and basin list"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <p class="embed-note">Interactive eligibility information courtesy of the official RainWise program.</p>
+          </div>
         </div>
         <div class="rebate-calculator" role="region" aria-labelledby="calculator-title">
           <h3 id="calculator-title">Estimate Your RainWise Rebate</h3>
