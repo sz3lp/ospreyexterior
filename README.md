@@ -9,6 +9,7 @@ This repository contains the RainWise and permaculture landing page for Osprey E
 - `assets/js/main.js` – Client-side enhancements, including the RainWise rebate calculator and dynamic footer year.
 - `assets/images/` – Brand assets used across the page.
 - `MARKETING_FUNNEL.md` – Full marketing strategy outlining how RainWise leads flow into permaculture and exterior remodel upsells.
+- `supabase/schema.sql` – Database schema defining lead capture, marketing content, and analytics tables with row-level security policies.
 
 ## Local Development
 
