@@ -1,0 +1,20 @@
+[
+  {
+    "event": "cta_click",
+    "trigger": "Buttons with data-track=cta",
+    "parameters": ["cta_location", "cta_text"],
+    "destination": ["GA4", "Meta Pixel", "LinkedIn Insight Tag"]
+  },
+  {
+    "event": "lead_form_submit",
+    "trigger": "Form submission success callback",
+    "parameters": ["form_id", "service_interest", "geo_target"],
+    "destination": ["GA4", "HubSpot"]
+  },
+  {
+    "event": "phone_click",
+    "trigger": "Click on tel: links",
+    "parameters": ["phone_number", "page_type"],
+    "destination": ["GA4"]
+  }
+]

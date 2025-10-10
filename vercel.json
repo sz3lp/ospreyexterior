@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "routes": [
-    { "src": "/rss.xml", "dest": "/rss.xml" },
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" }
-  ]
-}

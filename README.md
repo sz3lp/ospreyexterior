@@ -1,45 +1,20 @@
-# Osprey Exterior Frontend
+# Osprey Exterior Static Toolkit
 
-A Next.js + Tailwind CSS frontend for ospreyexterior.com powered by Supabase content. The site renders geo-targeted service area landing pages, a project journal, and shared lead capture components with JSON-LD structured data baked in.
+This repository provides the structure, templates, and documentation required to plan and publish Osprey Exterior's marketing site. Executable automation code is intentionally omitted in favor of process notes and placeholders.
 
-## Features
+## Repository Layout
+- `context/` — Strategic documentation, prompts, and automation references.
+- `site/` — HTML templates for the home page, services, blog, and about page.
+- `assets/` — Shared CSS, JavaScript, tracking snippets, and icon placeholders.
+- `data/` — CSV/JSON data sources consumed by automation.
+- `executable_1.py` — Placeholder for the content generation pipeline.
+- `executable_2.py` — Placeholder for SEO enhancement and deployment pipeline.
 
-- **Supabase-driven content** – Cities, posts, and leads stored in Supabase with typed fetch utilities for server and client usage.
-- **Service area landing pages** – Ten Eastside city directories (Bellevue, Redmond, Kirkland, Issaquah, Sammamish, Woodinville, Medina, Clyde Hill, Newcastle, Mercer Island) with dynamic posts, FAQs, and contact forms.
-- **Blog publishing** – `/blog` listing and `/blog/[slug]` article detail pages including Article schema and inline rich text rendering.
-- **Lead generation** – Reusable quote form posts submissions directly to the Supabase `leads` table using `supabase-js`.
-- **SEO optimizations** – Metadata builder, LocalBusiness/Article/FAQPage JSON-LD injection, sitemap.xml, and RSS feed.
-- **Design system** – Clean blue-accent aesthetic with responsive layouts powered by Tailwind CSS utilities.
+## Usage
+1. Review `context/` documentation to understand messaging, SEO, and tracking requirements.
+2. Populate `data/` files with the latest posts, leads schema updates, and analytics events.
+3. Implement automation logic (outside this repo) that reads templates in `site/` and produces static builds.
+4. Ensure tracking snippets from `assets/tracking.js` and event handling from `assets/script.js` are loaded on every generated page.
 
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-The development server runs on [http://localhost:3000](http://localhost:3000).
-
-### Environment Variables
-
-Create a `.env.local` file and set the Supabase credentials:
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
-NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
-```
-
-Server-side utilities also fall back to `SUPABASE_URL` and `SUPABASE_ANON_KEY` if you prefer non-public variable names.
-
-## Project Structure
-
-- `app/` – App Router pages, including service areas, blog, RSS feed, and sitemap.
-- `components/` – Layout, card, form, and SEO helper components.
-- `lib/` – Supabase clients, data fetching utilities, and SEO helpers.
-- `public/` – Static assets such as the favicon and images.
-- `tailwind.config.js` – Tailwind theme customization.
-- `vercel.json` – Vercel routing overrides for sitemap and RSS endpoints.
-
-## Deployment
-
-The repository is configured for Vercel. Push to the default branch and configure the Supabase environment variables in your Vercel project settings. The site builds using `npm run build` and serves statically with incremental revalidation handled by Supabase-powered data fetching at build time.
+## Dependencies
+No runtime dependencies are committed. Automation scripts should be implemented separately following the guidance in `context/automation_flow.md`.

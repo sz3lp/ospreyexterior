@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{post_title}} | Osprey Exterior</title>
+  <meta name="description" content="{{post_meta_description}}" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script type="application/ld+json">
+  {{post_schema}}
+  </script>
+</head>
+<body class="page-post">
+  <header class="site-header">
+    <div class="logo">Osprey Exterior</div>
+    <nav class="primary-nav">
+      <a href="./index.html">Home</a>
+      <a href="./services/service_template.html">Services</a>
+      <a href="./blog_template.html">Blog</a>
+      <a href="./about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>{{post_title}}</h1>
+        <p class="post-excerpt">{{post_excerpt}}</p>
+        <p class="post-meta">Published on {{post_date}} · Written by the Osprey Exterior Team</p>
+      </header>
+      <section class="post-body">
+        {{post_body}}
+      </section>
+    </article>
+
+    <aside class="post-cta">
+      <h2>Book Your Exterior Service</h2>
+      <p>Serving {{target_city}} homeowners with premium exterior cleaning solutions.</p>
+      <a class="cta" href="./services/service_template.html">View Services</a>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year"></span> Osprey Exterior. All rights reserved.</p>
+  </footer>
+
+  <script src="../assets/script.js" defer></script>
+</body>
+</html>

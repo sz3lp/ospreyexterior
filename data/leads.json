@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "fields": [
+    {"name": "lead_id", "type": "string", "description": "UUID assigned after form submission"},
+    {"name": "name", "type": "string", "description": "Full name provided by the lead"},
+    {"name": "email", "type": "string", "description": "Contact email"},
+    {"name": "phone", "type": "string", "description": "Optional mobile or landline"},
+    {"name": "service_interest", "type": "string", "description": "Primary service requested"},
+    {"name": "geo_target", "type": "string", "description": "City or zip derived from user input"},
+    {"name": "source", "type": "string", "description": "Marketing channel or campaign"},
+    {"name": "submitted_at", "type": "datetime", "description": "Timestamp in ISO 8601 format"}
+  ]
+}
