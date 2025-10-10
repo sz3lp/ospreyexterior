@@ -21,26 +21,28 @@
   <meta property="og:image:alt" content="Rain falling from cedar shingles into a RainWise cistern" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/style.css" />
   <style>
     :root {
-      --aqua: #1fa2a7;
+      --aqua: #1d4ed8;
+      --aqua-rgb: 29, 78, 216;
+      --fern: #2f855a;
+      --fern-rgb: 47, 133, 90;
+      --cta: #f97316;
+      --cta-rgb: 249, 115, 22;
       --navy: #0a2342;
       --ink: #102542;
-      --snow: #f8fbfc;
+      --snow: #f4f7fb;
       --slate: #5f738c;
     }
 
-    body.page-blog-post {
-      background: #ffffff;
-      color: var(--ink);
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-    }
+      body.page-blog-post {
+        background: #ffffff;
+        color: var(--ink);
+        font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+      }
 
     .site-header {
       position: sticky;
@@ -56,7 +58,7 @@
 
     .site-header .logo {
       font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: #fff;
       letter-spacing: 0.05em;
     }
@@ -102,7 +104,7 @@
 
     .hero-content h1 {
       font-size: clamp(2.75rem, 5vw, 4rem);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       transform: translateY(24px);
@@ -146,11 +148,11 @@
       align-items: center;
       justify-content: center;
       padding: 0.95rem 1.9rem;
-      background: var(--aqua);
-      color: var(--navy);
+      background: var(--cta);
+      color: #fff;
       border-radius: 8px;
       font-weight: 600;
-      box-shadow: 0 16px 48px rgba(31, 162, 167, 0.35);
+      box-shadow: 0 16px 48px rgba(var(--cta-rgb), 0.35);
       position: relative;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
@@ -168,8 +170,8 @@
     .cta-primary:hover,
     .cta-primary:focus-visible {
       background: #fff;
-      color: var(--aqua);
-      box-shadow: 0 24px 64px rgba(31, 162, 167, 0.45);
+      color: var(--cta);
+      box-shadow: 0 24px 64px rgba(var(--cta-rgb), 0.45);
     }
 
     .cta-primary:hover::after,
@@ -182,13 +184,13 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      box-shadow: 0 0 0 0 rgba(31, 162, 167, 0.6);
+      box-shadow: 0 0 0 0 rgba(var(--cta-rgb), 0.6);
       transition: box-shadow 0.4s ease;
     }
 
     .cta-primary:hover::before,
     .cta-primary:focus-visible::before {
-      box-shadow: 0 0 0 8px rgba(31, 162, 167, 0.2);
+      box-shadow: 0 0 0 8px rgba(var(--cta-rgb), 0.22);
     }
 
     .hero-audio-toggle {
@@ -206,7 +208,7 @@
 
     .hero-audio-toggle:hover,
     .hero-audio-toggle:focus-visible {
-      background: rgba(31, 162, 167, 0.6);
+      background: rgba(var(--aqua-rgb), 0.6);
     }
 
     .scroll-indicator {
@@ -290,7 +292,7 @@
     }
 
     .snapshot-card h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: clamp(1.8rem, 3vw, 2.4rem);
       color: var(--ink);
     }
@@ -311,7 +313,7 @@
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 600;
       color: var(--aqua);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
     }
 
@@ -327,7 +329,7 @@
       left: clamp(1rem, 3vw, 2rem);
       width: 2px;
       height: 100%;
-      background: linear-gradient(180deg, rgba(31, 162, 167, 0) 0%, rgba(31, 162, 167, 0.9) 100%);
+      background: linear-gradient(180deg, rgba(var(--aqua-rgb), 0) 0%, rgba(var(--aqua-rgb), 0.9) 100%);
       transform: scaleY(0);
       transform-origin: top;
       transition: transform 1s ease;
@@ -368,7 +370,7 @@
       background: var(--aqua);
       display: grid;
       place-items: center;
-      box-shadow: 0 0 0 6px rgba(31, 162, 167, 0.2);
+      box-shadow: 0 0 0 6px rgba(var(--aqua-rgb), 0.2);
       cursor: pointer;
     }
 
@@ -379,7 +381,7 @@
     }
 
     .timeline-step h3 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 1.4rem;
       color: var(--ink);
     }
@@ -439,7 +441,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(31, 162, 167, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(var(--aqua-rgb), 0.08) 1px, transparent 1px);
       background-size: 24px 24px;
       opacity: 0.8;
       pointer-events: none;
@@ -475,14 +477,14 @@
 
     .calculator-output div {
       flex: 1 1 160px;
-      background: rgba(31, 162, 167, 0.08);
+      background: rgba(var(--aqua-rgb), 0.08);
       border-radius: 12px;
       padding: 1rem 1.25rem;
     }
 
     .calculator-output strong {
       font-size: 1.6rem;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: var(--aqua);
     }
 
@@ -571,7 +573,7 @@
     }
 
     .stories-header h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: clamp(2rem, 3vw, 2.8rem);
     }
 
@@ -614,7 +616,7 @@
       gap: 0.5rem;
       padding: 0.85rem 1.6rem;
       border-radius: 999px;
-      background: rgba(31, 162, 167, 0.85);
+      background: rgba(var(--aqua-rgb), 0.85);
       color: #fff;
       font-weight: 600;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -622,7 +624,7 @@
 
     .stories-cta:hover,
     .stories-cta:focus-visible {
-      box-shadow: 0 0 30px rgba(31, 162, 167, 0.6);
+      box-shadow: 0 0 30px rgba(var(--aqua-rgb), 0.6);
       transform: translateY(-2px);
     }
 
@@ -683,7 +685,7 @@
     }
 
     .closing-banner {
-      background: linear-gradient(90deg, #0a2342 0%, #1fa2a7 100%);
+      background: linear-gradient(90deg, #0a2342 0%, var(--aqua) 100%);
       color: #fff;
       text-align: center;
       padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 8vw, 6rem);
@@ -693,7 +695,7 @@
 
     .closing-banner h2 {
       font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin-bottom: 1.5rem;
     }
 
@@ -1471,7 +1473,7 @@
                 {
                   label: 'Out-of-pocket cost',
                   data,
-                  backgroundColor: ['#d3dde8', 'rgba(31, 162, 167, 0.8)', '#0a2342'],
+                  backgroundColor: ['#d3dde8', 'rgba(29, 78, 216, 0.8)', '#0a2342'],
                   borderRadius: 12
                 }
               ]

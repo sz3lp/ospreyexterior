@@ -13,7 +13,7 @@
 ## Visual Direction
 - Hero images highlight residential exteriors in coastal environments.
 - Use before/after sliders where possible; describe them in accompanying copy for accessibility.
-- Maintain brand palette defined in `assets/style.css` (blue, teal, warm white).
+- Maintain brand palette defined in `assets/style.css` (deep navy, RainWise green, clean white, and amber CTA accents).
 
 ## Prompt Conditioning for AI
 - Always provide geo target, service focus, and persona details.
