@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const formCity = form.querySelector('[name="city"]')?.value || form.dataset.city || 'unspecified';
       window.dataLayer.push({
         event: 'lead_form_attempt',
-        form_id: form.getAttribute('id') || 'rainwise-form',
-        lead_city: formCity
+        form_id: form.getAttribute('id') || 'rainwise-form'
       });
       if (typeof gtag === 'function') {
         gtag('event', 'lead_form_attempt', {
