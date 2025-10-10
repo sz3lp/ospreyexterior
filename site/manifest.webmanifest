@@ -1,0 +1,21 @@
+{
+  "name": "Osprey Exterior RainWise Portal",
+  "short_name": "Osprey",
+  "start_url": "/site/index.html",
+  "display": "standalone",
+  "background_color": "#0A2342",
+  "theme_color": "#0A2342",
+  "description": "RainWise-certified exterior experts providing cistern installs, drainage control, and rebate support in the Seattle area.",
+  "icons": [
+    {
+      "src": "https://cdn.ospreyexterior.com/brand/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn.ospreyexterior.com/brand/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
