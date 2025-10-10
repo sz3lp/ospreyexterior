@@ -1,0 +1,25 @@
+{
+  "name": "RainWise by Osprey Exterior",
+  "short_name": "RainWise",
+  "description": "RainWise-certified exterior cleaning, roof care, and gutter brightening in Redmond, Washington.",
+  "start_url": "/site/index.html",
+  "scope": "/site/",
+  "lang": "en-US",
+  "display": "standalone",
+  "background_color": "#0A2342",
+  "theme_color": "#0A2342",
+  "icons": [
+    {
+      "src": "../assets/icons/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/icons/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
