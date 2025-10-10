@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSI Compliance Shield Portal | Rebate Tracker</title>
+  <meta name="description" content="Log into the OSI Compliance Shield to view stormwater compliance milestones, rebate status, and next actions for your project." />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body class="page-rebate-tracker">
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" role="presentation" focusable="false">
+          <circle cx="16" cy="16" r="15"></circle>
+          <path d="M10 18.5c2.4-4.6 6.4-7.3 11.6-8.1-2.5 3-2.5 6.4 0 10-4.8-.5-8.7-1.9-11.6-1.9z"></path>
+        </svg>
+      </span>
+      <div>
+        <p class="brand-title">Osprey Solutions Inc.</p>
+        <p class="brand-tagline">Compliance Shield Portal</p>
+      </div>
+    </div>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/compliance/">Compliance</a>
+      <a href="/quote/">Risk Assessment</a>
+      <a href="/rebate-tracker/" aria-current="page">Compliance Shield</a>
+    </nav>
+    <a class="cta" href="/maintenance-plan/">Protect Your Investment</a>
+  </header>
+
+  <main class="rebate-tracker-main">
+    <section class="tracker-intro">
+      <h1>OSI Compliance Shield Portal</h1>
+      <p>
+        Access real-time compliance milestones, document archives, and rebate status. Every client receives a secure login key
+        after submitting the regulatory risk assessment.
+      </p>
+      <div class="login-panel">
+        <h2>Client Login</h2>
+        <p>Enter the access key delivered in your intake confirmation email.</p>
+        <form action="#" method="post">
+          <label for="access-key">Access Key</label>
+          <input id="access-key" name="access-key" type="text" placeholder="OSI-XXXX-XXXX" />
+          <button type="submit" class="button">Launch Dashboard</button>
+        </form>
+        <p class="support-note">Need help? Email <a href="mailto:support@ospreyexterior.com">support@ospreyexterior.com</a>.</p>
+      </div>
+    </section>
+
+    <section class="dashboard" aria-labelledby="dashboard-heading">
+      <h2 id="dashboard-heading">Project Dashboard Preview</h2>
+      <p>
+        Whether you are managing a commercial compliance retrofit or a residential pilot, the Compliance Shield adapts the
+        interface to your workflow.
+      </p>
+      <div class="dashboard-grid">
+        <article>
+          <h3>Commercial Compliance View</h3>
+          <ul class="status-list">
+            <li><strong>Project ID:</strong> Duwamish Retrofit &ndash; T14</li>
+            <li><strong>Current Status:</strong> Regulatory Design Review</li>
+            <li><strong>Upcoming Milestones:</strong> Excavation Start &bull; Sensor Installation &bull; Compliance Certification</li>
+            <li><strong>Action Required:</strong> Review and approve GSI soil amendment specifications by 04/12.</li>
+          </ul>
+          <div class="mock-screenshot" role="img" aria-label="Compliance Shield timeline for a commercial project">
+            <div class="mock-screenshot__status">Milestones</div>
+            <div class="mock-screenshot__metric">
+              <span>Regulatory Approval</span>
+              <strong>Completed</strong>
+            </div>
+            <div class="mock-screenshot__metric">
+              <span>Sensor Installation</span>
+              <strong>Scheduled</strong>
+            </div>
+            <div class="mock-screenshot__metric">
+              <span>Certification</span>
+              <strong>Pending</strong>
+            </div>
+          </div>
+          <a class="button" href="/maintenance-plan/">Protect Your Investment: Secure the 5-Year GSI Asset Management Contract</a>
+        </article>
+        <article>
+          <h3>Residential Pilot View</h3>
+          <ul class="status-list">
+            <li><strong>Project ID:</strong> 555-Rainwise</li>
+            <li><strong>Current Status:</strong> Infiltration Testing Complete</li>
+            <li><strong>Rebate Milestones:</strong> Eligibility Confirmed &bull; Design Signed &bull; City Permitting Filed &bull; Installation Scheduled &bull; Rebate Submitted</li>
+            <li><strong>Next Step:</strong> Select a date for your post-install inspection.</li>
+          </ul>
+          <div class="mock-screenshot" role="img" aria-label="Rebate tracker checklist for a residential pilot">
+            <div class="mock-screenshot__status">Rebate Checklist</div>
+            <div class="mock-screenshot__metric">
+              <span>Installation</span>
+              <strong>Scheduled</strong>
+            </div>
+            <div class="mock-screenshot__metric">
+              <span>Inspection</span>
+              <strong>Awaiting Date</strong>
+            </div>
+            <div class="mock-screenshot__metric">
+              <span>Rebate</span>
+              <strong>In Progress</strong>
+            </div>
+          </div>
+          <a class="button secondary" href="/maintenance-plan/">Protect Your Rebate: Enroll in the Annual Stewardship Plan</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="document-vault" aria-labelledby="vault-heading">
+      <h2 id="vault-heading">Secure Document Vault</h2>
+      <p>Every login includes version-controlled access to engineering drawings, compliance certificates, and rebate forms.</p>
+      <ul>
+        <li>Final Engineered Drawings (PDF)</li>
+        <li>Compliance Certification Reports</li>
+        <li>Vendor Payment Option (VPO) Forms</li>
+        <li>RainWise Rebate Paperwork</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year">2024</span> Osprey Solutions Inc. All rights reserved.</p>
+  </footer>
+</body>
+</html>

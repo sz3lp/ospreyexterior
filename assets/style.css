@@ -39,6 +39,331 @@ body.page-rainwise-post {
   font-family: "Inter", system-ui, sans-serif;
 }
 
+.page-compliance main,
+.page-quote .quote-main,
+.page-thank-you .thank-you-main,
+.page-rebate-tracker .rebate-tracker-main {
+  width: min(960px, 92vw);
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+.page-compliance .site-header,
+.page-quote .site-header,
+.page-thank-you .site-header,
+.page-rebate-tracker .site-header {
+  position: static;
+  background: rgba(245, 247, 255, 0.96);
+}
+
+.page-compliance main section,
+.page-quote .quote-main section,
+.page-thank-you .thank-you-main section,
+.page-rebate-tracker .rebate-tracker-main section {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.page-compliance h1,
+.page-quote h1,
+.page-thank-you h1,
+.page-rebate-tracker h1 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-top: 0;
+}
+
+.page-compliance h2,
+.page-quote h2,
+.page-thank-you h2,
+.page-rebate-tracker h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.page-compliance h3,
+.page-rebate-tracker h3 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.page-compliance .compliance-hero {
+  text-align: left;
+  background: linear-gradient(140deg, rgba(12, 31, 109, 0.08), rgba(58, 125, 255, 0.12));
+}
+
+.page-compliance .trust-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 2rem 0 0;
+  list-style: none;
+}
+
+.page-compliance .trust-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(12, 31, 109, 0.12);
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+.page-compliance .risk-grid,
+.page-rebate-tracker .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.page-compliance .risk-grid article,
+.page-rebate-tracker .dashboard-grid article {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  background: rgba(245, 247, 255, 0.6);
+}
+
+.page-compliance .risk-grid .metric {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin: 0.3rem 0 1rem;
+}
+
+.page-compliance .roi-calculator {
+  margin-top: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  background: rgba(58, 125, 255, 0.08);
+}
+
+.page-compliance .roi-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.page-compliance .roi-form label,
+.page-quote .assessment-form label,
+.page-quote .assessment-form legend {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.page-compliance .roi-form input,
+.page-compliance .roi-form select,
+.page-quote .assessment-form input,
+.page-quote .assessment-form select,
+.page-quote .assessment-form textarea,
+.page-rebate-tracker input,
+.page-rebate-tracker textarea,
+.page-rebate-tracker select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+}
+
+.page-compliance .roi-output {
+  grid-column: 1 / -1;
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  border: 1px dashed rgba(12, 31, 109, 0.26);
+}
+
+.page-compliance .calculator-note {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: rgba(27, 36, 58, 0.8);
+}
+
+.mock-screenshot {
+  margin-top: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(12, 31, 109, 0.18);
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(58, 125, 255, 0.14), rgba(12, 31, 109, 0.08));
+}
+
+.mock-screenshot__status {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.mock-screenshot__metric {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.mock-screenshot__metric strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.page-compliance .approach-quote {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.page-compliance .case-studies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.page-compliance .testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.page-compliance blockquote {
+  margin: 0;
+  font-style: italic;
+  color: rgba(27, 36, 58, 0.86);
+}
+
+.page-compliance .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.page-quote .header-certifications {
+  font-weight: 600;
+  color: rgba(27, 36, 58, 0.8);
+}
+
+.page-quote .assessment-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.page-quote fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+}
+
+.page-quote .fieldset-intro {
+  margin-top: 0;
+  color: rgba(27, 36, 58, 0.8);
+}
+
+.page-quote .checkbox-group {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.page-quote .checkbox-note {
+  font-size: 0.9rem;
+  color: rgba(27, 36, 58, 0.75);
+  margin: 0;
+}
+
+.page-quote .assessment-form button {
+  justify-self: start;
+}
+
+.page-quote ol {
+  padding-left: 1.25rem;
+}
+
+.page-thank-you .confirmation {
+  text-align: center;
+  background: linear-gradient(150deg, rgba(12, 31, 109, 0.08), rgba(58, 125, 255, 0.14));
+}
+
+.page-thank-you .confirmation-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.page-thank-you .phase,
+.page-thank-you .resource {
+  text-align: center;
+}
+
+.page-rebate-tracker .login-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  background: rgba(245, 247, 255, 0.8);
+  margin-top: 1.5rem;
+}
+
+.page-rebate-tracker form {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-rebate-tracker .status-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.page-rebate-tracker .document-vault ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 720px) {
+  .page-compliance main section,
+  .page-quote .quote-main section,
+  .page-thank-you .thank-you-main section,
+  .page-rebate-tracker .rebate-tracker-main section {
+    padding: 1.75rem;
+  }
+
+  .page-compliance .roi-form {
+    grid-template-columns: 1fr;
+  }
+
+  .page-compliance .cta-buttons {
+    flex-direction: column;
+  }
+
+  .page-quote fieldset {
+    padding: 1.25rem;
+  }
+}
+
 img,
 iframe {
   max-width: 100%;
@@ -809,6 +1134,25 @@ button:focus {
 .button.secondary:focus {
   background: rgba(246, 248, 255, 0.26);
   color: #ffffff;
+}
+
+.page-compliance .button,
+.page-quote .button,
+.page-thank-you .button,
+.page-rebate-tracker .button {
+  background: var(--color-primary);
+  border-color: transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.page-compliance .button.secondary,
+.page-quote .button.secondary,
+.page-thank-you .button.secondary,
+.page-rebate-tracker .button.secondary {
+  background: #fff;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
 }
 
 
