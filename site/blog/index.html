@@ -19,18 +19,43 @@
   </header>
 
   <main>
-    <section class="blog-hero">
+    <section class="blog-hero" id="overview">
       <h1>RainWise Strategy &amp; Maintenance Insights</h1>
       <p>Guides, checklists, and rebate updates that keep Seattle-area exteriors compliant and efficient.</p>
     </section>
 
-    <section class="blog-list" data-source="/data/posts.csv">
+    <nav class="blog-nav" aria-label="Blog navigation">
+      <a href="#latest-posts">Latest Articles</a>
+      <a href="/blog/seattle-rainwise-rebate-savings/">RainWise Rebate Playbook</a>
+      <a href="/blog/roof-treatment-benefits/">Roof Treatment Tips</a>
+    </nav>
+
+    <section class="blog-list" id="latest-posts">
       <header>
         <h2>Latest Posts</h2>
         <p>Content generated via our automation workflow and curated by the Osprey Exterior team.</p>
       </header>
       <div class="post-grid">
-        <!-- Automation injects blog cards here -->
+        <article class="post-card">
+          <a class="post-card__link" href="/blog/seattle-rainwise-rebate-savings/">
+            <img class="post-card__media" src="https://cdn.ospreyexterior.com/blog/rainwise-rebate-savings-og.webp" alt="RainWise cistern installation in Seattle" loading="lazy" decoding="async" />
+            <div class="post-card__body">
+              <span class="post-card__meta">RainWise Rebates</span>
+              <h3 class="post-card__title">How Seattle Homeowners Can Save $5,000 with the RainWise Rebate Program</h3>
+              <p class="post-card__excerpt">See how Osprey Exterior navigates eligibility, installation, and payouts to capture full RainWise incentives.</p>
+            </div>
+          </a>
+        </article>
+        <article class="post-card">
+          <a class="post-card__link" href="/blog/roof-treatment-benefits/">
+            <img class="post-card__media" src="https://cdn.ospreyexterior.com/blog/roof-treatment-thumb.webp" alt="Technician treating a composite roof for moss" loading="lazy" decoding="async" />
+            <div class="post-card__body">
+              <span class="post-card__meta">Roof Care</span>
+              <h3 class="post-card__title">Roof Treatment Benefits for Humid Climates</h3>
+              <p class="post-card__excerpt">Protect shingles from moss and algae buildup with treatment intervals tailored to Seattle&rsquo;s damp seasons.</p>
+            </div>
+          </a>
+        </article>
       </div>
     </section>
   </main>
