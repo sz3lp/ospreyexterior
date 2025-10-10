@@ -1,14 +1,9 @@
 import 'server-only';
 
 import { cache } from 'react';
-import { supabaseServerClient } from './supabaseServer';
+import { hasSupabaseCredentials, supabaseServerClient } from './supabaseServer';
 import { City, Post } from './types';
 import { SERVICE_AREA_SLUGS, formatServiceAreaName } from './serviceAreas';
-
-const hasSupabaseCredentials = Boolean(
-  (process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL) &&
-    (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY)
-);
 
 const FALLBACK_CITIES: City[] = SERVICE_AREA_SLUGS.map((slug) => {
   const name = formatServiceAreaName(slug);
@@ -151,7 +146,7 @@ const normalizePostRecord = (record: Record<string, unknown>): Post | null => {
 };
 
 export const getCities = cache(async (): Promise<City[]> => {
-  if (!hasSupabaseCredentials) {
+  if (!hasSupabaseCredentials()) {
     return FALLBACK_CITIES;
   }
   const supabase = supabaseServerClient();
@@ -176,7 +171,7 @@ export const getCities = cache(async (): Promise<City[]> => {
 });
 
 export const getCityBySlug = cache(async (slug: string): Promise<City | null> => {
-  if (!hasSupabaseCredentials) {
+  if (!hasSupabaseCredentials()) {
     return FALLBACK_CITIES.find((city) => city.slug === slug) ?? null;
   }
   const supabase = supabaseServerClient();
@@ -201,7 +196,7 @@ export const getCityBySlug = cache(async (slug: string): Promise<City | null> =>
 });
 
 export const getPosts = cache(async (): Promise<Post[]> => {
-  if (!hasSupabaseCredentials) {
+  if (!hasSupabaseCredentials()) {
     return FALLBACK_POSTS;
   }
   const supabase = supabaseServerClient();
