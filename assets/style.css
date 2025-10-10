@@ -593,6 +593,7 @@ select:focus {
 .form-feedback {
   min-height: 1.5rem;
   font-weight: 600;
+  color: var(--color-primary);
 }
 
 .cta-bar {
