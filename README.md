@@ -27,6 +27,7 @@ Create a `.env.local` file and set the Supabase credentials:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+NEXT_PUBLIC_GOOGLE_TAG_ID=<your-google-tag-measurement-id>
 ```
 
 Server-side utilities also fall back to `SUPABASE_URL` and `SUPABASE_ANON_KEY` if you prefer non-public variable names.
@@ -42,4 +43,11 @@ Server-side utilities also fall back to `SUPABASE_URL` and `SUPABASE_ANON_KEY` i
 
 ## Deployment
 
-The repository is configured for Vercel. Push to the default branch and configure the Supabase environment variables in your Vercel project settings. The site builds using `npm run build` and serves statically with incremental revalidation handled by Supabase-powered data fetching at build time.
+The repository is configured for Vercel with the production domain set to `https://ospreyexterior.com`. To deploy from GitHub:
+
+1. Create a Vercel project and select this repository when prompted to import from GitHub.
+2. Add the `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_GOOGLE_TAG_ID` environment variables (along with any private Supabase keys you use server-side) in the Vercel project settings.
+3. Set the production domain to `ospreyexterior.com` in the Vercel Dashboard and configure DNS with your registrar if it is not already pointing to Vercel.
+4. Every push to the default branch will trigger a new deployment. Preview deployments will build from pull requests so you can verify changes before merging.
+
+The site builds using `npm run build` and serves statically with incremental revalidation handled by Supabase-powered data fetching at build time.
