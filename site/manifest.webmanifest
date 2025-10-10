@@ -1,7 +1,8 @@
 {
   "name": "Osprey Exterior RainWise Portal",
   "short_name": "Osprey",
-  "start_url": "/site/index.html",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0A2342",
   "theme_color": "#0A2342",

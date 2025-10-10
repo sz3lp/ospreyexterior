@@ -1,5 +1,6 @@
-const CACHE_NAME = 'osprey-pwa-cache-v1';
+const CACHE_NAME = 'osprey-pwa-cache-v2';
 const PRECACHE_URLS = [
+  '/',
   '/site/index.html',
   '/assets/style.css',
   '/assets/script.js'
