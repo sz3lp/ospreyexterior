@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RainWise Blog for Seattle &amp; King County Homeowners | Osprey Exterior</title>
+  <meta
+    name="description"
+    content="Daily AI-assisted RainWise blog posts covering rebates, maintenance, compliance, and seasonal tips for Seattle, Redmond, Bellevue, and Shoreline homeowners."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ospreyexterior.com/blog/" />
+  <meta property="og:title" content="RainWise Blog for Seattle &amp; King County Homeowners" />
+  <meta
+    property="og:description"
+    content="Explore rebate walkthroughs, drainage maintenance guides, and compliance tips published daily by Osprey Exterior."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ospreyexterior.com/blog/" />
+  <meta property="og:image" content="https://cdn.ospreyexterior.com/brand/og-hero.webp" />
+  <meta property="og:image:alt" content="RainWise contractor reviewing stormwater plans" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body class="page-blog">
+  <header class="site-header">
+    <div class="logo">Osprey Exterior</div>
+    <nav class="primary-nav" aria-label="Main">
+      <a href="/" data-track="cta" data-location="blog-nav-home">Home</a>
+      <a href="/services/" data-track="cta" data-location="blog-nav-services">Services</a>
+      <a href="/blog/" aria-current="page" data-track="cta" data-location="blog-nav-blog">Blog</a>
+      <a href="/about/" data-track="cta" data-location="blog-nav-about">About</a>
+      <a href="/service-areas/redmond/" data-track="cta" data-location="blog-nav-redmond">Redmond</a>
+    </nav>
+    <a class="cta" href="/#lead-form" data-track="cta" data-location="blog-nav-quote" data-city="seattle-metro">Request a Quote</a>
+  </header>
+
+  <main>
+    <section class="blog-hero" data-animate>
+      <h1>RainWise Blog for Seattle Homeowners</h1>
+      <p>Long-tail, AI-assisted posts covering rebates, maintenance, compliance, and neighborhood-specific updates for King County properties.</p>
+    </section>
+
+    <section class="blog-list" data-source="/data/ai-posts.json">
+      <header>
+        <h2>Latest Posts</h2>
+        <p>New articles are generated daily, tagged by city, and linked to RainWise services for deeper context.</p>
+      </header>
+      <div class="post-grid">
+        <article>
+          <h3><a href="/blog/rainwise-rebate-checklist/">RainWise Rebate Checklist for Seattle ZIP Codes</a></h3>
+          <p>Step-by-step documentation of site visits, downspout calculations, and inspection deliverables.</p>
+          <p class="post-meta">Tags: rebates, compliance, Seattle</p>
+        </article>
+        <article>
+          <h3><a href="/blog/stormwater-maintenance-calendar/">Stormwater Maintenance Calendar for King County</a></h3>
+          <p>Seasonal reminders that tie gutter cleaning, cistern flushing, and vegetation care to RainWise specs.</p>
+          <p class="post-meta">Tags: maintenance, gutters, drainage</p>
+        </article>
+        <article>
+          <h3><a href="/blog/rain-garden-planting-guide/">Rain Garden Planting Guide for Bellevue &amp; Redmond</a></h3>
+          <p>Native plant palettes and soil prep tips that boost infiltration and rebate scores.</p>
+          <p class="post-meta">Tags: landscaping, Bellevue, Redmond</p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="blog-sidebar" data-animate>
+      <h2>Need Project Support?</h2>
+      <p>Connect the latest insights with hands-on installation by visiting our <a href="/services/">RainWise services</a> or <a href="/service-areas/seattle/">city landing pages</a>.</p>
+      <a class="button" href="/#lead-form" data-track="cta" data-location="blog-sidebar-quote" data-city="seattle-metro">Book a RainWise Consult</a>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-columns">
+      <section>
+        <h3>Service Links</h3>
+        <ul>
+          <li><a href="/services/#cistern-installation">Cistern Installations</a></li>
+          <li><a href="/services/#drainage-design">Drainage Control</a></li>
+          <li><a href="/service-areas/seattle/">Seattle Service Area</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Contact</h3>
+        <p><a href="tel:+14255501727">425 550 1727</a><br /><a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+      </section>
+      <section>
+        <h3>Address</h3>
+        <p>10704 206th Ave NE<br />Redmond, WA 98053</p>
+      </section>
+    </div>
+    <p>&copy; <span id="current-year"></span> Osprey Exterior. All rights reserved.</p>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://ospreyexterior.com/blog/#blog",
+        "url": "https://ospreyexterior.com/blog/",
+        "name": "Osprey Exterior RainWise Blog",
+        "description": "Daily RainWise rebate, maintenance, and compliance guidance for Seattle-area homeowners.",
+        "inLanguage": "en-US",
+        "publisher": {"@id": "https://ospreyexterior.com/#business"},
+        "blogPost": [
+          {"@id": "https://ospreyexterior.com/blog/rainwise-rebate-checklist/#post"},
+          {"@id": "https://ospreyexterior.com/blog/stormwater-maintenance-calendar/#post"},
+          {"@id": "https://ospreyexterior.com/blog/rain-garden-planting-guide/#post"}
+        ]
+      }
+    </script>
+  </footer>
+
+  <script src="/assets/script.js" defer></script>
+</body>
+</html>

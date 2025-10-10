@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "rainwise-rebate-checklist",
+    "title": "RainWise Rebate Checklist for Seattle ZIP Codes",
+    "excerpt": "Step-by-step RainWise rebate checklist covering eligibility, documentation, and inspections for Seattle homeowners.",
+    "tags": ["rebates", "compliance", "seattle"],
+    "city": "Seattle",
+    "url": "/blog/rainwise-rebate-checklist/",
+    "published": "2024-06-01"
+  },
+  {
+    "slug": "stormwater-maintenance-calendar",
+    "title": "Stormwater Maintenance Calendar for King County Homes",
+    "excerpt": "Seasonal RainWise maintenance tasks for gutters, cisterns, and drainage systems across King County.",
+    "tags": ["maintenance", "gutters", "drainage"],
+    "city": "Redmond",
+    "url": "/blog/stormwater-maintenance-calendar/",
+    "published": "2024-06-02"
+  },
+  {
+    "slug": "rain-garden-planting-guide",
+    "title": "Rain Garden Planting Guide for Bellevue & Redmond",
+    "excerpt": "Native plant palettes and soil prep tips that boost RainWise infiltration for Eastside neighborhoods.",
+    "tags": ["landscaping", "bellevue", "redmond"],
+    "city": "Bellevue",
+    "url": "/blog/rain-garden-planting-guide/",
+    "published": "2024-06-03"
+  }
+]
