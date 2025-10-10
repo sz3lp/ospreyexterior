@@ -31,6 +31,17 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
 
 Server-side utilities also fall back to `SUPABASE_URL` and `SUPABASE_ANON_KEY` if you prefer non-public variable names.
 
+### Listing Supabase Posts Locally
+
+To inspect the current contents of the `posts` table from your terminal, ensure the Supabase environment variables are set (or
+defined in `.env.local`) and run:
+
+```bash
+npm run list-posts
+```
+
+The script will output each post's `id`, `title`, and `created_at` timestamp in descending creation order.
+
 ## Project Structure
 
 - `app/` – App Router pages, including service areas, blog, RSS feed, and sitemap.
