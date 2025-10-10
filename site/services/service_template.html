@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{service_name}} in {{service_city}} | Osprey Exterior</title>
+  <meta name="description" content="Professional {{service_name}} for homeowners in {{service_city}} and surrounding neighborhoods." />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body class="page-service">
+  <header class="site-header">
+    <div class="logo">Osprey Exterior</div>
+    <nav class="primary-nav">
+      <a href="../index.html">Home</a>
+      <a href="./service_template.html" aria-current="page">Services</a>
+      <a href="../blog_template.html">Blog</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <a class="cta" href="#quote">Request Service</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>{{service_name}} for {{service_city}} Homes</h1>
+      <p>{{service_intro}}</p>
+      <button data-track="cta" data-location="service-hero">Book Your Estimate</button>
+    </section>
+
+    <section class="process">
+      <h2>Our Proven Process</h2>
+      <ol>
+        <li><strong>Assessment:</strong> On-site inspection to tailor treatment.</li>
+        <li><strong>Protection:</strong> Shield landscaping and fixtures before work begins.</li>
+        <li><strong>Finishing:</strong> Post-service rinse, touch-ups, and satisfaction walkthrough.</li>
+      </ol>
+    </section>
+
+    <section class="geo-service-areas">
+      <h2>Service Areas</h2>
+      <p>{{service_city}} · {{neighboring_cities}}</p>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      {{service_faqs}}
+    </section>
+
+    <section id="quote" class="quote">
+      <h2>Ready for Your Refresh?</h2>
+      <p>Call <a href="tel:18445551234">(844) 555-1234</a> or complete the form below.</p>
+      <form>
+        <label>Name <input type="text" name="name" required /></label>
+        <label>Property Type <input type="text" name="property_type" /></label>
+        <label>Preferred Date <input type="date" name="preferred_date" /></label>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year"></span> Osprey Exterior. All rights reserved.</p>
+  </footer>
+
+  <script src="../../assets/script.js" defer></script>
+</body>
+</html>
