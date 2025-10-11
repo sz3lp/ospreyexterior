@@ -1,6 +1,17 @@
-const SUPABASE_URL = "https://your-project.supabase.co";
-const SUPABASE_TABLE = "leads";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const DEFAULT_SUPABASE_CONFIG = {
+  url: "https://your-project.supabase.co",
+  table: "leads",
+  anonKey: "YOUR_SUPABASE_ANON_KEY",
+};
+
+const RUNTIME_SUPABASE_CONFIG =
+  (typeof window !== "undefined" && window.SUPABASE_CONFIG) || {};
+
+const SUPABASE_URL = RUNTIME_SUPABASE_CONFIG.url || DEFAULT_SUPABASE_CONFIG.url;
+const SUPABASE_TABLE =
+  RUNTIME_SUPABASE_CONFIG.table || DEFAULT_SUPABASE_CONFIG.table;
+const SUPABASE_ANON_KEY =
+  RUNTIME_SUPABASE_CONFIG.anonKey || DEFAULT_SUPABASE_CONFIG.anonKey;
 
 function pushEvent(event, details = {}) {
   if (typeof window.pushAnalyticsEvent === "function") {
