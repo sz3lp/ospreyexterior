@@ -1,22 +1,34 @@
-window.dataLayer = window.dataLayer || [];
-
 const SUPABASE_URL = "https://your-project.supabase.co";
 const SUPABASE_TABLE = "leads";
 const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 
 function pushEvent(event, details = {}) {
-  window.dataLayer.push({
-    event,
-    ...details,
-  });
+  if (typeof window.pushAnalyticsEvent === "function") {
+    window.pushAnalyticsEvent(event, details);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event,
+      ...details,
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("[data-year]").forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
+
   document.querySelectorAll("[data-track]").forEach((element) => {
     element.addEventListener("click", () => {
       const eventName = element.getAttribute("data-track");
       const label = element.getAttribute("data-label") || element.textContent.trim();
-      pushEvent(eventName, { label });
+      const city = element.getAttribute("data-city");
+      const serviceType = element.getAttribute("data-service-type");
+      const payload = { label };
+      if (city) payload.city = city;
+      if (serviceType) payload.service_type = serviceType;
+      pushEvent(eventName, payload);
     });
   });
 
@@ -77,7 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const eventName = form.getAttribute("data-event") || "lead_submit";
-        pushEvent(eventName, { service: payload.service_type || payload.service || "general" });
+        const cityField = form.querySelector("[name=city]");
+        const serviceField =
+          form.querySelector("[name=service_type]") || form.querySelector("[name=service]");
+        const serviceType = serviceField ? serviceField.value : payload.service_type || payload.service;
+        const city = cityField ? cityField.value : payload.city;
+        pushEvent(eventName, {
+          service_type: serviceType || "general",
+          city: city || "unspecified",
+        });
 
         form.reset();
         form.classList.add("form-success");

@@ -11,13 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="canonical" href="https://www.ospreyexterior.com/">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/rss+xml" title="Osprey Exterior Insights" href="/rss.xml">
+  <link rel="alternate" type="application/feed+json" title="Osprey Exterior Insights" href="/feed.json">
 </head>
 <body>
   <header class="site-header">
@@ -75,7 +71,7 @@
           <div class="trust-badge">
             <span>🛡️</span>
             <h4>Licensed · Bonded · Insured</h4>
-            <p>Washington State License OSPREYE*1234B backed by full coverage.</p>
+            <p>Washington State License OSPREE*763QD backed by full coverage.</p>
           </div>
           <div class="trust-badge">
             <span>⭐</span>
@@ -345,7 +341,7 @@
           <input type="hidden" name="geo" value="">
           <button type="submit" class="btn btn-primary" data-track="lead_submit">Submit</button>
           <p style="margin-top:1rem; color:var(--color-muted);">Submitting this form fires a <code>lead_submit</code> analytics event and stores your lead in Supabase for rapid follow-up.</p>
-          <p style="margin-top:1rem; color:var(--color-muted);">Prefer a call? <a href="tel:+12065551234">Call (206) 555-1234</a> or <a href="/contact.html">visit our contact page</a>.</p>
+          <p style="margin-top:1rem; color:var(--color-muted);">Prefer a call? <a href="tel:+14255501727">Call (425) 550-1727</a> or <a href="/contact.html">visit our contact page</a>.</p>
         </form>
       </div>
     </section>
@@ -366,9 +362,9 @@
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Contact</h4>
-        <p>Phone: <a href="tel:+12065551234">(206) 555-1234</a></p>
-        <p>Email: <a href="mailto:hello@ospreyexterior.com">hello@ospreyexterior.com</a></p>
-        <p>License: OSPREYE*1234B</p>
+        <p>Phone: <a href="tel:+14255501727">(425) 550-1727</a></p>
+        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
         <p>Rainwise Partner ID: RW-7712</p>
       </div>
       <div>
@@ -380,7 +376,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; <span id="year"></span> Osprey Exterior. All rights reserved.</div>
+      <div>&copy; <span data-year></span> Osprey Exterior. All rights reserved.</div>
       <div class="footer-links">
         <a href="/privacy.html">Privacy Policy</a>
         <a href="/sitemap.xml">Sitemap</a>
@@ -393,7 +389,7 @@
       "name": "Osprey Exterior",
       "image": "https://www.ospreyexterior.com/assets/images/logo.png",
       "url": "https://www.ospreyexterior.com/",
-      "telephone": "+1-206-555-1234",
+      "telephone": "+1-425-550-1727",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1234 Rainwise Way",
@@ -413,10 +409,7 @@
     }
     </script>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="assets/js/tracking.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="canonical" href="https://www.ospreyexterior.com/rainwise.html">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/rss+xml" title="Osprey Exterior Insights" href="/rss.xml">
+  <link rel="alternate" type="application/feed+json" title="Osprey Exterior Insights" href="/feed.json">
 </head>
 <body>
   <header class="site-header">
@@ -321,9 +324,9 @@
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Contact</h4>
-        <p>Phone: <a href="tel:+12065551234">(206) 555-1234</a></p>
-        <p>Email: <a href="mailto:hello@ospreyexterior.com">hello@ospreyexterior.com</a></p>
-        <p>License: OSPREYE*1234B</p>
+        <p>Phone: <a href="tel:+14255501727">(425) 550-1727</a></p>
+        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">More resources</h4>
@@ -333,7 +336,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; <span id="year"></span> Osprey Exterior. All rights reserved.</div>
+      <div>&copy; <span data-year></span> Osprey Exterior. All rights reserved.</div>
       <div class="footer-links">
         <a href="/privacy.html">Privacy Policy</a>
         <a href="/sitemap.xml">Sitemap</a>
@@ -351,11 +354,6 @@
   </footer>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
-    window.pushEvent = window.pushEvent || function(eventName, details = {}) {
-      window.dataLayer.push({ event: eventName, ...details });
-    };
-
     const eligibilityForm = document.getElementById('eligibility-form');
     const eligibilityResult = document.getElementById('eligibility-result');
     const eligibleZips = ['98107', '98103', '98117', '98122', '98052'];
@@ -364,7 +362,9 @@
       const zip = document.getElementById('eligibility-zip').value.trim();
       const status = eligibleZips.includes(zip) ? 'eligible' : 'likely eligible';
       eligibilityResult.textContent = `Your address is ${status} for the Rainwise rebate. Book an inspection to confirm.`;
-      pushEvent('rainwise_eligibility_result', { zip, status });
+      if (typeof pushEvent === 'function') {
+        pushEvent('rainwise_eligibility_result', { zip, status, service_type: 'Rainwise' });
+      }
     });
 
     const rebateForm = document.getElementById('rebate-estimator');
@@ -376,11 +376,16 @@
       const gallons = Math.round(roofArea * 0.015);
       const rebate = Math.min(4000, Math.round(roofArea * 2.5));
       rebateOutput.textContent = `Estimated rebate: $${rebate.toLocaleString()} with recommended storage of ${gallons} gallons. Add gutter upgrades via our Gutters page for bundled savings.`;
-      pushEvent('cistern_estimate_submit', { roofArea, zip });
+      if (typeof pushEvent === 'function') {
+        pushEvent('rebate_estimate_submit', {
+          roof_area: roofArea,
+          zip,
+          service_type: 'Rainwise',
+        });
+      }
     });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="assets/js/tracking.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

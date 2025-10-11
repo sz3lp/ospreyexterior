@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="canonical" href="https://www.ospreyexterior.com/contact.html">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/rss+xml" title="Osprey Exterior Insights" href="/rss.xml">
+  <link rel="alternate" type="application/feed+json" title="Osprey Exterior Insights" href="/feed.json">
 </head>
 <body>
   <header class="site-header">
@@ -25,7 +28,7 @@
         <a href="/gutters.html">Gutters</a>
         <a href="/contact.html" class="active">Contact</a>
         <a href="/about.html">About</a>
-        <a href="tel:+12065551234" class="btn btn-primary" data-track="contact_call_cta">Call now</a>
+        <a href="tel:+14255501727" class="btn btn-primary" data-track="contact_call_cta">Call now</a>
       </nav>
     </div>
   </header>
@@ -38,7 +41,7 @@
           <p>Contact our Rainwise-certified team for a free inspection or rebate consultation covering gutters, cisterns, and compliance.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#form" data-track="contact_cta">Book inspection</a>
-            <a class="btn btn-outline" href="tel:+12065551234" data-track="contact_call_cta" data-label="Call same-day">Call same-day estimate</a>
+            <a class="btn btn-outline" href="tel:+14255501727" data-track="contact_call_cta" data-label="Call same-day">Call same-day estimate</a>
           </div>
           <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
             <a href="/rainwise.html">Check Rainwise eligibility</a>
@@ -106,7 +109,7 @@
         <div class="card-grid">
           <article class="card">
             <h3>Phone &amp; email</h3>
-            <p><a href="tel:+12065551234" itemprop="telephone">(206) 555-1234</a><br><a href="mailto:hello@ospreyexterior.com" itemprop="email">hello@ospreyexterior.com</a></p>
+            <p><a href="tel:+14255501727" itemprop="telephone">(425) 550-1727</a><br><a href="mailto:inquiries@ospreyexterior.com" itemprop="email">inquiries@ospreyexterior.com</a><br><a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
             <p>Office Hours: <span itemprop="openingHours">Mon–Fri 8am–5pm</span></p>
           </article>
           <article class="card">
@@ -115,7 +118,7 @@
               <span itemprop="streetAddress">1234 Rainwise Way</span><br>
               <span itemprop="addressLocality">Seattle</span>, <span itemprop="addressRegion">WA</span> <span itemprop="postalCode">98107</span>
             </p>
-            <p>License: OSPREYE*1234B · Rainwise Partner ID RW-7712</p>
+            <p>License: OSPREE*763QD · Rainwise Partner ID RW-7712</p>
           </article>
           <article class="card">
             <h3>Service area</h3>
@@ -166,7 +169,7 @@
     <section class="feature-band" id="cta">
       <div class="container">
         <h2>Want faster response? Call now and book same-day estimate</h2>
-        <a class="btn btn-primary" href="tel:+12065551234" data-track="contact_call_cta">Call (206) 555-1234</a>
+        <a class="btn btn-primary" href="tel:+14255501727" data-track="contact_call_cta">Call (425) 550-1727</a>
       </div>
     </section>
 
@@ -227,9 +230,9 @@
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Contact</h4>
-        <p>Phone: <a href="tel:+12065551234">(206) 555-1234</a></p>
-        <p>Email: <a href="mailto:hello@ospreyexterior.com">hello@ospreyexterior.com</a></p>
-        <p>License: OSPREYE*1234B</p>
+        <p>Phone: <a href="tel:+14255501727">(425) 550-1727</a></p>
+        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Links</h4>
@@ -239,7 +242,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; <span id="year"></span> Osprey Exterior. All rights reserved.</div>
+      <div>&copy; <span data-year></span> Osprey Exterior. All rights reserved.</div>
       <div class="footer-links">
         <a href="/privacy.html">Privacy Policy</a>
         <a href="/sitemap.xml">Sitemap</a>
@@ -251,7 +254,7 @@
       "@type": "LocalBusiness",
       "name": "Osprey Exterior",
       "url": "https://www.ospreyexterior.com/contact.html",
-      "telephone": "+1-206-555-1234",
+      "telephone": "+1-425-550-1727",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1234 Rainwise Way",
@@ -267,9 +270,7 @@
     }
     </script>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="assets/js/tracking.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

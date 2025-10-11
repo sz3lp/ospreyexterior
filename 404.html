@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found | Osprey Exterior</title>
+  <meta name="description" content="The page you requested could not be found. Return to Osprey Exterior's Rainwise resources or request a quote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/rss+xml" title="Osprey Exterior Insights" href="/rss.xml">
+  <link rel="alternate" type="application/feed+json" title="Osprey Exterior Insights" href="/feed.json">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span>OE</span>
+        Osprey Exterior
+      </a>
+      <nav class="primary-nav">
+        <a href="/services.html">Services</a>
+        <a href="/rainwise.html">Rainwise</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/contact.html" class="btn btn-primary" data-track="404_nav_quote">Get a quote</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" style="min-height:70vh; background-image: radial-gradient(circle at top left, rgba(31,162,167,0.4), rgba(10,35,66,0.85)); text-align:center;">
+      <div class="hero-inner" style="max-width:640px; margin:0 auto;">
+        <div class="hero-copy">
+          <p class="highlight">Page not found (404)</p>
+          <h1>The rain chased this page away.</h1>
+          <p>The link may be outdated&mdash;head back home or request a Rainwise-qualified consultation and we will guide you to the right service.</p>
+          <div class="hero-ctas" style="justify-content:center;">
+            <a class="btn btn-primary" href="/" data-track="page_not_found" data-label="Return home">Go home</a>
+            <a class="btn btn-outline" href="/contact.html" data-track="page_not_found" data-label="404 Quote" data-service-type="General">Get a quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <h4 style="font-family:var(--font-heading); margin-top:0;">Osprey Exterior</h4>
+        <p>Rainwise-certified contractor serving Seattle, Bellevue, Kirkland, Redmond, and Issaquah.</p>
+        <ul class="service-area-list">
+          <li><a href="/service-areas/seattle.html">Seattle</a></li>
+          <li><a href="/service-areas/bellevue.html">Bellevue</a></li>
+          <li><a href="/service-areas/kirkland.html">Kirkland</a></li>
+          <li><a href="/service-areas/redmond.html">Redmond</a></li>
+          <li><a href="/service-areas/issaquah.html">Issaquah</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:var(--font-heading);">Contact</h4>
+        <p>Phone: <a href="tel:+14255501727">(425) 550-1727</a></p>
+        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
+      </div>
+      <div>
+        <h4 style="font-family:var(--font-heading);">Quick links</h4>
+        <p><a href="/services.html">Services overview</a></p>
+        <p><a href="/rainwise.html">Rainwise rebate guide</a></p>
+        <p><a href="/sitemap.html">HTML sitemap</a></p>
+        <p><a href="/contact.html">Contact form</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span data-year></span> Osprey Exterior. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.pushAnalyticsEvent === 'function') {
+        window.pushAnalyticsEvent('page_not_found', { city: 'Seattle', service_type: 'general' });
+      }
+    });
+  </script>
+  <script src="assets/js/tracking.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

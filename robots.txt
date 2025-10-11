@@ -1,0 +1,5 @@
+# Generated: 2024-01-01
+User-agent: *
+Disallow: /admin/
+Allow: /
+Sitemap: https://www.ospreyexterior.com/sitemap.xml

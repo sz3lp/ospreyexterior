@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Osprey Exterior Insights</title>
+    <link>https://www.ospreyexterior.com/</link>
+    <description>Rainwise rebates, gutter upgrades, and compliance resources for Seattle homeowners.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2024 09:00:00 -0800</lastBuildDate>
+    <item>
+      <title>Rainwise rebate timeline for Seattle neighborhoods</title>
+      <link>https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html</link>
+      <guid>https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html</guid>
+      <pubDate>Mon, 01 Jan 2024 09:00:00 -0800</pubDate>
+      <description>Walk through the 4–8 week Rainwise rebate process with scheduling tips and inspection reminders.</description>
+      <category>Rainwise</category>
+    </item>
+    <item>
+      <title>Quarterly gutter maintenance checklist</title>
+      <link>https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html</link>
+      <guid>https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html</guid>
+      <pubDate>Mon, 18 Dec 2023 09:00:00 -0800</pubDate>
+      <description>Keep Rainwise systems flowing with seasonal gutter cleaning, mesh guard care, and safety best practices.</description>
+      <category>Gutters</category>
+    </item>
+    <item>
+      <title>Inspection prep guide for Kirkland &amp; Redmond</title>
+      <link>https://www.ospreyexterior.com/blog/inspection-prep-guide.html</link>
+      <guid>https://www.ospreyexterior.com/blog/inspection-prep-guide.html</guid>
+      <pubDate>Mon, 04 Dec 2023 09:00:00 -0800</pubDate>
+      <description>Understand municipal compliance expectations and prepare documents before your inspection day.</description>
+      <category>Compliance</category>
+    </item>
+    <item>
+      <title>How the Rainwise rebate works in 2025</title>
+      <link>https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html</link>
+      <guid>https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html</guid>
+      <pubDate>Mon, 20 Nov 2023 09:00:00 -0800</pubDate>
+      <description>Eligibility zones, budget ranges, and how Osprey Exterior manages approvals from start to payout.</description>
+      <category>Rainwise</category>
+    </item>
+    <item>
+      <title>Best gutter materials for Seattle rain</title>
+      <link>https://www.ospreyexterior.com/blog/gutter-filter-comparison.html</link>
+      <guid>https://www.ospreyexterior.com/blog/gutter-filter-comparison.html</guid>
+      <pubDate>Mon, 06 Nov 2023 09:00:00 -0800</pubDate>
+      <description>Compare seamless aluminum, steel, and mesh guards with Rainwise program considerations.</description>
+      <category>Gutters</category>
+    </item>
+    <item>
+      <title>Stormwater code simplified</title>
+      <link>https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html</link>
+      <guid>https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html</guid>
+      <pubDate>Mon, 23 Oct 2023 09:00:00 -0800</pubDate>
+      <description>Key permit requirements across Seattle, Bellevue, Kirkland, Redmond, and Issaquah.</description>
+      <category>Compliance</category>
+    </item>
+  </channel>
+</rss>
