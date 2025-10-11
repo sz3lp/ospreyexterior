@@ -1,0 +1,63 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Osprey Exterior Insights",
+  "home_page_url": "https://www.ospreyexterior.com/",
+  "feed_url": "https://www.ospreyexterior.com/feed.json",
+  "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
+  "items": [
+    {
+      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
+      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
+      "title": "Rainwise rebate timeline for Seattle neighborhoods",
+      "summary": "Walk through the 4–8 week Rainwise rebate process with scheduling tips and inspection reminders.",
+      "date_published": "2024-01-01T09:00:00-08:00",
+      "tags": ["Rainwise", "Seattle", "Rebate"],
+      "image": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html",
+      "url": "https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html",
+      "title": "Quarterly gutter maintenance checklist",
+      "summary": "Keep Rainwise systems flowing with seasonal gutter cleaning, mesh guard care, and safety best practices.",
+      "date_published": "2023-12-18T09:00:00-08:00",
+      "tags": ["Gutters", "Maintenance"],
+      "image": "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/inspection-prep-guide.html",
+      "url": "https://www.ospreyexterior.com/blog/inspection-prep-guide.html",
+      "title": "Inspection prep guide for Kirkland & Redmond",
+      "summary": "Understand municipal compliance expectations and prepare documents before your inspection day.",
+      "date_published": "2023-12-04T09:00:00-08:00",
+      "tags": ["Compliance", "Stormwater"],
+      "image": "https://images.unsplash.com/photo-1523419409543-0c1df022bddb?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html",
+      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html",
+      "title": "How the Rainwise rebate works in 2025",
+      "summary": "Eligibility zones, budget ranges, and how Osprey Exterior manages approvals from start to payout.",
+      "date_published": "2023-11-20T09:00:00-08:00",
+      "tags": ["Rainwise", "Rebate"],
+      "image": "https://images.unsplash.com/photo-1505691723494-36a5ac3be353?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/gutter-filter-comparison.html",
+      "url": "https://www.ospreyexterior.com/blog/gutter-filter-comparison.html",
+      "title": "Best gutter materials for Seattle rain",
+      "summary": "Compare seamless aluminum, steel, and mesh guards with Rainwise program considerations.",
+      "date_published": "2023-11-06T09:00:00-08:00",
+      "tags": ["Gutters", "Materials"],
+      "image": "https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html",
+      "url": "https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html",
+      "title": "Stormwater code simplified",
+      "summary": "Key permit requirements across Seattle, Bellevue, Kirkland, Redmond, and Issaquah.",
+      "date_published": "2023-10-23T09:00:00-08:00",
+      "tags": ["Compliance", "Stormwater"],
+      "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80"
+    }
+  ]
+}
