@@ -1,6 +1,6 @@
 (function () {
-  const GA_ID = "G-XXXXXXXXXX";
-  const GTM_ID = "GTM-XXXXXXX";
+  const GA_IDS = ["G-3MENPSSF97", "G-P1VX9FY873"].filter(Boolean);
+  const GTM_ID = "";
 
   const dataLayer = (window.dataLayer = window.dataLayer || []);
   const params = new URLSearchParams(window.location.search);
@@ -17,6 +17,19 @@
       ...details,
     };
     dataLayer.push(payload);
+    if (typeof window.gtag === "function") {
+      const gtagPayload = {
+        ...baseDimensions,
+        ...details,
+      };
+      try {
+        window.gtag("event", eventName, gtagPayload);
+      } catch (err) {
+        if (window.console && console.debug) {
+          console.debug("Analytics event fallback", err);
+        }
+      }
+    }
     return payload;
   };
 
@@ -34,18 +47,20 @@
     loadScript(`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`);
   }
 
-  if (GA_ID) {
-    loadScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`, () => {
+  if (GA_IDS.length) {
+    loadScript(`https://www.googletagmanager.com/gtag/js?id=${GA_IDS[0]}`, () => {
       window.gtag = function gtag() {
         dataLayer.push(arguments);
       };
       window.gtag("js", new Date());
-      window.gtag("config", GA_ID, {
-        custom_map: {
-          dimension1: "city",
-          dimension2: "service_type",
-          dimension3: "traffic_source",
-        },
+      GA_IDS.forEach((id) => {
+        window.gtag("config", id, {
+          custom_map: {
+            dimension1: "city",
+            dimension2: "service_type",
+            dimension3: "traffic_source",
+          },
+        });
       });
     });
   }
