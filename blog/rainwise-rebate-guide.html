@@ -65,6 +65,20 @@
       <div class="container">
         <article class="card" style="max-width:860px; margin:0 auto;">
           <p>Rainwise is designed to reduce runoff that overwhelms combined sewers across Seattle and parts of King County. Homeowners in eligible basins receive a rebate that covers cisterns, gutters, and infiltration solutions. Our <a href="/services.html">services overview</a> highlights how we align every install with rebate requirements.</p>
+          <div class="photo-grid" style="display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); margin:2rem 0;">
+            <figure style="margin:0;">
+              <img src="../assets/images/cleaned-and-sealed-half-round-gutters.JPEG" alt="Rainwise-ready gutter system on a Seattle property" style="border-radius:12px; width:100%; height:100%; object-fit:cover;">
+              <figcaption style="margin-top:0.75rem; font-size:0.95rem; color:var(--color-text-muted);">Rainwise-ready seamless gutters tied into stormwater controls.</figcaption>
+            </figure>
+            <figure style="margin:0;">
+              <img src="../assets/images/aerial-photo-of-alki.jpg" alt="Aerial photo of West Seattle Rainwise basin" style="border-radius:12px; width:100%; height:100%; object-fit:cover;">
+              <figcaption style="margin-top:0.75rem; font-size:0.95rem; color:var(--color-text-muted);">Eligible basins stretch across West Seattle neighborhoods.</figcaption>
+            </figure>
+            <figure style="margin:0;">
+              <img src="../assets/images/fenced-in-tomato-garden.JPEG" alt="Rain garden planting capturing roof runoff" style="border-radius:12px; width:100%; height:100%; object-fit:cover;">
+              <figcaption style="margin-top:0.75rem; font-size:0.95rem; color:var(--color-text-muted);">Rain garden plantings absorb overflow during inspections.</figcaption>
+            </figure>
+          </div>
           <h2>Eligibility zones and timing</h2>
           <p>Start by confirming your property is within a qualifying basin using the <a href="https://rainwise.seattle.gov/eligibility" target="_blank" rel="noopener">official Rainwise map</a>. Once eligibility is confirmed, expect a 4–8 week timeline that includes design, approvals, installation, and inspection. We coordinate Rainwise paperwork alongside <a href="/compliance.html">compliance audits</a> so there are no surprises at final review.</p>
           <h2>Rebate amounts in 2025</h2>
@@ -75,10 +89,79 @@
             <li><strong>Design &amp; application:</strong> Our team prepares Rainwise design files, captures photos, and submits the application for approval.</li>
             <li><strong>Installation &amp; paperwork:</strong> Certified installers complete the work, document progress, and submit the rebate packet within 24 hours of inspection.</li>
           </ul>
+          <div class="interactive-card" style="margin:3rem 0; padding:2rem; border:1px solid var(--color-border); border-radius:16px; background:var(--color-surface);">
+            <h2 style="margin-top:0;">Estimate your potential rebate</h2>
+            <p>Select the options that match your home to see how we calculate funding tiers during consultations.</p>
+            <form>
+              <fieldset style="border:none; padding:0; margin:0 0 1.5rem; display:grid; gap:0.75rem;">
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="radio" name="roof-size" value="small">
+                  <span><strong>Up to 1,500 sq. ft. roof</strong><br>Typical rebate range: $1,800–$2,400.</span>
+                </label>
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="radio" name="roof-size" value="medium">
+                  <span><strong>1,500–2,500 sq. ft. roof</strong><br>Typical rebate range: $2,400–$3,400.</span>
+                </label>
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="radio" name="roof-size" value="large">
+                  <span><strong>Over 2,500 sq. ft. roof</strong><br>Typical rebate range: $3,400–$4,500.</span>
+                </label>
+              </fieldset>
+              <fieldset style="border:none; padding:0; margin:0 0 1.5rem; display:grid; gap:0.75rem;">
+                <legend style="font-weight:600; margin-bottom:0.5rem;">Add-ons</legend>
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="checkbox" name="addon" value="cistern">
+                  <span>Dual 530-gallon cisterns with first-flush diverters</span>
+                </label>
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="checkbox" name="addon" value="permeable">
+                  <span>Permeable patio or rain garden integration</span>
+                </label>
+                <label style="display:flex; gap:0.75rem; align-items:flex-start;">
+                  <input type="checkbox" name="addon" value="gutters">
+                  <span>Seamless gutter upgrade with stainless mesh guards</span>
+                </label>
+              </fieldset>
+              <p style="margin:0; font-size:0.95rem; color:var(--color-text-muted);">We finalize rebate estimates after measuring roof area, runoff routing, and infiltration soil conditions.</p>
+            </form>
+          </div>
           <p>Throughout the project we log milestones in our Supabase CRM, ensuring analytics events like <code>lead_submit</code> and <code>rebate_estimate_submit</code> align with marketing attribution.</p>
           <h2>Next steps</h2>
           <p>Ready to capture your rebate? Request a site visit using the form below or compare options on our <a href="/cisterns.html">cistern systems page</a>. For homeowners outside the core basin, review our <a href="/service-areas/index.html">city landing pages</a> for localized guidance.</p>
         </article>
+      </div>
+    </section>
+    <section class="section section-light">
+      <div class="container" style="max-width:860px;">
+        <div class="card" style="padding:2.5rem; border-radius:20px;">
+          <div class="section-header" style="margin-bottom:1.5rem;">
+            <span>Authority</span>
+            <h2>Seattle’s trusted Rainwise contractor</h2>
+          </div>
+          <div style="display:grid; gap:1.5rem;">
+            <div style="display:flex; gap:1rem;">
+              <img src="../assets/images/Osprey-Exterior-Icon-01-dark-blue.png" alt="Rainwise certification icon" style="width:48px; height:48px;">
+              <div>
+                <strong>Certified since the program launched</strong>
+                <p style="margin:0.35rem 0 0;">We’ve completed Rainwise installs in every eligible basin with 100% inspection pass rates.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem;">
+              <img src="../assets/images/Osprey-Exterior-Icon-02-black.png" alt="Paperwork expertise icon" style="width:48px; height:48px;">
+              <div>
+                <strong>Paperwork handled end-to-end</strong>
+                <p style="margin:0.35rem 0 0;">Our project managers submit design approvals, reimbursement forms, and maintenance plans on your behalf.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem;">
+              <img src="../assets/images/Osprey-Exterior-Icon-03-white.png" alt="Customer support icon" style="width:48px; height:48px; background:var(--color-primary); border-radius:50%; padding:0.5rem;">
+              <div>
+                <strong>Dedicated Rainwise support desk</strong>
+                <p style="margin:0.35rem 0 0;">Call or email our rebate specialists for status updates, soil test coordination, and inspection prep.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section section-light">
