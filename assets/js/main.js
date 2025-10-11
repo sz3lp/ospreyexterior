@@ -115,6 +115,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submitButton) {
           submitButton.textContent = "Submitted";
         }
+
+        const redirectUrl = new URL("/thank-you.html", window.location.origin);
+        if (serviceType) {
+          redirectUrl.searchParams.set("service_type", serviceType);
+        }
+
+        setTimeout(() => {
+          window.location.href = redirectUrl.toString();
+        }, 300);
       } catch (error) {
         console.error(error);
         form.classList.add("form-error");
