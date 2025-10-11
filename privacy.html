@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy | Osprey Exterior</title>
+  <meta name="description" content="Privacy policy outlining how Osprey Exterior handles website form submissions, analytics, and Supabase lead storage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span>OE</span>
+        Osprey Exterior
+      </a>
+      <nav class="primary-nav">
+        <a href="/services.html">Services</a>
+        <a href="/rainwise.html">Rainwise</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span>Privacy policy</span>
+          <h1>How we handle your data</h1>
+          <p>This policy explains how Osprey Exterior collects, stores, and uses information submitted through our website.</p>
+        </div>
+        <article class="card">
+          <h2>Information we collect</h2>
+          <p>We collect contact details submitted through forms (name, address, phone, email, service type) along with analytics metadata such as UTM source and inferred geolocation.</p>
+          <h2>How we use information</h2>
+          <p>Lead data is stored in Supabase to schedule consultations, provide estimates, and coordinate Rainwise and compliance services. We may send service updates or reminders related to your inquiry.</p>
+          <h2>Analytics</h2>
+          <p>We use Google Tag Manager and Google Analytics to understand site usage. Events such as <code>lead_submit</code>, <code>rainwise_lead</code>, and <code>contact_form_submit</code> track form interactions.</p>
+          <h2>Sharing</h2>
+          <p>We do not sell personal data. Information may be shared with city agencies for Rainwise and compliance paperwork or with third-party installers supporting your project.</p>
+          <h2>Data retention</h2>
+          <p>Lead data is retained for project lifecycle and compliance recordkeeping. Request deletion by contacting <a href="mailto:hello@ospreyexterior.com">hello@ospreyexterior.com</a>.</p>
+          <h2>Contact</h2>
+          <p>Questions? Email <a href="mailto:hello@ospreyexterior.com">hello@ospreyexterior.com</a> or call <a href="tel:+12065551234">(206) 555-1234</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <h4 style="font-family:var(--font-heading); margin-top:0;">Osprey Exterior</h4>
+        <p>Rainwise-certified contractor serving Seattle, Bellevue, Kirkland, Redmond, and Issaquah.</p>
+      </div>
+      <div>
+        <h4 style="font-family:var(--font-heading);">Quick links</h4>
+        <p><a href="/services.html">Services</a></p>
+        <p><a href="/contact.html">Contact</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span id="year"></span> Osprey Exterior. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
