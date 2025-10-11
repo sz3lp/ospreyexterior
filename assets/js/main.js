@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const redirectUrl = new URL("/thank-you.html", window.location.origin);
+        redirectUrl.search = window.location.search;
         if (serviceType) {
           redirectUrl.searchParams.set("service_type", serviceType);
         }
