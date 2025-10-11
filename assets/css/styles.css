@@ -198,6 +198,134 @@ nav.primary-nav a.active::after {
   color: inherit;
 }
 
+.before-after-grid,
+.detail-grid,
+.landscape-grid,
+.brand-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.before-after-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.before-after-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.before-after-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+}
+
+.before-after-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.paired-images {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.paired-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.paired-image span {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(16, 32, 41, 0.75);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.detail-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.detail-grid figure,
+.landscape-grid figure {
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-grid figcaption,
+.landscape-grid figcaption {
+  padding: 1rem 1.25rem 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.brand-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: start;
+}
+
+.brand-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.brand-card img {
+  margin: 0 auto;
+  max-height: 96px;
+  width: auto;
+}
+
+.brand-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.brand-card small {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .paired-images {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-card img {
+    max-height: 72px;
+  }
+}
+
 .section-header p {
   max-width: 640px;
   color: var(--color-muted);
