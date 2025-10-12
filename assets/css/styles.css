@@ -103,6 +103,15 @@ nav.primary-nav a {
   padding-bottom: 0.25rem;
 }
 
+nav.primary-nav .btn-primary {
+  color: #fff;
+}
+
+nav.primary-nav .btn-primary:hover,
+nav.primary-nav .btn-primary:focus {
+  color: #fff;
+}
+
 nav.primary-nav a::after {
   content: "";
   position: absolute;
