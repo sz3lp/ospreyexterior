@@ -1,7 +1,7 @@
 const DEFAULT_SUPABASE_CONFIG = {
-  url: "https://your-project.supabase.co",
+  url: "https://lojafhskcvmugyxwybeb.supabase.co",
   table: "leads",
-  anonKey: "YOUR_SUPABASE_ANON_KEY",
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvamFmaHNrY3ZtdWd5eHd5YmViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxNjE1MzIsImV4cCI6MjA2NzczNzUzMn0.2qKuM-WvKZcEgjJqLGvMyjBw0dpp1o0ELCkEuDKRUpw",
   notificationEmail: "luke@ospreyexterior.com",
 };
 
