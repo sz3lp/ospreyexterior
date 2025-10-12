@@ -78,45 +78,19 @@
     </section>
 
     <section class="marquee-section" aria-label="Community and stewardship focus areas">
-      <div class="marquee-row">
-        <div class="marquee-track">
-          <ul class="marquee-items">
-            <li class="marquee-item">community</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-            <li class="marquee-item">water catchments</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-            <li class="marquee-item">environmental stewardship</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-          </ul>
-          <ul class="marquee-items" aria-hidden="true">
-            <li class="marquee-item">community</li>
-            <li class="marquee-separator">•</li>
-            <li class="marquee-item">water catchments</li>
-            <li class="marquee-separator">•</li>
-            <li class="marquee-item">environmental stewardship</li>
-            <li class="marquee-separator">•</li>
-          </ul>
-        </div>
-      </div>
-      <div class="marquee-row marquee-row--reverse">
-        <div class="marquee-track">
-          <ul class="marquee-items">
-            <li class="marquee-item">community</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-            <li class="marquee-item">water catchments</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-            <li class="marquee-item">environmental stewardship</li>
-            <li class="marquee-separator" aria-hidden="true">•</li>
-          </ul>
-          <ul class="marquee-items" aria-hidden="true">
-            <li class="marquee-item">community</li>
-            <li class="marquee-separator">•</li>
-            <li class="marquee-item">water catchments</li>
-            <li class="marquee-separator">•</li>
-            <li class="marquee-item">environmental stewardship</li>
-            <li class="marquee-separator">•</li>
-          </ul>
-        </div>
+      <div class="marquee-wave">
+        <svg class="marquee-svg" viewBox="0 0 1320 140" preserveAspectRatio="none" role="presentation" aria-hidden="true">
+          <defs>
+            <path id="marqueeWavePath" d="M0,80 C120,20 240,140 360,80 S600,40 720,80 960,120 1080,80 1200,20 1320,80" />
+          </defs>
+          <path class="marquee-wave-path" d="M0,80 C120,20 240,140 360,80 S600,40 720,80 960,120 1080,80 1200,20 1320,80" />
+          <text class="marquee-text">
+            <textPath href="#marqueeWavePath" startOffset="0%">
+              community • water catchments • environmental stewardship • community • water catchments • environmental stewardship • community • water catchments • environmental stewardship •
+            </textPath>
+          </text>
+        </svg>
+        <span class="sr-only">community • water catchments • environmental stewardship</span>
       </div>
     </section>
 
