@@ -141,4 +141,102 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const blogFeedGrid = document.querySelector(".blog-grid[data-feed-source]");
+  if (blogFeedGrid) {
+    const feedUrl = blogFeedGrid.getAttribute("data-feed-source") || "/feed.json";
+    const placeholder = blogFeedGrid.innerHTML;
+
+    const createBlogCard = (item) => {
+      const article = document.createElement("article");
+      article.className = "blog-card";
+      article.setAttribute("itemprop", "itemListElement");
+      article.setAttribute("itemscope", "");
+      article.setAttribute("itemtype", "https://schema.org/BlogPosting");
+
+      if (Array.isArray(item.tags) && item.tags.length) {
+        article.setAttribute("data-tags", item.tags.join(","));
+      }
+
+      const imageSrc = item.image || "/assets/images/permeable-hardscape-and-xericulture.JPEG";
+      const img = document.createElement("img");
+      img.src = imageSrc;
+      img.loading = "lazy";
+      img.alt = item.title || "Osprey Exterior blog post";
+      img.setAttribute("itemprop", "image");
+      article.appendChild(img);
+
+      const content = document.createElement("div");
+      content.className = "content";
+
+      const heading = document.createElement("h3");
+      heading.setAttribute("itemprop", "headline");
+      const link = document.createElement("a");
+      link.href = item.url || item.id || "#";
+      link.textContent = item.title || "Read more";
+      link.setAttribute("itemprop", "url");
+      heading.appendChild(link);
+      content.appendChild(heading);
+
+      if (item.summary) {
+        const summary = document.createElement("p");
+        summary.setAttribute("itemprop", "description");
+        summary.textContent = item.summary;
+        content.appendChild(summary);
+      }
+
+      if (item.date_published) {
+        const time = document.createElement("time");
+        time.dateTime = item.date_published;
+        const publishedDate = new Date(item.date_published);
+        if (!Number.isNaN(publishedDate.getTime())) {
+          time.textContent = publishedDate.toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+        } else {
+          time.textContent = item.date_published;
+        }
+        time.className = "blog-card-date";
+        content.appendChild(time);
+      }
+
+      const readMore = document.createElement("a");
+      readMore.href = item.url || item.id || "#";
+      readMore.textContent = "Read article";
+      readMore.setAttribute("aria-label", `Read ${item.title || "blog post"}`);
+      readMore.className = "text-link";
+      content.appendChild(readMore);
+
+      article.appendChild(content);
+      return article;
+    };
+
+    blogFeedGrid.setAttribute("aria-busy", "true");
+
+    fetch(feedUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Unable to load blog feed");
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !Array.isArray(data.items)) {
+          throw new Error("Invalid blog feed format");
+        }
+
+        blogFeedGrid.innerHTML = "";
+        data.items.forEach((item) => {
+          const card = createBlogCard(item);
+          blogFeedGrid.appendChild(card);
+        });
+        blogFeedGrid.setAttribute("aria-busy", "false");
+      })
+      .catch((error) => {
+        console.error(error);
+        blogFeedGrid.innerHTML = placeholder;
+        blogFeedGrid.setAttribute("data-feed-error", "true");
+        blogFeedGrid.setAttribute("aria-busy", "false");
+      });
+  }
 });
