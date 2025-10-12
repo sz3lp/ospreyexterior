@@ -6,6 +6,33 @@
   "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
   "items": [
     {
+      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
+      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
+      "title": "Rainwise rebate success guide for Puget Sound",
+      "summary": "Step-by-step roadmap covering eligibility, requirements, timelines, paperwork, and cistern sizing for Rainwise rebates.",
+      "date_published": "2024-02-05T09:00:00-08:00",
+      "tags": ["Rainwise", "Rebate"],
+      "image": "https://www.ospreyexterior.com/assets/images/permeable-hardscape-and-xericulture.JPEG"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/leaf-filter-alternatives.html",
+      "url": "https://www.ospreyexterior.com/blog/leaf-filter-alternatives.html",
+      "title": "Leaf filter alternatives that beat debris",
+      "summary": "Compare stainless mesh guards, seamless gutters, and Rainwise-ready tie-ins for Puget Sound homes.",
+      "date_published": "2024-01-22T09:00:00-08:00",
+      "tags": ["Gutters", "Product Comparison"],
+      "image": "https://www.ospreyexterior.com/assets/images/gutter-inside-corner-after.JPEG"
+    },
+    {
+      "id": "https://www.ospreyexterior.com/blog/compliance-blueprint.html",
+      "url": "https://www.ospreyexterior.com/blog/compliance-blueprint.html",
+      "title": "Compliance blueprint for Eastside inspections",
+      "summary": "Interactive checklist to prepare drainage, grading, and Rainwise paperwork for Kirkland, Redmond, and Issaquah projects.",
+      "date_published": "2024-01-08T09:00:00-08:00",
+      "tags": ["Compliance", "Stormwater"],
+      "image": "https://www.ospreyexterior.com/assets/images/outdoor-fire-pit-and-gravel-pathway.JPEG"
+    },
+    {
       "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
       "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
       "title": "Rainwise rebate timeline for Seattle neighborhoods",
