@@ -2,6 +2,7 @@ const DEFAULT_SUPABASE_CONFIG = {
   url: "https://your-project.supabase.co",
   table: "leads",
   anonKey: "YOUR_SUPABASE_ANON_KEY",
+  notificationEmail: "luke@ospreyexterior.com",
 };
 
 const RUNTIME_SUPABASE_CONFIG =
@@ -12,6 +13,9 @@ const SUPABASE_TABLE =
   RUNTIME_SUPABASE_CONFIG.table || DEFAULT_SUPABASE_CONFIG.table;
 const SUPABASE_ANON_KEY =
   RUNTIME_SUPABASE_CONFIG.anonKey || DEFAULT_SUPABASE_CONFIG.anonKey;
+const SUPABASE_NOTIFICATION_EMAIL =
+  RUNTIME_SUPABASE_CONFIG.notificationEmail ||
+  DEFAULT_SUPABASE_CONFIG.notificationEmail;
 
 function pushEvent(event, details = {}) {
   if (typeof window.pushAnalyticsEvent === "function") {
@@ -77,6 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
+      if (SUPABASE_NOTIFICATION_EMAIL && !payload.notification_email) {
+        payload.notification_email = SUPABASE_NOTIFICATION_EMAIL;
+      }
       const submitButton = form.querySelector("button[type=submit]");
       const originalText = submitButton ? submitButton.textContent : null;
       if (submitButton) {
