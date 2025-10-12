@@ -818,6 +818,24 @@ footer.site-footer {
   flex-wrap: wrap;
 }
 
+.footer-social {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-social a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .service-area-list {
   display: flex;
   flex-wrap: wrap;
