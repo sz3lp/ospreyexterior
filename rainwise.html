@@ -66,7 +66,7 @@
           </div>
           <div class="brand-badges hero-badges">
             <img src="assets/images/rainwiselogo.png" alt="Seattle Public Utilities RainWise partner logo" class="rainwise-badge">
-            <img src="assets/images/Osprey-Exterior-Logo3-01-BLUE.png" alt="Osprey Exterior primary logo">
+            <img src="assets/images/Osprey-Exterior-Logo3-03-WHITE.png" alt="Osprey Exterior logo in white">
           </div>
         </div>
       </div>
@@ -111,23 +111,17 @@
         <div class="section-header">
           <span>Eligibility checker</span>
           <h2>Find out if your address qualifies for Rainwise</h2>
-          <p>Enter your address and zip code to see if you are eligible or likely eligible. We include direct links to contact our Rainwise team and the city rebate form.</p>
+          <p>Use the official RainWise eligibility page embedded below to check your address. We include direct links to contact our RainWise team and the city rebate form.</p>
         </div>
-        <form class="form-card" id="eligibility-form">
-          <div class="form-grid">
-            <div>
-              <label for="eligibility-address">Address</label>
-              <input id="eligibility-address" name="address" required>
-            </div>
-            <div>
-              <label for="eligibility-zip">ZIP Code</label>
-              <input id="eligibility-zip" name="zip" required>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" data-track="rainwise_eligibility_submit">Check now</button>
-          <p id="eligibility-result" style="margin-top:1rem; font-weight:600;"></p>
-          <p style="color:var(--color-muted);">Need help? <a href="/contact.html">Schedule a visit</a> or go to the <a href="https://rainwise.seattle.gov/eligibility" rel="noopener" target="_blank">official Rainwise map</a>.</p>
-        </form>
+        <div class="form-card" style="padding:0; overflow:hidden;">
+          <iframe
+            src="https://700milliongallons.org/rainwise/eligibility"
+            title="RainWise eligibility checker"
+            loading="lazy"
+            style="width:100%; min-height:720px; border:0; border-radius:16px; background:#fff;"
+            allow="clipboard-write"
+          ></iframe>
+        </div>
       </div>
     </section>
 
@@ -323,7 +317,7 @@
           <input type="hidden" name="utm_source" value="">
           <input type="hidden" name="geo" value="">
           <button type="submit" class="btn btn-primary" data-track="rainwise_lead">Schedule Rainwise visit</button>
-          <p style="margin-top:1rem;">Submitting triggers the <code>rainwise_lead</code> GTM event and stores your request in Supabase.</p>
+          <p style="margin-top:1rem;">Our RainWise coordinator will follow up within one business day.</p>
           <p><a href="/gutters.html">Need gutters too?</a> · <a href="/cisterns.html">Compare cisterns</a></p>
         </form>
       </div>
@@ -382,19 +376,6 @@
   </footer>
 
   <script>
-    const eligibilityForm = document.getElementById('eligibility-form');
-    const eligibilityResult = document.getElementById('eligibility-result');
-    const eligibleZips = ['98107', '98103', '98117', '98122', '98052'];
-    eligibilityForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const zip = document.getElementById('eligibility-zip').value.trim();
-      const status = eligibleZips.includes(zip) ? 'eligible' : 'likely eligible';
-      eligibilityResult.textContent = `Your address is ${status} for the Rainwise rebate. Book an inspection to confirm.`;
-      if (typeof pushEvent === 'function') {
-        pushEvent('rainwise_eligibility_result', { zip, status, service_type: 'Rainwise' });
-      }
-    });
-
     const rebateForm = document.getElementById('rebate-estimator');
     const rebateOutput = document.getElementById('rebate-output');
     rebateForm.addEventListener('submit', (event) => {
