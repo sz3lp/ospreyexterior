@@ -54,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const range = component.querySelector("input[type=range]");
     const after = component.querySelector(".after-image");
     if (range && after) {
+      after.style.setProperty("--reveal", range.value);
       range.addEventListener("input", () => {
-        after.style.setProperty("--after-width", `${range.value}%`);
+        after.style.setProperty("--reveal", range.value);
       });
     }
   });

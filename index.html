@@ -36,7 +36,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="logo" href="/">
-        <img src="assets/images/Osprey-Exterior-Logo3-02-BLACK.png" alt="Osprey Exterior logo">
+        <img src="assets/images/Osprey-Exterior-Logo3-01-BLUE.png" alt="Osprey Exterior logo">
         <span class="sr-only">Osprey Exterior home</span>
       </a>
       <nav class="primary-nav">
@@ -60,7 +60,7 @@
             <a class="btn btn-primary cta-track" data-track="hero_cta_click" href="/rainwise.html#eligibility">Check Eligibility</a>
             <a class="btn btn-outline" data-track="hero_cta_click" data-label="Hero Get a Quote" href="/contact.html">Get a Quote</a>
           </div>
-          <div class="hero-links" style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div class="hero-links">
             <a href="/portfolio.html">See completed rebate installs</a>
             <a href="/services.html">Compare every exterior service</a>
           </div>
@@ -70,7 +70,7 @@
           <ul style="margin:1.25rem 0 1.5rem; padding-left:1.25rem; color: rgba(255,255,255,0.85);">
             <li>Certified Rainwise partner handling paperwork end-to-end</li>
             <li>Integrated gutters, cisterns, and drainage for compliance-ready projects</li>
-            <li>Supabase-connected lead tracking for same-day scheduling</li>
+            <li>Same-day scheduling updates from our local team</li>
           </ul>
           <a class="btn btn-primary" href="/portfolio.html#map" data-track="hero_cta_click" data-label="Hero Portfolio">View local results</a>
         </div>
@@ -81,17 +81,23 @@
       <div class="container">
         <div class="trust-bar">
           <div class="trust-badge">
-            <span>🌧️</span>
+            <span class="trust-badge-icon">
+              <img src="assets/images/Osprey-Exterior-Icon-01-dark-blue.png" alt="Certified rain drop icon">
+            </span>
             <h4>Rainwise Partner</h4>
             <p>Approved contractor guiding homeowners through rebates and compliance.</p>
           </div>
           <div class="trust-badge">
-            <span>🛡️</span>
+            <span class="trust-badge-icon">
+              <img src="assets/images/Osprey-Exterior-Icon-02-black.png" alt="Shield checkmark icon">
+            </span>
             <h4>Licensed · Bonded · Insured</h4>
             <p>Washington State License OSPREE*763QD backed by full coverage.</p>
           </div>
           <div class="trust-badge">
-            <span>⭐</span>
+            <span class="trust-badge-icon">
+              <img src="assets/images/Osprey-Exterior-Icon-03-white.png" alt="Five-point star icon">
+            </span>
             <h4>5-Star Rating</h4>
             <p>Verified Google and Yelp reviews from Seattle, Bellevue, and Redmond homeowners.</p>
           </div>
@@ -109,24 +115,36 @@
         </div>
         <div class="card-grid" itemscope itemtype="https://schema.org/Service">
           <article class="card" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/Service">
+            <figure class="card-media">
+              <img src="assets/images/permeable-hardscape-and-xericulture.JPEG" alt="Rain garden and permeable hardscape capturing stormwater">
+            </figure>
             <h3 itemprop="name">Rainwise Installs</h3>
             <p itemprop="description">Cistern and runoff capture systems engineered for Seattle’s Rainwise rebate with design-to-rebate submission support.</p>
             <a href="/rainwise.html" itemprop="serviceType">Plan your Rainwise project</a>
             <a href="/portfolio.html#rainwise">See Rainwise case studies</a>
           </article>
           <article class="card" itemscope itemtype="https://schema.org/Service">
+            <figure class="card-media">
+              <img src="assets/images/cleaned-and-sealed-half-round-gutters.JPEG" alt="Freshly sealed half-round gutters on a Seattle home">
+            </figure>
             <h3 itemprop="name">Gutter & Leaf Filter Replacement</h3>
             <p itemprop="description">Seamless aluminum or steel gutters plus custom mesh guards outperforming national brands and staying rebate-compatible.</p>
             <a href="/gutters.html" itemprop="serviceType">Compare gutter options</a>
             <a href="/blog.html#maintenance">Read our gutter maintenance tips</a>
           </article>
           <article class="card" itemscope itemtype="https://schema.org/Service">
+            <figure class="card-media">
+              <img src="assets/images/outdoor-fire-pit-and-gravel-pathway.JPEG" alt="Gravel pathway with drainage solutions for compliance">
+            </figure>
             <h3 itemprop="name">Drainage & Compliance</h3>
             <p itemprop="description">Grading, French drains, and inspection prep to keep your property compliant across Seattle, Bellevue, and Issaquah.</p>
             <a href="/compliance.html" itemprop="serviceType">Review compliance services</a>
             <a href="/service-areas/seattle.html">Check Seattle-specific requirements</a>
           </article>
           <article class="card" itemscope itemtype="https://schema.org/Service">
+            <figure class="card-media">
+              <img src="assets/images/new-downspout-installation.JPEG" alt="Slimline cistern connected to a downspout">
+            </figure>
             <h3 itemprop="name">Cistern Design</h3>
             <p itemprop="description">Slimline, underground, and modular tanks sized for rebates, irrigation, and long-term rainwater storage.</p>
             <a href="/cisterns.html" itemprop="serviceType">Design your cistern system</a>
@@ -204,17 +222,17 @@
         </div>
         <div class="before-after">
           <img src="assets/images/gutter-falling-off-before.JPEG" alt="Detached gutter before replacement in Bellevue" loading="lazy">
-          <div class="after-image" style="--after-width:50%;">
+          <div class="after-image">
             <img src="assets/images/gutter-falling-off-after.JPEG" alt="Reattached gutter after replacement in Bellevue" loading="lazy">
           </div>
-          <input type="range" min="10" max="100" value="50" aria-label="Adjust before and after comparison">
+          <input type="range" min="0" max="100" value="50" aria-label="Adjust before and after comparison">
         </div>
         <div class="before-after" style="margin-top:3rem;">
           <img src="assets/images/gunk-growing-in-gutter-before.JPEG" alt="Gutter full of moss before Rainwise upgrades" loading="lazy">
-          <div class="after-image" style="--after-width:50%;">
+          <div class="after-image">
             <img src="assets/images/gunk-growing-in-gutter-after.JPEG" alt="Clean gutter channel after Rainwise upgrades" loading="lazy">
           </div>
-          <input type="range" min="10" max="100" value="55" aria-label="Adjust cistern before and after comparison">
+          <input type="range" min="0" max="100" value="50" aria-label="Adjust cistern before and after comparison">
         </div>
       </div>
     </section>
@@ -357,8 +375,8 @@
           <input type="hidden" name="utm_source" value="">
           <input type="hidden" name="geo" value="">
           <button type="submit" class="btn btn-primary" data-track="lead_submit">Submit</button>
-          <p style="margin-top:1rem; color:var(--color-muted);">Submitting this form fires a <code>lead_submit</code> analytics event and stores your lead in Supabase for rapid follow-up.</p>
-          <p style="margin-top:1rem; color:var(--color-muted);">Prefer a call? <a href="tel:+14255501727">Call (425) 550-1727</a> or <a href="/contact.html">visit our contact page</a>.</p>
+          <p class="form-note">Our Rainwise team replies within one business day with eligibility guidance and schedule options.</p>
+          <p class="form-note">Prefer a call? <a href="tel:+14255501727">Call (425) 550-1727</a> or <a href="/contact.html">visit our contact page</a>.</p>
         </form>
       </div>
     </section>
