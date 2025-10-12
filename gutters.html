@@ -188,17 +188,17 @@
         </div>
         <div class="before-after">
           <img src="assets/images/gutter-inside-corner-before.JPEG" alt="Inside gutter corner before replacement" loading="lazy">
-          <div class="after-image" style="--after-width:55%;">
+          <div class="after-image">
             <img src="assets/images/gutter-inside-corner-after.JPEG" alt="Inside gutter corner after replacement" loading="lazy">
           </div>
-          <input type="range" min="10" max="100" value="55">
+          <input type="range" min="0" max="100" value="50" aria-label="Adjust inside gutter corner comparison">
         </div>
         <div class="before-after" style="margin-top:3rem;">
           <img src="assets/images/rusted-screw-replacement-before.JPEG" alt="Rusted gutter screw before replacement" loading="lazy">
-          <div class="after-image" style="--after-width:50%;">
+          <div class="after-image">
             <img src="assets/images/rusted-screw-replacement-after.JPEG" alt="New stainless screw after gutter repair" loading="lazy">
           </div>
-          <input type="range" min="10" max="100" value="50">
+          <input type="range" min="0" max="100" value="50" aria-label="Adjust rusted screw replacement comparison">
         </div>
       </div>
     </section>
@@ -213,17 +213,32 @@
         <div class="card-grid">
           <article class="card">
             <h3>Quarterly clean &amp; flush</h3>
-            <p>$189/visit · Includes downspout flush and mesh inspection. Bundle with <a href="/rainwise.html">Rainwise service</a> and <a href="/compliance.html">inspection prep</a>.</p>
+            <p class="plan-price">$189 per visit</p>
+            <ul class="plan-inclusions">
+              <li>Downspout flush and debris removal</li>
+              <li>Mesh guard inspection and adjustment</li>
+              <li>Bundle with <a href="/rainwise.html">Rainwise service</a> or <a href="/compliance.html">inspection prep</a></li>
+            </ul>
             <a href="/contact.html#form">Enroll now</a>
           </article>
           <article class="card">
             <h3>Biannual tune-up</h3>
-            <p>$269/visit · Includes roofline inspection, sealant refresh, and <a href="/cisterns.html">cistern filter cleaning</a>.</p>
+            <p class="plan-price">$269 per visit</p>
+            <ul class="plan-inclusions">
+              <li>Roofline inspection with sealant refresh</li>
+              <li><a href="/cisterns.html">Cistern filter cleaning</a> and reset</li>
+              <li>Seasonal checklist tailored to your property</li>
+            </ul>
             <a href="/contact.html">Talk with scheduling</a>
           </article>
           <article class="card">
             <h3>Rainwise bundle</h3>
-            <p>$349/visit · Includes Rainwise compliance check, documentation, and <a href="/services.html">service comparison review</a>.</p>
+            <p class="plan-price">$349 per visit</p>
+            <ul class="plan-inclusions">
+              <li>Rainwise compliance audit with documentation</li>
+              <li>Priority scheduling for rebate deadlines</li>
+              <li><a href="/services.html">Service comparison review</a> for add-ons</li>
+            </ul>
             <a href="/rainwise.html#cta">Book Rainwise visit</a>
           </article>
         </div>
@@ -287,7 +302,7 @@
       <div class="container">
         <h2>Upgrade once—never climb a ladder again</h2>
         <p>Send us your info for a Rainwise-ready gutter quote. We’ll share pricing, rebate bundling options, and maintenance plans.</p>
-        <form class="form-card" data-supabase data-event="lead_submit" style="background:rgba(255,255,255,0.12); color:#fff;">
+        <form class="form-card form-card--on-dark" data-supabase data-event="lead_submit">
           <div class="form-grid">
             <div>
               <label for="gutter-name">Name</label>
@@ -306,8 +321,8 @@
           <input type="hidden" name="utm_source" value="">
           <input type="hidden" name="geo" value="">
           <button type="submit" class="btn btn-primary" data-track="gutters_lead">Submit</button>
-          <p style="margin-top:1rem;">This form tags your Supabase lead as <strong>gutters</strong> for fast follow-up and fires <code>lead_submit</code> in GTM.</p>
-          <p><a href="/rainwise.html">See Rainwise process</a> · <a href="/portfolio.html#gutters">View gutter portfolio</a></p>
+          <p class="form-note">A gutter specialist will call or email within one business day to confirm your goals and share scheduling options.</p>
+          <p class="form-note"><a href="/rainwise.html">See Rainwise process</a> · <a href="/portfolio.html#gutters">View gutter portfolio</a></p>
         </form>
       </div>
     </section>
