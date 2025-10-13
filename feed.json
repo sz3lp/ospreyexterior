@@ -6,6 +6,15 @@
   "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
   "items": [
     {
+      "id": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
+      "url": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
+      "title": "Neglected gutters cost more than proactive care",
+      "summary": "Break down hidden repair expenses from clogged gutters and see how covers plus a clean, reseal, and reinforce service cut long-term costs.",
+      "date_published": "2024-02-19T09:00:00-08:00",
+      "tags": ["Gutters", "Maintenance"],
+      "image": "https://www.ospreyexterior.com/assets/images/gutter-falling-off-before.JPEG"
+    },
+    {
       "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
       "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
       "title": "Rainwise rebate success guide for Puget Sound",
