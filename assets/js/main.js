@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         article.setAttribute("data-tags", item.tags.join(","));
       }
 
-      const imageSrc = item.image || "/assets/images/permeable-hardscape-and-xericulture.JPEG";
+      const imageSrc = item.image || "/assets/images/permeable-hardscape-and-xericulture.webp";
       const img = document.createElement("img");
       img.src = imageSrc;
       img.loading = "lazy";
