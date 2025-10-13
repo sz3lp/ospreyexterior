@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("form[data-supabase]").forEach((form) => {
     const geoField = form.querySelector("input[name=geo]");
-    if (geoField) {
+    if (geoField && geoField.value.trim() === "") {
       geoField.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
     }
 
