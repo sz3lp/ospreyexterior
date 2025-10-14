@@ -381,11 +381,34 @@ nav.primary-nav a.active::after {
   margin: 0 0 1rem;
 }
 
+.eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .hero-copy p {
   font-size: 1.1rem;
   max-width: 520px;
   color: rgba(255, 255, 255, 0.82);
   font-weight: 500;
+}
+
+.hero .checklist li {
+  color: #fff;
+}
+
+.hero .checklist li::before {
+  background: rgba(255, 255, 255, 0.18);
+  color: #102029;
 }
 
 .hero-links {
@@ -424,6 +447,31 @@ nav.primary-nav a.active::after {
 .feature-band a:hover,
 .feature-band a:focus {
   color: #fff;
+}
+
+.hero-icon-strip {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+}
+
+.hero-icon-strip img {
+  height: 56px;
+  width: auto;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 600px) {
+  .hero-icon-strip {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .hero-icon-strip img {
+    height: 48px;
+  }
 }
 
 .trust-bar {
