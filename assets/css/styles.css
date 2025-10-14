@@ -381,6 +381,20 @@ nav.primary-nav a.active::after {
   margin: 0 0 1rem;
 }
 
+.eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .hero-copy p {
   font-size: 1.1rem;
   max-width: 520px;
