@@ -402,6 +402,15 @@ nav.primary-nav a.active::after {
   font-weight: 500;
 }
 
+.hero .checklist li {
+  color: #fff;
+}
+
+.hero .checklist li::before {
+  background: rgba(255, 255, 255, 0.18);
+  color: #102029;
+}
+
 .hero-links {
   margin-top: 1.5rem;
   display: flex;
