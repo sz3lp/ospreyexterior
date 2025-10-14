@@ -147,7 +147,7 @@ nav.primary-nav a.active::after {
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: #0b6aa6;
   color: #fff;
   box-shadow: var(--shadow-sm);
 }
@@ -155,7 +155,7 @@ nav.primary-nav a.active::after {
 .btn-primary:hover,
 .btn-primary:focus {
   transform: translateY(-2px);
-  background: #25485d;
+  background: #095985;
   box-shadow: 0 16px 32px rgba(31, 61, 78, 0.28);
 }
 
@@ -177,6 +177,29 @@ nav.primary-nav a.active::after {
 .hero .btn-outline:hover,
 .hero .btn-outline:focus {
   background: rgba(255, 255, 255, 0.22);
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1200;
+  padding: 0.9rem 1.75rem;
+  box-shadow: 0 20px 40px rgba(9, 89, 133, 0.35);
+}
+
+.sticky-cta:hover,
+.sticky-cta:focus {
+  box-shadow: 0 24px 48px rgba(9, 89, 133, 0.42);
+}
+
+@media (max-width: 640px) {
+  .sticky-cta {
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1rem;
+    text-align: center;
+  }
 }
 
 .section {
