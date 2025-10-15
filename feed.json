@@ -6,6 +6,15 @@
   "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
   "items": [
     {
+      "id": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
+      "url": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
+      "title": "First storms of fall: Bellevue inspection checklist",
+      "summary": "Inspect gutters, drains, sump pumps, and RainWise documentation before Bellevue's atmospheric rivers arrive.",
+      "date_published": "2024-10-01T09:00:00-07:00",
+      "tags": ["Bellevue", "Gutters", "Drainage"],
+      "image": "https://www.ospreyexterior.com/assets/images/gutter-full-of-leaves-before.webp"
+    },
+    {
       "id": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
       "url": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
       "title": "Bellevue gutter cleaning guide for RainWise homes",
