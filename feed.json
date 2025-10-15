@@ -6,6 +6,15 @@
   "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
   "items": [
     {
+      "id": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
+      "url": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
+      "title": "Bellevue gutter cleaning guide for RainWise homes",
+      "summary": "Long-form answers on Bellevue gutter costs, emergency cleanings, RainWise compliance, and seasonal scheduling.",
+      "date_published": "2024-03-18T09:00:00-07:00",
+      "tags": ["Bellevue", "Gutters", "Rainwise"],
+      "image": "https://www.ospreyexterior.com/assets/images/gutter-full-of-leaves-after.webp"
+    },
+    {
       "id": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
       "url": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
       "title": "Neglected gutters cost more than proactive care",
