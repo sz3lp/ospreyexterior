@@ -6,6 +6,15 @@
   "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
   "items": [
     {
+      "id": "https://www.ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond.html",
+      "url": "https://www.ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond.html",
+      "title": "Why overflowing gutters destroy crawlspaces in Redmond’s clay soils",
+      "summary": "Redmond’s clay soils trap overflow, flooding crawlspaces—learn the maintenance, drainage, and documentation steps that keep foundations dry.",
+      "date_published": "2024-10-08T09:00:00-07:00",
+      "tags": ["Redmond", "Gutters", "Drainage"],
+      "image": "https://www.ospreyexterior.com/assets/images/redmond-fall-storm.jpg"
+    },
+    {
       "id": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
       "url": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
       "title": "First storms of fall: Bellevue inspection checklist",
