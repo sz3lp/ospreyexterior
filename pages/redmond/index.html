@@ -143,6 +143,36 @@
         }
       },
       {
+        "@type": "Service",
+        "@id": "https://ospreyexterior.com/pages/redmond/#rainwise-contractor",
+        "serviceType": "RainWise Contractor Redmond WA",
+        "name": "RainWise Contractor Redmond WA",
+        "provider": {
+          "@id": "https://ospreyexterior.com/#localbusiness"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Redmond"
+        },
+        "description": "Certified RainWise contractor managing cistern tie-ins, roof drainage balancing, and rebate paperwork for Redmond homeowners.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Redmond RainWise services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Cistern maintenance",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "name": "Downspout re-routing",
+              "priceCurrency": "USD"
+            }
+          ]
+        }
+      },
+      {
         "@type": "FAQPage",
         "@id": "https://ospreyexterior.com/pages/redmond/#faq",
         "mainEntity": [
@@ -195,7 +225,7 @@
         <div class="hero-copy">
           <p class="eyebrow">RainWise certified</p>
           <h1>Gutter Cleaning Redmond</h1>
-          <p>Heavy Redmond storms push roof runoff fast. Maple-lined streets near Marymoor Park clog quickly, so we stage vacuums and safety lines to reach Education Hill dormers and Overlake cul-de-sacs. We vacuum debris, hand scoop needles, flush every downspout, and send before-and-after photos for your RainWise file—often within 24 hours. Explore documented installs in our <a href="/rainwise-projects.html">RainWise project library</a> and prep with the <a href="/blog/gutter-maintenance-checklist.html">Eastside gutter maintenance checklist</a>.</p>
+          <p>Heavy Redmond storms push roof runoff fast. Maple-lined streets near Marymoor Park clog quickly, so we stage vacuums and safety lines to reach Education Hill dormers and Overlake cul-de-sacs. Redmond is our strongest non-Seattle service hub, so crews are already on the Eastside most mornings with stocked RainWise fittings and rope access gear. We vacuum debris, hand scoop needles, flush every downspout, and send before-and-after photos for your RainWise file—often within 24 hours. Explore documented installs in our <a href="/rainwise-projects.html">RainWise project library</a> and prep with the <a href="/blog/gutter-maintenance-checklist.html">Eastside gutter maintenance checklist</a>.</p>
           <ul class="checklist">
             <li>Same-day emergency slots for Redmond overflow calls</li>
             <li>Photo documentation for insurance and RainWise compliance</li>
@@ -291,6 +321,65 @@
             <p>Pressure-flushed rear downspouts feeding slope drains and video-verified clear flow to the street outlet.</p>
             <p><small>47.5766° N, 122.0935° W</small></p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" aria-labelledby="redmond-project-map">
+      <div class="container">
+        <div class="section-header">
+          <span>Project map</span>
+          <h2 id="redmond-project-map">See Redmond project pins</h2>
+          <h3>Marymoor to Education Hill installs plotted for transparency</h3>
+          <p>Browse a live map of recent gutter cleanings, RainWise tie-ins, and drainage checks across Downtown, Overlake, and West Redmond. Pins update weekly so you can confirm we are actively working in your neighborhood.</p>
+        </div>
+        <div class="map-embed">
+          <iframe class="map" src="https://www.google.com/maps/d/embed?mid=1xRedmondProjectPins" title="Redmond RainWise project pins" loading="lazy" style="border:0; width:100%; height:420px;"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="redmond-mid-cta">
+      <div class="container">
+        <div class="cta-grid">
+          <div>
+            <h2>Schedule a Redmond gutter tune-up</h2>
+            <p>Lock in your RainWise maintenance visit before the next Pine Lake storm line. Submit the form and our Eastside coordinator will text and email a confirmed time slot.</p>
+            <ul class="checklist">
+              <li>Includes downspout flush and cistern inlet check</li>
+              <li>Documented photos for RainWise audit records</li>
+              <li>Preferred scheduling for Education Hill and Bear Creek clients</li>
+            </ul>
+          </div>
+          <form class="form-card" data-supabase data-event="generate_lead">
+            <h3>Reserve your visit</h3>
+            <div class="form-grid">
+              <div>
+                <label for="mid-name">Name</label>
+                <input id="mid-name" name="name" required>
+              </div>
+              <div>
+                <label for="mid-email">Email</label>
+                <input id="mid-email" name="email" type="email" required>
+              </div>
+              <div>
+                <label for="mid-phone">Phone</label>
+                <input id="mid-phone" name="phone" type="tel" required>
+              </div>
+              <div>
+                <label for="mid-address">Service address</label>
+                <input id="mid-address" name="address" placeholder="Street, Redmond neighborhood" required>
+              </div>
+              <div>
+                <label for="mid-notes">Notes</label>
+                <textarea id="mid-notes" name="notes" placeholder="Tell us about tree cover, drainage tie-ins, or urgent leaks"></textarea>
+              </div>
+            </div>
+            <input type="hidden" name="service_type" value="Gutter Cleaning">
+            <input type="hidden" name="geo" value="Redmond">
+            <button type="submit" class="btn btn-primary" data-track="lead_redmond_mid_cta" data-service-type="Gutter Cleaning">Get my schedule</button>
+            <p class="form-note">We respond within business hours and coordinate any RainWise paperwork you need for rebates.</p>
+          </form>
         </div>
       </div>
     </section>
