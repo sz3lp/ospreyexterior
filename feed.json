@@ -3,124 +3,111 @@
   "title": "Osprey Exterior Insights",
   "home_page_url": "https://www.ospreyexterior.com/",
   "feed_url": "https://www.ospreyexterior.com/feed.json",
-  "description": "Rainwise rebate education, gutter maintenance tips, and compliance updates for Seattle-area homeowners.",
+  "description": "Rainwise rebates, gutters, cisterns, and compliance updates from Osprey Exterior.",
   "items": [
     {
-      "id": "https://www.ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond.html",
-      "url": "https://www.ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond.html",
-      "title": "Why overflowing gutters destroy crawlspaces in Redmond’s clay soils",
-      "summary": "Redmond’s clay soils trap overflow, flooding crawlspaces—learn the maintenance, drainage, and documentation steps that keep foundations dry.",
-      "date_published": "2024-10-08T09:00:00-07:00",
-      "tags": ["Redmond", "Gutters", "Drainage"],
-      "image": "https://www.ospreyexterior.com/assets/images/redmond-fall-storm.jpg"
+      "id": "https://ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond/",
+      "url": "https://ospreyexterior.com/blog/why-overflowing-gutters-destroy-crawlspaces-redmond/",
+      "title": "Why Overflowing Gutters Destroy Crawlspaces in Redmond\u2019s Clay Soils | Osprey Exterior",
+      "summary": "See how clogged gutters and Redmond\u2019s dense clay combine to flood crawlspaces, and learn the maintenance, drainage, and documentation steps that prevent foundation damage.",
+      "content_text": "See how clogged gutters and Redmond\u2019s dense clay combine to flood crawlspaces, and learn the maintenance, drainage, and documentation steps that prevent foundation damage.",
+      "date_published": "2024-10-08T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
-      "url": "https://www.ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection.html",
-      "title": "First storms of fall: Bellevue inspection checklist",
-      "summary": "Inspect gutters, drains, sump pumps, and RainWise documentation before Bellevue's atmospheric rivers arrive.",
-      "date_published": "2024-10-01T09:00:00-07:00",
-      "tags": ["Bellevue", "Gutters", "Drainage"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-full-of-leaves-before.webp"
+      "id": "https://ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection/",
+      "url": "https://ospreyexterior.com/blog/first-storms-of-fall-bellevue-inspection/",
+      "title": "First Storms of Fall: Bellevue Inspection Checklist | Osprey Exterior",
+      "summary": "Protect Bellevue homes before the first atmospheric river. Follow our inspection checklist for gutters, drainage, sump pumps, and RainWise documentation.",
+      "content_text": "Protect Bellevue homes before the first atmospheric river. Follow our inspection checklist for gutters, drainage, sump pumps, and RainWise documentation.",
+      "date_published": "2024-10-01T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
-      "url": "https://www.ospreyexterior.com/blog/bellevue-gutter-cleaning-guide.html",
-      "title": "Bellevue gutter cleaning guide for RainWise homes",
-      "summary": "Long-form answers on Bellevue gutter costs, emergency cleanings, RainWise compliance, and seasonal scheduling.",
-      "date_published": "2024-03-18T09:00:00-07:00",
-      "tags": ["Bellevue", "Gutters", "Rainwise"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-full-of-leaves-after.webp"
+      "id": "https://ospreyexterior.com/blog/bellevue-gutter-cleaning-guide/",
+      "url": "https://ospreyexterior.com/blog/bellevue-gutter-cleaning-guide/",
+      "title": "gutter cleaning bellevue wa rainwise documentation when applicable osprey exterior",
+      "summary": "rain-season gutter cleaning in bellevue same-day overflow help downspout flush photo report licensed and insured",
+      "content_text": "rain-season gutter cleaning in bellevue same-day overflow help downspout flush photo report licensed and insured",
+      "date_published": "2024-03-01T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
-      "url": "https://www.ospreyexterior.com/blog/neglected-gutters-costs.html",
-      "title": "Neglected gutters cost more than proactive care",
-      "summary": "Break down hidden repair expenses from clogged gutters and see how covers plus a clean, reseal, and reinforce service cut long-term costs.",
-      "date_published": "2024-02-19T09:00:00-08:00",
-      "tags": ["Gutters", "Maintenance"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-falling-off-before.JPEG"
+      "id": "https://ospreyexterior.com/blog/neglected-gutters-costs/",
+      "url": "https://ospreyexterior.com/blog/neglected-gutters-costs/",
+      "title": "Neglected Gutters Cost More Than Proactive Care | Osprey Exterior",
+      "summary": "See how clogged gutters drive up repair bills and why gutter covers plus a clean, reseal, and reinforce package cuts long-term maintenance costs.",
+      "content_text": "See how clogged gutters drive up repair bills and why gutter covers plus a clean, reseal, and reinforce package cuts long-term maintenance costs.",
+      "date_published": "2024-02-19T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
-      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-success.html",
-      "title": "Rainwise rebate success guide for Puget Sound",
-      "summary": "Step-by-step roadmap covering eligibility, requirements, timelines, paperwork, and cistern sizing for Rainwise rebates.",
-      "date_published": "2024-02-05T09:00:00-08:00",
-      "tags": ["Rainwise", "Rebate"],
-      "image": "https://www.ospreyexterior.com/assets/images/permeable-hardscape-and-xericulture.webp"
+      "id": "https://ospreyexterior.com/blog/rainwise-rebate-success/",
+      "url": "https://ospreyexterior.com/blog/rainwise-rebate-success/",
+      "title": "The Puget Sound Homeowner's Rainwise Rebate Success Guide | Osprey Exterior",
+      "summary": "Step-by-step Rainwise rebate roadmap covering eligibility, requirements, timeline, paperwork, and cistern sizing for Seattle-area homeowners.",
+      "content_text": "Step-by-step Rainwise rebate roadmap covering eligibility, requirements, timeline, paperwork, and cistern sizing for Seattle-area homeowners.",
+      "date_published": "2024-02-05T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/leaf-filter-alternatives.html",
-      "url": "https://www.ospreyexterior.com/blog/leaf-filter-alternatives.html",
-      "title": "Leaf filter alternatives that beat debris",
-      "summary": "Compare stainless mesh guards, seamless gutters, and Rainwise-ready tie-ins for Puget Sound homes.",
-      "date_published": "2024-01-22T09:00:00-08:00",
-      "tags": ["Gutters", "Product Comparison"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-inside-corner-after.webp"
+      "id": "https://ospreyexterior.com/blog/leaf-filter-alternatives/",
+      "url": "https://ospreyexterior.com/blog/leaf-filter-alternatives/",
+      "title": "Leaf Filter Alternatives &amp; Gutter Upgrades for Puget Sound Weather | Osprey Exterior",
+      "summary": "Compare stainless mesh guards, seamless gutters, and Rainwise-ready tie-ins that outperform national leaf filter brands in Seattle and Bellevue.",
+      "content_text": "Compare stainless mesh guards, seamless gutters, and Rainwise-ready tie-ins that outperform national leaf filter brands in Seattle and Bellevue.",
+      "date_published": "2024-01-22T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/compliance-blueprint.html",
-      "url": "https://www.ospreyexterior.com/blog/compliance-blueprint.html",
-      "title": "Compliance blueprint for Eastside inspections",
-      "summary": "Interactive checklist to prepare drainage, grading, and Rainwise paperwork for Kirkland, Redmond, and Issaquah projects.",
-      "date_published": "2024-01-08T09:00:00-08:00",
-      "tags": ["Compliance", "Stormwater"],
-      "image": "https://www.ospreyexterior.com/assets/images/outdoor-fire-pit-and-gravel-pathway.webp"
+      "id": "https://ospreyexterior.com/blog/compliance-blueprint/",
+      "url": "https://ospreyexterior.com/blog/compliance-blueprint/",
+      "title": "The Compliance Blueprint for Kirkland, Redmond &amp; Issaquah Projects | Osprey Exterior",
+      "summary": "Prepare for drainage inspections with a step-by-step compliance checklist covering grading, documentation, and Rainwise rebate coordination across the Eastside.",
+      "content_text": "Prepare for drainage inspections with a step-by-step compliance checklist covering grading, documentation, and Rainwise rebate coordination across the Eastside.",
+      "date_published": "2024-01-08T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
-      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-timeline.html",
-      "title": "Rainwise rebate timeline for Seattle neighborhoods",
-      "summary": "Walk through the 4–8 week Rainwise rebate process with scheduling tips and inspection reminders.",
-      "date_published": "2024-01-01T09:00:00-08:00",
-      "tags": ["Rainwise", "Seattle", "Rebate"],
-      "image": "https://www.ospreyexterior.com/assets/images/fenced-in-tomato-garden.webp"
+      "id": "https://ospreyexterior.com/blog/rainwise-rebate-timeline/",
+      "url": "https://ospreyexterior.com/blog/rainwise-rebate-timeline/",
+      "title": "Rainwise Rebate Timeline for Seattle Neighborhoods | Osprey Exterior",
+      "summary": "Track every step of the Rainwise rebate process\u2014from eligibility check to payout\u2014for Ballard, Beacon Hill, and Eastside neighborhoods.",
+      "content_text": "Track every step of the Rainwise rebate process\u2014from eligibility check to payout\u2014for Ballard, Beacon Hill, and Eastside neighborhoods.",
+      "date_published": "2024-01-01T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html",
-      "url": "https://www.ospreyexterior.com/blog/gutter-maintenance-checklist.html",
-      "title": "Quarterly gutter maintenance checklist",
-      "summary": "Keep Rainwise systems flowing with seasonal gutter cleaning, mesh guard care, and safety best practices.",
-      "date_published": "2023-12-18T09:00:00-08:00",
-      "tags": ["Gutters", "Maintenance"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-full-of-leaves-before.webp"
+      "id": "https://ospreyexterior.com/blog/gutter-maintenance-checklist/",
+      "url": "https://ospreyexterior.com/blog/gutter-maintenance-checklist/",
+      "title": "Quarterly Gutter Maintenance Checklist | Osprey Exterior",
+      "summary": "Follow this quarterly gutter maintenance checklist to keep Rainwise-ready systems clear across Seattle and the Eastside.",
+      "content_text": "Follow this quarterly gutter maintenance checklist to keep Rainwise-ready systems clear across Seattle and the Eastside.",
+      "date_published": "2023-12-18T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/inspection-prep-guide.html",
-      "url": "https://www.ospreyexterior.com/blog/inspection-prep-guide.html",
-      "title": "Inspection prep guide for Kirkland & Redmond",
-      "summary": "Understand municipal compliance expectations and prepare documents before your inspection day.",
-      "date_published": "2023-12-04T09:00:00-08:00",
-      "tags": ["Compliance", "Stormwater"],
-      "image": "https://www.ospreyexterior.com/assets/images/pulling-a-weed-from-gutter-downspout.webp"
+      "id": "https://ospreyexterior.com/blog/inspection-prep-guide/",
+      "url": "https://ospreyexterior.com/blog/inspection-prep-guide/",
+      "title": "Inspection Prep Guide for Kirkland &amp; Redmond | Osprey Exterior",
+      "summary": "Prepare for stormwater inspections in Kirkland and Redmond with this checklist covering Rainwise paperwork, gutters, and drainage.",
+      "content_text": "Prepare for stormwater inspections in Kirkland and Redmond with this checklist covering Rainwise paperwork, gutters, and drainage.",
+      "date_published": "2023-12-04T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html",
-      "url": "https://www.ospreyexterior.com/blog/rainwise-rebate-guide.html",
-      "title": "How the Rainwise rebate works in 2025",
-      "summary": "Eligibility zones, budget ranges, and how Osprey Exterior manages approvals from start to payout.",
-      "date_published": "2023-11-20T09:00:00-08:00",
-      "tags": ["Rainwise", "Rebate"],
-      "image": "https://www.ospreyexterior.com/assets/images/permeable-hardscape-and-xericulture.webp"
+      "id": "https://ospreyexterior.com/blog/rainwise-rebate-guide/",
+      "url": "https://ospreyexterior.com/blog/rainwise-rebate-guide/",
+      "title": "How the Rainwise Rebate Works in 2025 | Osprey Exterior",
+      "summary": "Understand Rainwise eligibility zones, rebate amounts, and how Osprey Exterior manages inspections, design, and paperwork in 2025.",
+      "content_text": "Understand Rainwise eligibility zones, rebate amounts, and how Osprey Exterior manages inspections, design, and paperwork in 2025.",
+      "date_published": "2023-11-20T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/gutter-filter-comparison.html",
-      "url": "https://www.ospreyexterior.com/blog/gutter-filter-comparison.html",
-      "title": "Best gutter materials for Seattle rain",
-      "summary": "Compare seamless aluminum, steel, and mesh guards with Rainwise program considerations.",
-      "date_published": "2023-11-06T09:00:00-08:00",
-      "tags": ["Gutters", "Materials"],
-      "image": "https://www.ospreyexterior.com/assets/images/gutter-inside-corner-after.webp"
+      "id": "https://ospreyexterior.com/blog/gutter-filter-comparison/",
+      "url": "https://ospreyexterior.com/blog/gutter-filter-comparison/",
+      "title": "Best Gutter Materials for Seattle Rain | Osprey Exterior",
+      "summary": "Compare seamless aluminum, steel, and mesh guard systems that outperform big-box gutter filters in the Pacific Northwest.",
+      "content_text": "Compare seamless aluminum, steel, and mesh guard systems that outperform big-box gutter filters in the Pacific Northwest.",
+      "date_published": "2023-11-06T00:00:00Z"
     },
     {
-      "id": "https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html",
-      "url": "https://www.ospreyexterior.com/blog/stormwater-compliance-guide.html",
-      "title": "Stormwater code simplified",
-      "summary": "Key permit requirements across Seattle, Bellevue, Kirkland, Redmond, and Issaquah.",
-      "date_published": "2023-10-23T09:00:00-08:00",
-      "tags": ["Compliance", "Stormwater"],
-      "image": "https://www.ospreyexterior.com/assets/images/outdoor-fire-pit-and-gravel-pathway.webp"
+      "id": "https://ospreyexterior.com/blog/stormwater-compliance-guide/",
+      "url": "https://ospreyexterior.com/blog/stormwater-compliance-guide/",
+      "title": "Stormwater Code Simplified | Osprey Exterior",
+      "summary": "Review key stormwater compliance requirements for Seattle, Bellevue, Kirkland, Redmond, and Issaquah homeowners.",
+      "content_text": "Review key stormwater compliance requirements for Seattle, Bellevue, Kirkland, Redmond, and Issaquah homeowners.",
+      "date_published": "2023-10-23T00:00:00Z"
     }
   ]
 }
