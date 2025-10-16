@@ -59,85 +59,97 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "RoofingContractor",
-    "@id": "https://ospreyexterior.com/#organization",
-    "name": "Osprey Exterior",
-    "url": "https://ospreyexterior.com/",
-    "logo": "https://ospreyexterior.com/assets/images/Osprey-Exterior-Logo3-01-BLUE.png",
-    "image": "https://ospreyexterior.com/public/img/osprey-default-share.webp",
-    "slogan": "RainWise-certified exterior care for the Pacific Northwest",
-    "description": "Rainwise-certified exterior contractor delivering gutters, cisterns, and compliance installs across Seattle and the Eastside with rebate-ready systems.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "10601 NE 8th St Suite 210",
-      "addressLocality": "Bellevue",
-      "addressRegion": "WA",
-      "postalCode": "98004",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 47.6175,
-      "longitude": -122.2015
-    },
-    "areaServed": [
+    "@graph": [
       {
-        "@type": "City",
-        "name": "Seattle"
-      },
-      {
-        "@type": "City",
-        "name": "Bellevue"
-      },
-      {
-        "@type": "City",
-        "name": "Redmond"
-      }
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "https://schema.org/Monday",
-          "https://schema.org/Tuesday",
-          "https://schema.org/Wednesday",
-          "https://schema.org/Thursday",
-          "https://schema.org/Friday"
+        "@type": [
+          "LocalBusiness",
+          "RoofingContractor"
         ],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "https://schema.org/Saturday",
-        "opens": "09:00",
-        "closes": "16:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "https://schema.org/Sunday",
-        "opens": "00:00",
-        "closes": "00:00",
-        "description": "Closed on Sunday"
+        "@id": "https://ospreyexterior.com/#localbusiness",
+        "name": "Osprey Exterior",
+        "url": "https://ospreyexterior.com/",
+        "logo": "https://ospreyexterior.com/assets/images/Osprey-Exterior-Logo3-01-BLUE.png",
+        "image": "https://ospreyexterior.com/public/img/osprey-default-share.webp",
+        "slogan": "RainWise-certified exterior care for the Pacific Northwest",
+        "description": "Rainwise-certified exterior contractor delivering gutters, cisterns, and compliance installs across Seattle and the Eastside with rebate-ready systems.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "10400 NE 4th St Suite 210",
+          "addressLocality": "Bellevue",
+          "addressRegion": "WA",
+          "postalCode": "98004",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 47.6101,
+          "longitude": -122.2015
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Seattle"
+          },
+          {
+            "@type": "City",
+            "name": "Bellevue"
+          },
+          {
+            "@type": "City",
+            "name": "Redmond"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "https://schema.org/Monday",
+              "https://schema.org/Tuesday",
+              "https://schema.org/Wednesday",
+              "https://schema.org/Thursday",
+              "https://schema.org/Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "https://schema.org/Saturday",
+            "opens": "09:00",
+            "closes": "16:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "https://schema.org/Sunday",
+            "opens": "00:00",
+            "closes": "00:00",
+            "description": "Closed on Sunday"
+          }
+        ],
+        "specialOpeningHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "opens": "00:00",
+          "closes": "00:00",
+          "description": "Closed on federal holidays"
+        },
+        "sameAs": [
+          "https://www.google.com/maps/place/Osprey+Exterior/",
+          "https://www.facebook.com/ospreyexterior",
+          "https://www.instagram.com/ospreyexterior/",
+          "https://share.google/TkBBuPFcKfhdDIEJD",
+          "https://www.facebook.com/profile.php?id=61568566660792#"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "reviewCount": "87"
+        },
+        "telephone": "+1-425-550-1727",
+        "email": "inquiries@ospreyexterior.com",
+        "priceRange": "$$"
       }
-    ],
-    "specialOpeningHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "opens": "00:00",
-      "closes": "00:00",
-      "description": "Closed on federal holidays"
-    },
-    "sameAs": [
-      "https://www.google.com/maps/place/Osprey+Exterior/",
-      "https://www.facebook.com/ospreyexterior",
-      "https://www.instagram.com/ospreyexterior/"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "reviewCount": "87"
-    }
+    ]
   }
   </script>
 </head>
