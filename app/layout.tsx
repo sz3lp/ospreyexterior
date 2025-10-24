@@ -3,11 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Osprey Exterior',
+    default: 'Christmas Light Installation | Osprey Exterior',
     template: '%s | Osprey Exterior',
   },
   description:
-    'RainWise-certified exterior contractor delivering gutters, cisterns, and compliance installs across the greater Seattle area.',
+    'Professional Christmas light installation for homeowners across the Eastside. Osprey Exterior handles install, maintenance, removal, and storage for a safe holiday display.',
 };
 
 export default function RootLayout({
