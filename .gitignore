@@ -1,5 +1,4 @@
-node_modules
-.next
-out
-.env*
+# macOS Finder metadata
 .DS_Store
+# Windows Explorer metadata
+Thumbs.db
