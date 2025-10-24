@@ -28,7 +28,7 @@ const galleryImages = [
 
 export default function ChristmasLightingPage() {
   return (
-    <main className="page">
+    <main className="page" id="main-content">
       <section className="hero">
         <div className="hero__image">
           <Image
