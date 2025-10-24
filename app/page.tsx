@@ -1,3 +1,2 @@
-export default function Home() {
-  return null;
-}
+export { metadata } from './christmas-lighting/page';
+export { default } from './christmas-lighting/page';
