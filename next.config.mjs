@@ -40,6 +40,9 @@ const htmlFiles = collectHtmlFiles(PUBLIC_DIR);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  images: {
+    unoptimized: true,
+  },
   async rewrites() {
     const seenSources = new Set();
 
