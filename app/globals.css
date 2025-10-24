@@ -1,4 +1,27 @@
-/*
-  Global CSS placeholder. The legacy site continues to load its own
-  styles from the static HTML documents served from the public folder.
-*/
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8fbff;
+  color: #0f2a3f;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: none;
+}
+
+main {
+  width: 100%;
+}
