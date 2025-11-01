@@ -1161,6 +1161,127 @@ th {
   font-weight: 600;
 }
 
+.gallery {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.gallery figure {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+}
+
+.gallery figcaption {
+  margin: 0;
+  padding: 1rem 1.25rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.swatch-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.swatch-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 32, 41, 0.1);
+}
+
+.swatch-chip--charcoal {
+  background: #2d3a40;
+}
+
+.swatch-chip--bronze {
+  background: #4b3828;
+}
+
+.swatch-chip--white {
+  background: #f8f9fb;
+}
+
+.swatch-chip--forest {
+  background: #2c4c3b;
+}
+
+.numbered-list {
+  counter-reset: list;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.numbered-list li {
+  counter-increment: list;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.numbered-list li::before {
+  content: counter(list, decimal-leading-zero);
+  position: absolute;
+  left: 1rem;
+  top: 1.25rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background: #ffffff;
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(16, 32, 41, 0.08);
+}
+
+.table-wrapper thead {
+  background: var(--color-light);
+  font-weight: 600;
+}
+
+.table-wrapper tbody tr:last-child td {
+  border-bottom: none;
+}
+
 @media (max-width: 768px) {
   .header-inner {
     flex-direction: column;
