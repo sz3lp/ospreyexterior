@@ -1,8 +1,10 @@
 # Form submission email notifications
 
-The site submits every lead form to Supabase using the logic in [`assets/js/main.js`](../assets/js/main.js). Each payload now includes a `notification_email` field that defaults to `luke@ospreyexterior.com`. To deliver an email notification when new rows arrive:
+The site submits every lead form to Supabase using the logic in [`assets/js/main.js`](../assets/js/main.js). Each payload includes a `notification_email` field when `NEXT_PUBLIC_LEAD_NOTIFICATION_EMAIL` (or a runtime override) is present. Configure notifications as follows:
 
-1. **Expose runtime credentials (optional).** If you prefer not to edit `assets/js/main.js`, you can override the defaults in any page template by adding a script before `assets/js/main.js` loads:
+1. **Provide Supabase credentials.** Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in your deployment environment. The build step reads these values and initializes the Supabase client lazily at runtime.
+
+   If you prefer not to expose credentials in version control, you can still override them in any page template by adding a script before `assets/js/main.js` loads:
    ```html
    <script>
      window.SUPABASE_CONFIG = {
@@ -13,7 +15,7 @@ The site submits every lead form to Supabase using the logic in [`assets/js/main
      };
    </script>
    ```
-   This keeps credentials out of version control while retaining the email address override.
+   This keeps credentials out of version control while retaining the email address override. You can also define `NEXT_PUBLIC_LEAD_NOTIFICATION_EMAIL` to set the default recipient without editing source files.
 
 2. **Store a `notification_email` column.** In Supabase, add a `notification_email` text column to the `leads` table so the posted value is persisted with each submission. The SQL below shows the expected structure the frontend code relies on:
 
