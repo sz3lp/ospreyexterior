@@ -1,6 +1,7 @@
 (function () {
   const GA_IDS = ["G-3MENPSSF97", "G-P1VX9FY873"].filter(Boolean);
   const GTM_ID = "";
+  const HUBSPOT_PORTAL_ID = "244291121";
 
   const dataLayer = (window.dataLayer = window.dataLayer || []);
   const params = new URLSearchParams(window.location.search);
@@ -63,6 +64,18 @@
         });
       });
     });
+  }
+
+  if (HUBSPOT_PORTAL_ID) {
+    const existingHubspotLoader = document.getElementById("hs-script-loader");
+    if (!existingHubspotLoader) {
+      const hubspotScript = document.createElement("script");
+      hubspotScript.id = "hs-script-loader";
+      hubspotScript.async = true;
+      hubspotScript.defer = true;
+      hubspotScript.src = `https://js-na2.hs-scripts.com/${HUBSPOT_PORTAL_ID}.js`;
+      document.head.appendChild(hubspotScript);
+    }
   }
 
   window.analyticsIntegrations = {
