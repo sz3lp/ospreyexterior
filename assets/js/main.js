@@ -246,4 +246,164 @@ document.addEventListener("DOMContentLoaded", () => {
         blogFeedGrid.setAttribute("aria-busy", "false");
       });
   }
+
+  const leadModalState = {
+    overlay: null,
+    container: null,
+    placeholder: null,
+    target: null,
+    closeButton: null,
+    escapeListener: null,
+    trigger: null,
+  };
+
+  const mobileLeadQuery = window.matchMedia("(max-width: 768px)");
+
+  const resetLeadModalState = () => {
+    leadModalState.overlay = null;
+    leadModalState.container = null;
+    leadModalState.placeholder = null;
+    leadModalState.target = null;
+    leadModalState.closeButton = null;
+    leadModalState.escapeListener = null;
+    leadModalState.trigger = null;
+  };
+
+  const closeLeadModal = () => {
+    if (!leadModalState.target) {
+      return;
+    }
+
+    const { overlay, placeholder, target, closeButton, escapeListener, trigger } = leadModalState;
+
+    if (closeButton) {
+      closeButton.removeEventListener("click", closeLeadModal);
+    }
+
+    if (escapeListener) {
+      document.removeEventListener("keydown", escapeListener);
+    }
+
+    if (overlay && overlay.parentNode) {
+      overlay.parentNode.removeChild(overlay);
+    }
+
+    if (placeholder && placeholder.parentNode) {
+      placeholder.parentNode.insertBefore(target, placeholder);
+      placeholder.remove();
+    }
+
+    document.body.classList.remove("lead-modal-open");
+
+    if (trigger && typeof trigger.focus === "function") {
+      trigger.focus({ preventScroll: true });
+    }
+
+    resetLeadModalState();
+  };
+
+  const openLeadModal = (target, trigger) => {
+    if (!target || !target.parentNode) {
+      return;
+    }
+
+    if (leadModalState.target) {
+      closeLeadModal();
+    }
+
+    const placeholder = document.createComment("lead-modal-placeholder");
+    target.parentNode.insertBefore(placeholder, target);
+
+    const overlay = document.createElement("div");
+    overlay.className = "lead-modal-overlay";
+
+    const container = document.createElement("div");
+    container.className = "lead-modal-container";
+
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "lead-modal-close";
+    closeButton.setAttribute("aria-label", "Close lead form");
+    closeButton.textContent = "×";
+
+    const escapeListener = (event) => {
+      if (event.key === "Escape") {
+        closeLeadModal();
+      }
+    };
+
+    closeButton.addEventListener("click", closeLeadModal);
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closeLeadModal();
+      }
+    });
+
+    container.appendChild(closeButton);
+    container.appendChild(target);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+    document.body.classList.add("lead-modal-open");
+    document.addEventListener("keydown", escapeListener);
+
+    leadModalState.overlay = overlay;
+    leadModalState.container = container;
+    leadModalState.placeholder = placeholder;
+    leadModalState.target = target;
+    leadModalState.closeButton = closeButton;
+    leadModalState.escapeListener = escapeListener;
+    leadModalState.trigger = trigger || null;
+
+    window.requestAnimationFrame(() => {
+      closeButton.focus();
+    });
+  };
+
+  const bindStickyLeadCtas = () => {
+    const stickyCtas = document.querySelectorAll(".sticky-cta[href^='#']");
+    if (!stickyCtas.length) {
+      return;
+    }
+
+    stickyCtas.forEach((cta) => {
+      cta.addEventListener("click", (event) => {
+        const href = cta.getAttribute("href") || "";
+        if (!href.startsWith("#")) {
+          return;
+        }
+
+        const targetId = href.slice(1);
+        if (!targetId) {
+          return;
+        }
+
+        const target = document.getElementById(targetId);
+        if (!target) {
+          return;
+        }
+
+        if (mobileLeadQuery.matches) {
+          event.preventDefault();
+          openLeadModal(target, cta);
+        }
+      });
+    });
+  };
+
+  const handleViewportChange = (event) => {
+    if (!event.matches) {
+      closeLeadModal();
+    }
+  };
+
+  if (typeof mobileLeadQuery.addEventListener === "function") {
+    mobileLeadQuery.addEventListener("change", handleViewportChange);
+  } else if (typeof mobileLeadQuery.addListener === "function") {
+    mobileLeadQuery.addListener(handleViewportChange);
+  }
+
+  bindStickyLeadCtas();
+  window.addEventListener("pageshow", () => {
+    closeLeadModal();
+  });
 });
