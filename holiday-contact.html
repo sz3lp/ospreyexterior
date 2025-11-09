@@ -3202,12 +3202,78 @@
                                     <div id="hubspot-form" class="elementor-form" aria-live="polite"></div>
                                     <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
                                     <script>
-                                        hbspt.forms.create({
-                                            portalId: "244291121",
-                                            formId: "fd3bc514-af5a-4a9e-bea4-fa0f43e8ad30",
-                                            region: "na2",
-                                            target: "#hubspot-form"
-                                        });
+                                        (function() {
+                                            const STORAGE_KEY = 'ospreyExteriorQuoteLead';
+                                            const FIELD_MAPPINGS = {
+                                                firstName: [
+                                                    'firstname',
+                                                    'first_name',
+                                                    'name',
+                                                    'your-name'
+                                                ],
+                                                email: [
+                                                    'email',
+                                                    'email-address',
+                                                    'your-email'
+                                                ],
+                                                address: [
+                                                    'address',
+                                                    'address1',
+                                                    'street_address'
+                                                ]
+                                            };
+                                            const populateField = (form, names, value) => {
+                                                if (!value) {
+                                                    return;
+                                                }
+                                                names.some(name => {
+                                                    const input = form.querySelector(`[name="${name}"]`);
+                                                    if (input) {
+                                                        if (!input.value) {
+                                                            input.value = value;
+                                                            const eventOptions = { bubbles: true };
+                                                            input.dispatchEvent(new Event('input', eventOptions));
+                                                            input.dispatchEvent(new Event('change', eventOptions));
+                                                        }
+                                                        return !0;
+                                                    }
+                                                    return !1;
+                                                });
+                                            };
+                                            const applyStoredValues = form => {
+                                                try {
+                                                    const stored = localStorage.getItem(STORAGE_KEY);
+                                                    if (!stored) {
+                                                        return;
+                                                    }
+                                                    const parsed = JSON.parse(stored);
+                                                    populateField(form, FIELD_MAPPINGS.firstName, parsed.firstName);
+                                                    populateField(form, FIELD_MAPPINGS.email, parsed.email);
+                                                    populateField(form, FIELD_MAPPINGS.address, parsed.address);
+                                                } catch (error) {
+                                                    localStorage.removeItem(STORAGE_KEY);
+                                                }
+                                            };
+                                            const clearStoredValues = () => {
+                                                try {
+                                                    localStorage.removeItem(STORAGE_KEY);
+                                                } catch (error) {
+                                                    /* noop */
+                                                }
+                                            };
+                                            hbspt.forms.create({
+                                                portalId: "244291121",
+                                                formId: "fd3bc514-af5a-4a9e-bea4-fa0f43e8ad30",
+                                                region: "na2",
+                                                target: "#hubspot-form",
+                                                onFormReady: function(form) {
+                                                    applyStoredValues(form);
+                                                },
+                                                onFormSubmit: function() {
+                                                    clearStoredValues();
+                                                }
+                                            });
+                                        })();
                                     </script>
                                 </div>
                             </div>
