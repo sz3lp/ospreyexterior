@@ -35,6 +35,7 @@
     gtag('js', new Date());
 
     gtag('config', 'G-P1VX9FY873');
+    gtag('config', 'AW-11395982028');
   </script>
   <!-- Meta Pixel Code -->
   <script>
@@ -92,13 +93,19 @@
         <img src="/assets/images/Osprey-Exterior-Logo3-01-BLUE.png" alt="Osprey Exterior logo">
         <span class="sr-only">Osprey Exterior home</span>
       </a>
-      <nav class="primary-nav">
-        <a href="/services.html">Services</a>
-        <a href="/rainwise.html">Rainwise</a>
-        <a href="/gutters.html">Gutters</a>
-        <a href="/portfolio.html">Portfolio</a>
-        <a href="/contact.html" class="btn btn-primary" data-track="holiday_nav_contact">Book consultation</a>
-      </nav>
+      <div class="header-actions">
+        <nav class="primary-nav">
+          <a href="/services.html">Services</a>
+          <a href="/rainwise.html">Rainwise</a>
+          <a href="/gutters.html">Gutters</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/contact.html" class="btn btn-primary" data-track="holiday_nav_contact">Get a Free Quote</a>
+        </nav>
+        <a class="header-phone" href="tel:+14255501727" data-track="holiday_header_call" aria-label="Call Osprey Exterior at 425-550-1727">
+          <span class="phone-label">Call</span>
+          <span class="phone-number">425-550-1727</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -106,27 +113,44 @@
     <section class="hero" style="background-image: linear-gradient(120deg, rgba(10,21,30,0.88), rgba(17,64,84,0.78)), url('/assets/images/christmas-light-installation-redmond-wa-garage-gable-1200w.webp');">
       <div class="hero-inner">
         <div class="hero-copy">
-          <h1>Holiday lighting pros for Seattle &amp; the Eastside</h1>
-          <p>LED rooflines, tree wraps, and display lighting engineered for Pacific Northwest weather, installed by RainWise-certified crews that document every circuit and secure every clip.</p>
-          <ul class="hero-list">
-            <li>Design mockups, install, maintenance, and post-season takedown</li>
-            <li>Commercial-grade C9 and mini LED sets with custom-cut leads</li>
-            <li>Real-time scheduling updates and photo proof after install</li>
-          </ul>
+          <h1>Don't Get Left in the Dark! Reserve Your Professional Holiday Lighting Installation</h1>
+          <p class="hero-subheadline">Enjoy a truly hassle-free season. We design, install, maintain, and store commercial-grade holiday lights engineered to shine through every Pacific Northwest storm.</p>
+          <p class="hero-urgency"><span class="hero-urgency-label">🚨 Peak Season Warning:</span> November and early December install windows fill fast. Book before <strong>October 15</strong> to guarantee priority scheduling.</p>
+          <p class="hero-slot"><strong>Next available install slot:</strong> November 27&nbsp;–&nbsp;December 1. Reserve yours now.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#quote" data-track="holiday_lighting_book_top" data-service-type="Holiday Lighting">Reserve install window</a>
-            <a class="btn btn-outline" href="#packages" data-track="holiday_lighting_packages">Review packages</a>
-            <a class="btn btn-outline" href="#cities" data-track="holiday_lighting_cities">See city coverage</a>
+            <a class="btn btn-primary hero-primary-cta" href="#hero-lead-form" data-track="holiday_lighting_check_availability" data-service-type="Holiday Lighting">Check Availability &amp; Get a Free Quote</a>
           </div>
-          <div class="hero-icon-strip" aria-label="Holiday lighting badges">
-            <img src="/assets/images/rainwiselogo.png" alt="RainWise certified partner badge">
-            <img src="/assets/images/Osprey-Exterior-Badge-Authority-Trust-Icon-Ice-Blue.png" alt="Local review badge">
-            <img src="/assets/images/c9-christmas-lights-installed-redmond-wa-roofline-1600w.webp" alt="Roofline with warm white holiday lights" loading="lazy">
+          <div class="hero-badges" role="list" aria-label="Holiday lighting service assurances">
+            <span class="hero-badge" role="listitem">RainWise Certified Crews</span>
+            <span class="hero-badge" role="listitem">48-Hour Repair Guarantee</span>
+            <span class="hero-badge" role="listitem">Licensed &amp; Insured</span>
           </div>
+          <ul class="hero-list">
+            <li>Full-service design, install, in-season maintenance, and takedown</li>
+            <li>Custom-cut LEDs, grounded timers, and weatherproof connections</li>
+            <li>Photo proof, load balancing logs, and concierge scheduling updates</li>
+          </ul>
+          <figure class="hero-testimonial">
+            <blockquote>“Osprey handled everything—design, install, and every windy night check-in. Our Bellevue home has never looked better.”</blockquote>
+            <figcaption>— Dana R., Bellevue homeowner</figcaption>
+          </figure>
         </div>
-        <div id="quote">
-          <script src="https://js-na2.hsforms.net/forms/embed/244291121.js" defer></script>
-          <div class="hs-form-frame" data-region="na2" data-form-id="198e9b40-f90d-40ca-9a46-4af906a2699d" data-portal-id="244291121"></div>
+        <div class="hero-form-card" id="quote">
+          <h2 class="hero-form-title">Get instant package options</h2>
+          <p class="hero-form-intro">Share your zip code to confirm availability and we’ll send curated lighting packages with pricing within one business day.</p>
+          <form class="hero-lead-form" id="hero-lead-form" data-success-redirect="/thank-you.html?source=holiday-lighting">
+            <div class="form-field">
+              <label for="hero-zip">Zip code</label>
+              <input type="text" id="hero-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required placeholder="e.g., 98004" autocomplete="postal-code">
+            </div>
+            <div class="form-field">
+              <label for="hero-email">Email</label>
+              <input type="email" id="hero-email" name="email" required placeholder="you@example.com" autocomplete="email">
+            </div>
+            <button type="submit" class="btn btn-primary hero-form-submit" data-track="holiday_lighting_form_submit">See My Lighting Packages</button>
+            <p class="form-status" data-status aria-live="polite"></p>
+          </form>
+          <p class="hero-form-disclaimer">Prefer to talk now? Call <a href="tel:+14255501727">425-550-1727</a> and secure your install window in minutes.</p>
         </div>
       </div>
     </section>
@@ -136,36 +160,36 @@
         <div class="section-header">
           <span>Package tiers</span>
           <h2>Choose a lighting program that fits your home</h2>
-          <p>Every package includes custom-cut commercial LEDs, pro-grade clips, extension cord management, and season-end takedown.</p>
+          <p>Every package delivers commercial LEDs, weatherproof connections, labeled timers, and guaranteed post-season takedown.</p>
         </div>
         <div class="card-grid">
           <article class="card">
             <span class="highlight">Starter</span>
             <h3>Roofline essentials</h3>
-            <p>Warm white C9 LEDs along primary rooflines, ridges, and entryways with timer-controlled power.</p>
+            <p>Warm white C9 LEDs traced along your primary peaks and entryways with grounded, timer-controlled power.</p>
             <ul>
-              <li>Design mockup for HOA approval</li>
-              <li>Timer setup and labeling</li>
-              <li>48-hour service response guarantee</li>
+              <li>Scaled mockup for fast HOA approval</li>
+              <li>Labeled timers and custom-cut leads</li>
+              <li>48-hour service promise all season</li>
             </ul>
           </article>
           <article class="card">
             <span class="highlight">Signature</span>
             <h3>Roofline + landscaping</h3>
-            <p>Everything in Starter plus mini LED tree wraps, shrub nets, and stake lighting for pathways.</p>
+            <p>Everything in Starter plus layered tree wraps, shrub nets, and stake lighting for walkways.</p>
             <ul>
-              <li>Dedicated circuits balanced for even loading</li>
-              <li>Proactive storm check after first major wind event</li>
+              <li>Load-balanced circuits for every zone</li>
+              <li>Proactive storm check after the first wind event</li>
               <li>In-season touch-up visit included</li>
             </ul>
           </article>
           <article class="card">
             <span class="highlight">Showcase</span>
             <h3>Whole-property experience</h3>
-            <p>Custom colors, animated controllers, and accent lighting for architectural features and outdoor living zones.</p>
+            <p>Custom colors, animation, and architectural accent lighting for full-property storytelling.</p>
             <ul>
-              <li>Project manager on-site for install</li>
-              <li>Photo &amp; video documentation for future seasons</li>
+              <li>Dedicated project manager on install day</li>
+              <li>Photo and video documentation for reuse</li>
               <li>Priority scheduling for takedown week</li>
             </ul>
           </article>
@@ -177,34 +201,34 @@
       <div class="container">
         <div class="section-header">
           <span>What to expect</span>
-          <h2>Documented five-step process</h2>
-          <p>We plan, install, and maintain each display using the same standards we apply to RainWise projects.</p>
+          <h2>Proven five-step install plan</h2>
+          <p>We plan, install, and maintain each display with the same documentation standards we apply to RainWise projects.</p>
         </div>
         <div class="steps">
           <article class="step" data-step="01">
             <span>1</span>
-            <h3>Design &amp; circuit planning</h3>
-            <p>We map dimensions, power sources, and controller locations, then deliver a scaled mockup for approval.</p>
+            <h3>Plan your design</h3>
+            <p>We measure every roofline, map power sources, and deliver a scaled mockup for fast approval.</p>
           </article>
           <article class="step" data-step="02">
             <span>2</span>
-            <h3>Material preparation</h3>
-            <p>Custom-cut C9 lines and labeled extension cords ensure every strand fits cleanly without excess slack.</p>
+            <h3>Prep materials</h3>
+            <p>Custom-cut C9 runs, labeled cords, and balanced circuits keep every strand tight and storm-ready.</p>
           </article>
           <article class="step" data-step="03">
             <span>3</span>
-            <h3>Professional installation</h3>
-            <p>Harnessed crews secure every clip, waterproof connections, and run live tests while documenting the layout.</p>
+            <h3>Pro install day</h3>
+            <p>Harnessed crews secure every clip, waterproof connections, and run live tests while documenting each zone.</p>
           </article>
           <article class="step" data-step="04">
             <span>4</span>
-            <h3>In-season maintenance</h3>
-            <p>Storm response and proactive check-ins keep your display shining—replacement bulbs and repairs included.</p>
+            <h3>Keep it shining</h3>
+            <p>Proactive storm check-ins and 48-hour repairs keep every strand lit without you lifting a finger.</p>
           </article>
           <article class="step" data-step="05">
             <span>5</span>
-            <h3>Careful takedown &amp; storage</h3>
-            <p>We label, coil, and store lights in weather-safe bins, ready for next season with minimal rework.</p>
+            <h3>Store for next season</h3>
+            <p>We label, coil, and store every component in weather-safe bins so next year’s install is plug-and-play.</p>
           </article>
         </div>
       </div>
@@ -359,7 +383,100 @@
       <p class="footer-bottom">© <span id="year">2024</span> Osprey Exterior. All rights reserved.</p>
     </div>
   </footer>
-  <a class="btn btn-primary sticky-cta" href="#quote" data-track="holiday_lighting_sticky_cta" aria-label="Request holiday lighting proposal" data-service-type="Holiday Lighting">Book holiday lighting</a>
+  <a class="btn btn-primary sticky-cta" href="#hero-lead-form" data-track="holiday_lighting_sticky_cta" aria-label="Check holiday lighting availability and get a free quote" data-service-type="Holiday Lighting">Check availability &amp; get a free quote</a>
+  <script>
+    (function () {
+      var form = document.getElementById('hero-lead-form');
+      if (!form) {
+        return;
+      }
+      if (!('fetch' in window)) {
+        form.setAttribute('action', '/contact.html');
+        form.setAttribute('method', 'get');
+        return;
+      }
+      var statusEl = form.querySelector('[data-status]');
+      var submitButton = form.querySelector('button[type="submit"]');
+      var endpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244291121/198e9b40-f90d-40ca-9a46-4af906a2699d';
+
+      function setStatus(message, isError) {
+        if (!statusEl) {
+          return;
+        }
+        statusEl.textContent = message;
+        statusEl.classList.toggle('form-status-error', Boolean(isError));
+        statusEl.classList.toggle('form-status-success', !isError);
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!submitButton) {
+          return;
+        }
+
+        var zipInput = form.querySelector('#hero-zip');
+        var emailInput = form.querySelector('#hero-email');
+        var zip = zipInput ? zipInput.value.trim() : '';
+        var zipPattern = /^\d{5}$/;
+
+        if (!zipPattern.test(zip)) {
+          setStatus('Enter a valid 5-digit zip code to continue.', true);
+          if (zipInput) {
+            zipInput.focus();
+          }
+          return;
+        }
+
+        if (!emailInput || !emailInput.checkValidity()) {
+          setStatus('Enter a valid email so we can send your lighting options.', true);
+          if (emailInput) {
+            emailInput.focus();
+            emailInput.reportValidity();
+          }
+          return;
+        }
+
+        var email = emailInput.value.trim();
+
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+        setStatus('Submitting your request…', false);
+
+        var payload = {
+          fields: [
+            { name: 'zip_code', value: zip },
+            { name: 'email', value: email }
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title
+          }
+        };
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          if (response.ok) {
+            var redirect = form.getAttribute('data-success-redirect') || '/thank-you.html';
+            window.location.href = redirect;
+            return;
+          }
+
+          return response.text().then(function (body) {
+            throw new Error(body || 'Request failed');
+          });
+        }).catch(function () {
+          setStatus('We could not submit your request online. Call 425-550-1727 and our team will help immediately.', true);
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        });
+      });
+    })();
+  </script>
   <script src="/assets/js/tracking.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </body>
