@@ -3261,6 +3261,23 @@
                                                     /* noop */
                                                 }
                                             };
+                                            const trackConversion = () => {
+                                                const detail = {
+                                                    event: 'holiday_contact_submission',
+                                                    formId: 'fd3bc514-af5a-4a9e-bea4-fa0f43e8ad30',
+                                                    formName: 'Holiday Lighting Contact'
+                                                };
+                                                if (Array.isArray(window.dataLayer)) {
+                                                    window.dataLayer.push(detail);
+                                                }
+                                                if (typeof gtag === 'function') {
+                                                    gtag('event', 'generate_lead', {
+                                                        event_category: 'lead',
+                                                        event_label: 'Holiday Lighting Contact',
+                                                        value: 1
+                                                    });
+                                                }
+                                            };
                                             hbspt.forms.create({
                                                 portalId: "244291121",
                                                 formId: "fd3bc514-af5a-4a9e-bea4-fa0f43e8ad30",
@@ -3271,6 +3288,9 @@
                                                 },
                                                 onFormSubmit: function() {
                                                     clearStoredValues();
+                                                },
+                                                onFormSubmitted: function() {
+                                                    trackConversion();
                                                 }
                                             });
                                         })();
