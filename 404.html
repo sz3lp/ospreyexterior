@@ -36,6 +36,104 @@
 
     gtag('config', 'G-P1VX9FY873');
   </script>
+  <script>
+    (function () {
+      'use strict';
+
+      var navigation = window.location;
+      if (!navigation) {
+        return;
+      }
+
+      var pathname = navigation.pathname || '';
+      if (!pathname || pathname === '/' || pathname.toLowerCase().endsWith('.html')) {
+        return;
+      }
+
+      var trimmedPath = pathname;
+      if (trimmedPath.length > 1 && /\/$/.test(trimmedPath)) {
+        trimmedPath = trimmedPath.replace(/\/+$/g, '');
+      }
+
+      if (!trimmedPath || trimmedPath === '/') {
+        return;
+      }
+
+      var lastSegment = trimmedPath.split('/').pop() || '';
+      if (!lastSegment || lastSegment.indexOf('.') !== -1) {
+        return;
+      }
+
+      var search = navigation.search || '';
+      var hash = navigation.hash || '';
+      var candidatePaths = [];
+
+      candidatePaths.push(trimmedPath + '.html');
+      candidatePaths.push(trimmedPath + '/index.html');
+
+      var uniquePaths = [];
+      for (var i = 0; i < candidatePaths.length; i += 1) {
+        var candidate = candidatePaths[i];
+        if (!candidate || candidate === '/' || candidate.indexOf('//') !== -1) {
+          continue;
+        }
+        if (uniquePaths.indexOf(candidate) === -1) {
+          uniquePaths.push(candidate);
+        }
+      }
+
+      if (!uniquePaths.length || !('fetch' in window)) {
+        return;
+      }
+
+      var attemptRedirect = function (index) {
+        if (index >= uniquePaths.length) {
+          return;
+        }
+
+        var targetPath = uniquePaths[index];
+        var targetWithSearch = targetPath + search;
+
+        var handleSuccess = function () {
+          window.location.replace(targetPath + search + hash);
+        };
+
+        fetch(targetWithSearch, {
+          method: 'HEAD',
+          credentials: 'same-origin',
+          cache: 'no-store'
+        }).then(function (response) {
+          if (response && response.ok) {
+            handleSuccess();
+            return;
+          }
+
+          if (response && response.status === 405) {
+            fetch(targetWithSearch, {
+              method: 'GET',
+              credentials: 'same-origin',
+              cache: 'no-store'
+            }).then(function (getResponse) {
+              if (getResponse && getResponse.ok) {
+                handleSuccess();
+                return;
+              }
+              attemptRedirect(index + 1);
+            }).catch(function () {
+              attemptRedirect(index + 1);
+            });
+            return;
+          }
+
+          attemptRedirect(index + 1);
+        }).catch(function () {
+          attemptRedirect(index + 1);
+        });
+      };
+
+      attemptRedirect(0);
+    })();
+  </script>
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
