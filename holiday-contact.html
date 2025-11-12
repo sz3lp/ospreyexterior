@@ -3097,6 +3097,20 @@
           gtag('config', 'AW-11395982028');
           gtag('config', 'G-P1VX9FY873');
         </script>
+        <script>
+            function gtag_report_conversion(url) {
+                var callback = function () {
+                    if (typeof url != 'undefined') {
+                        window.location = url;
+                    }
+                };
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-11395982028/_VFZCMDqvbQaEMzFg7oq',
+                    'event_callback': callback
+                });
+                return false;
+            }
+        </script>
         <!-- Facebook Pixel Code -->
         <script>
           !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -3279,6 +3293,9 @@
                                                         event_label: 'Holiday Lighting Contact',
                                                         value: 1
                                                     });
+                                                }
+                                                if (typeof gtag_report_conversion === 'function') {
+                                                    gtag_report_conversion();
                                                 }
                                             };
                                             hbspt.forms.create({
