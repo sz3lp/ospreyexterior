@@ -1,5 +1,5 @@
 (function () {
-  const GA_IDS = ["G-3MENPSSF97", "G-P1VX9FY873"].filter(Boolean);
+  const GA_IDS = ["G-3MENPSSF97", "G-P1VX9FY873", "AW-11395982028"].filter(Boolean);
   const GTM_ID = "";
   const HUBSPOT_PORTAL_ID = "244291121";
 
