@@ -5,17 +5,876 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gutter Cleaning in Seattle | Osprey Exterior</title>
-  <meta name="description" content="Same-day gutter cleaning, guard tune-ups, and RainWise-ready maintenance across Seattle, Bellevue, and the Eastside.">
+  <meta name="description" content="RainWise-certified gutter cleaning, guard installs, and documented maintenance serving Seattle, Bellevue, and the Eastside with same-week scheduling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body.gutters-premium {
+      background: linear-gradient(180deg, #f6fbff 0%, #ffffff 100%);
+      color: var(--color-dark);
+    }
+
+    body.gutters-premium .hero {
+      position: relative;
+      padding: 6.5rem 1.5rem 5.5rem;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    body.gutters-premium .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(16, 32, 41, 0.88) 0%, rgba(11, 106, 166, 0.75) 48%, rgba(76, 141, 125, 0.78) 100%);
+      z-index: 0;
+    }
+
+    body.gutters-premium .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+      gap: clamp(2rem, 4vw, 3.25rem);
+      align-items: start;
+    }
+
+    body.gutters-premium .hero-content {
+      color: #fff;
+    }
+
+    body.gutters-premium .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.76);
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      margin-bottom: 1.2rem;
+    }
+
+    body.gutters-premium .hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      margin: 0 0 1rem;
+    }
+
+    body.gutters-premium .hero-content p {
+      font-size: 1.05rem;
+      max-width: 36rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    body.gutters-premium .hero-bullets {
+      margin: 0 0 2rem;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    body.gutters-premium .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    body.gutters-premium .hero-bullets li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    body.gutters-premium .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    body.gutters-premium .hero .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    body.gutters-premium .hero .btn-outline:hover,
+    body.gutters-premium .hero .btn-outline:focus {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    body.gutters-premium .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    body.gutters-premium .hero-meta .rating-badge,
+    body.gutters-premium .hero-meta .response-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(5, 22, 34, 0.35);
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+    }
+
+    body.gutters-premium .hero-meta .rating-badge::before {
+      content: "★★★★★";
+      letter-spacing: 0.2rem;
+      font-size: 0.75rem;
+      color: #ffd166;
+    }
+
+    body.gutters-premium .hero-meta .response-badge strong {
+      color: #fff;
+    }
+
+    body.gutters-premium .hero-links {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium .hero-links a {
+      color: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+      padding-bottom: 0.15rem;
+    }
+
+    body.gutters-premium .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 24px;
+      padding: 2.25rem;
+      color: #fff;
+      box-shadow: 0 35px 60px rgba(5, 22, 34, 0.35);
+      backdrop-filter: blur(20px);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    body.gutters-premium .hero-card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    body.gutters-premium .hero-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.98rem;
+    }
+
+    body.gutters-premium .hero-card .card-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium .hero-card .card-list li {
+      position: relative;
+      padding-left: 1.6rem;
+    }
+
+    body.gutters-premium .hero-card .card-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd166 0%, #f5a623 100%);
+    }
+
+    body.gutters-premium .hero-card .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    body.gutters-premium .hero-card .contact-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    body.gutters-premium .hero-card .contact-phone::before {
+      content: "☎";
+      font-size: 1.1rem;
+    }
+
+    body.gutters-premium .hero-card .contact-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: underline;
+    }
+
+    body.gutters-premium .hero-card-note {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.75);
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      padding-top: 0.75rem;
+    }
+
+    body.gutters-premium .trust-bar {
+      background: #fff;
+      margin: -2.5rem auto 0;
+      position: relative;
+      z-index: 2;
+      max-width: calc(var(--max-width) + 4rem);
+      border-radius: 999px;
+      padding: 1.2rem 2rem;
+      box-shadow: 0 18px 45px rgba(16, 32, 41, 0.12);
+    }
+
+    body.gutters-premium .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      flex-wrap: wrap;
+    }
+
+    body.gutters-premium .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      font-weight: 600;
+    }
+
+    body.gutters-premium .trust-item img {
+      height: 38px;
+      width: auto;
+    }
+
+    body.gutters-premium .section {
+      padding: clamp(4rem, 7vw, 5.5rem) 1.5rem;
+    }
+
+    body.gutters-premium .section + .section {
+      border-top: 1px solid rgba(16, 32, 41, 0.06);
+    }
+
+    body.gutters-premium .section-light {
+      background: linear-gradient(180deg, rgba(240, 249, 255, 0.55) 0%, rgba(255, 255, 255, 0.9) 100%);
+    }
+
+    body.gutters-premium .section-contrast {
+      background: radial-gradient(circle at top left, rgba(11, 106, 166, 0.08), rgba(16, 32, 41, 0.9));
+      color: #fff;
+    }
+
+    body.gutters-premium .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    body.gutters-premium .section-header {
+      max-width: 48rem;
+      margin-bottom: clamp(2rem, 6vw, 2.75rem);
+    }
+
+    body.gutters-premium .section-header span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    body.gutters-premium .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      margin: 0.75rem 0 1rem;
+    }
+
+    body.gutters-premium .section-header p {
+      font-size: 1.02rem;
+      color: var(--color-muted);
+      margin: 0;
+    }
+
+    body.gutters-premium .section-contrast .section-header span,
+    body.gutters-premium .section-contrast .section-header p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    body.gutters-premium .section-contrast .section-header h2 {
+      color: #fff;
+    }
+
+    body.gutters-premium .section-header.centered {
+      text-align: center;
+      margin: 0 auto clamp(2rem, 6vw, 3rem);
+    }
+
+    body.gutters-premium .layout-split {
+      display: grid;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: start;
+    }
+
+    body.gutters-premium .visual-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.gutters-premium .image-stack {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: var(--shadow-sm);
+    }
+
+    body.gutters-premium .image-stack img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    body.gutters-premium .image-stack .image-stack-secondary {
+      position: absolute;
+      right: 8%;
+      bottom: -12%;
+      width: 55%;
+      border: 6px solid #fff;
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(16, 32, 41, 0.2);
+    }
+
+    body.gutters-premium .visual-caption {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    body.gutters-premium .card-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    body.gutters-premium .card {
+      background: #fff;
+      padding: 1.75rem;
+      border-radius: 22px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(16, 32, 41, 0.06);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    body.gutters-premium .card h3 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--color-primary);
+    }
+
+    body.gutters-premium .card p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.97rem;
+    }
+
+    body.gutters-premium .metrics-section .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    body.gutters-premium .metric-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(31, 61, 78, 0.08);
+    }
+
+    body.gutters-premium .metric-value {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: #0b6aa6;
+      margin-bottom: 0.5rem;
+    }
+
+    body.gutters-premium .metric-label {
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium .feature-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    body.gutters-premium .feature-grid .card {
+      background: linear-gradient(160deg, rgba(11, 106, 166, 0.1), rgba(255, 255, 255, 0.95));
+    }
+
+    body.gutters-premium .feature-note {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      padding: 1rem 1.5rem;
+      border-left: 3px solid #0b6aa6;
+      border-radius: 12px;
+      background: rgba(11, 106, 166, 0.08);
+    }
+
+    body.gutters-premium .table-responsive {
+      background: #fff;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(16, 32, 41, 0.06);
+    }
+
+    body.gutters-premium table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium thead th {
+      text-align: left;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      background: rgba(11, 106, 166, 0.08);
+    }
+
+    body.gutters-premium tbody td {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid rgba(16, 32, 41, 0.06);
+      color: var(--color-muted);
+    }
+
+    body.gutters-premium .comparison-note {
+      margin-top: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+    }
+
+    body.gutters-premium .process-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    body.gutters-premium .process-step {
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 60px rgba(5, 22, 34, 0.25);
+    }
+
+    body.gutters-premium .process-step h3 {
+      margin: 0 0 0.75rem;
+      font-family: var(--font-heading);
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    body.gutters-premium .process-step p,
+    body.gutters-premium .process-step .step-meta {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    body.gutters-premium .process-step .step-meta {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    body.gutters-premium .process-step .step-number {
+      position: absolute;
+      top: -20px;
+      left: 1.5rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffd166, #f5a623);
+      color: #102029;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 14px 28px rgba(255, 209, 102, 0.35);
+    }
+
+    body.gutters-premium .before-after {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      background: #fff;
+      padding: 1.25rem;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(16, 32, 41, 0.06);
+    }
+
+    body.gutters-premium .before-after img {
+      border-radius: 18px;
+    }
+
+    body.gutters-premium .before-after .after-image {
+      position: absolute;
+      inset: 1.25rem;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+      --reveal: 50;
+      clip-path: inset(0 calc(100% - var(--reveal)%) 0 0);
+    }
+
+    body.gutters-premium .before-after input[type=range] {
+      width: 100%;
+    }
+
+    body.gutters-premium .before-after-caption {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      text-align: center;
+      margin-top: -0.5rem;
+    }
+
+    body.gutters-premium .plan-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    body.gutters-premium .plan-grid .card {
+      position: relative;
+      padding-top: 2.25rem;
+    }
+
+    body.gutters-premium .plan-grid .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(76, 141, 125, 0.12), rgba(255, 255, 255, 0.95));
+      z-index: 0;
+    }
+
+    body.gutters-premium .plan-grid .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    body.gutters-premium .plan-price {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: #0b6aa6;
+      margin: 0 0 0.75rem;
+    }
+
+    body.gutters-premium .plan-inclusions {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: grid;
+      gap: 0.6rem;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium .plan-inclusions li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    body.gutters-premium .plan-inclusions li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: #4c8d7d;
+    }
+
+    body.gutters-premium .plan-grid .card a {
+      font-weight: 600;
+      color: #0b6aa6;
+    }
+
+    body.gutters-premium .testimonials-section .testimonial-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    body.gutters-premium .testimonial-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(16, 32, 41, 0.06);
+      display: grid;
+      gap: 1rem;
+    }
+
+    body.gutters-premium .testimonial-card .stars {
+      color: #ffd166;
+      letter-spacing: 0.2rem;
+      font-size: 1.1rem;
+    }
+
+    body.gutters-premium .testimonial-card p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    body.gutters-premium .testimonial-card .author {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    body.gutters-premium .testimonial-card .author-note {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    body.gutters-premium .accordion {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(16, 32, 41, 0.08);
+    }
+
+    body.gutters-premium .accordion-item + .accordion-item {
+      border-top: 1px solid rgba(16, 32, 41, 0.08);
+    }
+
+    body.gutters-premium .accordion-button {
+      width: 100%;
+      text-align: left;
+      padding: 1.25rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #fff;
+      border: none;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    body.gutters-premium .accordion-item.active .accordion-button {
+      background: rgba(11, 106, 166, 0.08);
+    }
+
+    body.gutters-premium .accordion-content {
+      padding: 0 1.5rem 1.5rem;
+      display: none;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      background: #fff;
+    }
+
+    body.gutters-premium .accordion-item.active .accordion-content {
+      display: block;
+    }
+
+    body.gutters-premium .feature-band {
+      padding: clamp(4rem, 6vw, 5rem) 1.5rem;
+    }
+
+    body.gutters-premium .quote-band {
+      background: linear-gradient(135deg, #0b6aa6, #102029);
+      color: #fff;
+      text-align: center;
+    }
+
+    body.gutters-premium .quote-band .container {
+      max-width: 760px;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    body.gutters-premium .quote-band h2 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(2.1rem, 3.5vw, 2.6rem);
+    }
+
+    body.gutters-premium .quote-band p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.02rem;
+    }
+
+    body.gutters-premium .quote-band .hs-form-frame {
+      margin: 0 auto;
+      max-width: 540px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.25rem;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    body.gutters-premium .quote-band .hs-form-frame iframe {
+      border: none !important;
+      width: 100% !important;
+    }
+
+    body.gutters-premium .site-footer {
+      background: #07111a;
+      color: rgba(255, 255, 255, 0.82);
+      padding-top: 4rem;
+    }
+
+    body.gutters-premium .site-footer .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    body.gutters-premium .site-footer a {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    body.gutters-premium .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1.5rem 1.5rem 3rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 960px) {
+      body.gutters-premium .hero {
+        padding-top: 5.5rem;
+      }
+
+      body.gutters-premium .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      body.gutters-premium .trust-bar {
+        border-radius: 32px;
+        text-align: center;
+      }
+
+      body.gutters-premium .hero-card {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body.gutters-premium .hero-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      body.gutters-premium .section-header span {
+        justify-content: center;
+      }
+
+      body.gutters-premium .section-header.centered h2,
+      body.gutters-premium .section-header.centered p {
+        text-align: center;
+      }
+
+      body.gutters-premium .process-step {
+        padding: 1.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.gutters-premium *,
+      body.gutters-premium *::before,
+      body.gutters-premium *::after {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+    }
+  </style>
   <link rel="canonical" href="https://ospreyexterior.com/gutter-cleaning/">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Osprey Exterior">
   <meta property="og:title" content="Gutter Cleaning in Seattle | Osprey Exterior">
-  <meta property="og:description" content="Same-day gutter cleaning, guard tune-ups, and RainWise-ready maintenance across Seattle, Bellevue, and the Eastside.">
+  <meta property="og:description" content="RainWise-certified gutter cleaning, guard installs, and documented maintenance serving Seattle, Bellevue, and the Eastside with same-week scheduling.">
   <meta property="og:url" content="https://ospreyexterior.com/gutter-cleaning/">
   <meta property="og:image" content="https://ospreyexterior.com/assets/images/gutter-full-of-leaves-after.JPEG">
   <meta property="og:image:alt" content="Technician clearing leaves from a Seattle gutter system">
@@ -25,7 +884,7 @@
   <meta name="twitter:site" content="@ospreyexterior">
   <meta name="twitter:creator" content="@ospreyexterior">
   <meta name="twitter:title" content="Gutter Cleaning in Seattle | Osprey Exterior">
-  <meta name="twitter:description" content="Same-day gutter cleaning, guard tune-ups, and RainWise-ready maintenance across Seattle, Bellevue, and the Eastside.">
+  <meta name="twitter:description" content="RainWise-certified gutter cleaning, guard installs, and documented maintenance serving Seattle, Bellevue, and the Eastside with same-week scheduling.">
   <meta name="twitter:image" content="https://ospreyexterior.com/assets/images/gutter-full-of-leaves-after.JPEG">
   <link rel="manifest" href="/manifest.json">
   <link rel="alternate" type="application/rss+xml" title="Osprey Exterior Insights" href="/rss.xml">
@@ -64,7 +923,7 @@
     "serviceType": "Gutter Cleaning",
     "alternateName": "Gutter cleaning and guard maintenance",
     "name": "Gutter Cleaning",
-    "description": "Same-day gutter cleaning, debris removal, and guard tune-ups that keep RainWise systems flowing for homes across Seattle, Bellevue, and Redmond.",
+    "description": "RainWise-certified gutter cleaning, debris removal, and guard installs with photo documentation for homes across Seattle, Bellevue, and Redmond.",
     "brand": {
       "@type": "Brand",
       "name": "Osprey Exterior"
@@ -133,7 +992,7 @@
   </script>
   <script src="https://t.contentsquare.net/uxa/a349e14090bcc.js"></script>
 </head>
-<body>
+<body class="gutters-premium">
   <header class="site-header">
     <div class="header-inner">
       <a class="logo" href="/">
@@ -152,43 +1011,118 @@
   </header>
 
   <main>
-    <section class="hero" style="background-image: linear-gradient(120deg, rgba(16,32,41,0.9), rgba(76,141,125,0.75)), url('assets/images/gutter-full-of-leaves-after.webp');">
+    <section class="hero" style="background-image: url('assets/images/gutter-full-of-leaves-after.webp');">
       <div class="hero-inner">
-        <div class="hero-copy">
-          <h1>Gutters built for the Pacific Northwest</h1>
-          <p>Durable, low-maintenance systems that outperform big-brand filters at a fair price—engineered to connect with Rainwise rebates.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="#quote" data-track="gutters_cta" data-label="Get free quote">Get free quote</a>
-            <a class="btn btn-outline" href="#comparison" data-track="gutters_cta" data-label="Compare leaf filter">Compare to leaf filter</a>
+        <div class="hero-content">
+          <span class="hero-eyebrow">RainWise certified gutter crews</span>
+          <h1>Seattle gutter experts engineered for storm season</h1>
+          <p>Precision cleaning, guard installs, and rebate-ready tie-ins delivered by the Puget Sound crew that keeps runoff controlled and foundations dry.</p>
+          <ul class="hero-bullets">
+            <li>Guaranteed flow test and debris haul-away on every visit</li>
+            <li>Micro-mesh guards that outperform national filter brands</li>
+            <li>Permit-ready photo documentation for RainWise reimbursement</li>
+          </ul>
+          <div class="hero-cta-row">
+            <a class="btn btn-primary" href="#quote" data-track="gutters_cta" data-label="Book RainWise quote">Book RainWise quote</a>
+            <a class="btn btn-outline" href="#comparison" data-track="gutters_cta" data-label="See guard comparison">See guard comparison</a>
           </div>
-          <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
-            <a href="/rainwise.html">Bundle with Rainwise rebate</a>
-            <a href="/blog/gutter-filter-comparison.html">Read filter comparison</a>
+          <div class="hero-meta">
+            <div class="rating-badge" role="img" aria-label="4.9 out of 5 stars from 87 Seattle homeowners">4.9 • 87 Seattle reviews</div>
+            <div class="response-badge">Average response <strong>1 hr 42 min</strong></div>
+            <div class="hero-links">
+              <a href="/rainwise.html">Bundle with RainWise rebate</a>
+              <a href="/blog/gutter-filter-comparison.html">Read mesh guard comparison</a>
+            </div>
           </div>
+        </div>
+        <aside class="hero-card" aria-label="Fast gutter quote">
+          <h2>Same-week install calendar</h2>
+          <p>Tell us about your roofline and we’ll reserve the next dry-weather window for your property.</p>
+          <ul class="card-list">
+            <li>Licensed, bonded, insured (OSPREE*763QD)</li>
+            <li>RainWise paperwork and compliance photos delivered within 24 hours</li>
+            <li>Financing and maintenance bundles available</li>
+          </ul>
+          <div class="hero-contact">
+            <a class="contact-phone" href="tel:+14255501727" data-track="gutters_cta" data-label="Call gutters team">Call (425) 550-1727</a>
+            <span>or</span>
+            <a class="contact-link" href="#quote" data-track="gutters_cta" data-label="Start digital intake">Start digital intake</a>
+          </div>
+          <div class="hero-card-note">Every project includes before-and-after photo documentation and a RainWise-ready service summary.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-bar" aria-label="Certifications and partner logos">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <img src="assets/images/rainwiselogo.png" alt="RainWise contractor logo">
+          RainWise certified partner
+        </div>
+        <div class="trust-item">
+          <img src="assets/images/Osprey-Exterior-Icon-03-white.png" alt="Osprey Exterior emblem" loading="lazy">
+          4.9 average Google rating
+        </div>
+        <div class="trust-item">
+          <img src="assets/images/Osprey-Exterior-Badge-Authority-Trust-Icon-Ice-Blue.png" alt="Warranty shield icon" loading="lazy">
+          Lifetime craftsmanship warranty
         </div>
       </div>
     </section>
 
-    <section class="section" id="problem">
-      <div class="container">
-        <div class="section-header">
-          <span>The challenge</span>
-          <h2>Clogged gutters create costly runoff problems</h2>
-          <p>Overflow damages foundations, siding, and landscaping. We link to Rainwise and compliance pages so you see how upgrades fit bigger plans.</p>
+    <section class="section premium-section problem-section" id="problem">
+      <div class="container layout-split">
+        <div>
+          <div class="section-header">
+            <span>Pacific Northwest challenges</span>
+            <h2>Stop overflow before it reaches your foundation</h2>
+            <p>Seattle rain can dump inches in a night. Without tuned gutters, water overruns fascia, landscaping, and RainWise cisterns. We document issues so you can see exactly what was corrected.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Needle build-up</h3>
+              <p>Douglas fir needles overwhelm basic screens. Dive deeper in our <a href="/blog/gutter-filter-comparison.html">mesh guard comparison</a> and <a href="/cisterns.html">cistern prep guide</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Moss &amp; overflow</h3>
+              <p>Heavy rain saturates gutters without precise slope. Pair cleanings with <a href="/rainwise.html">RainWise installs</a> or <a href="/services.html#comparison">drainage upgrades</a>.</p>
+            </article>
+            <article class="card">
+              <h3>Siding stains</h3>
+              <p>Leaky seams leave streaks and trigger compliance issues. Coordinate with <a href="/compliance.html">compliance audits</a> and <a href="/portfolio.html#gutters">project gallery</a>.</p>
+            </article>
+          </div>
         </div>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Clogs + debris</h3>
-            <p>Pacific Northwest fir needles overwhelm basic screens. Read <a href="/blog/gutter-filter-comparison.html">our filter comparison</a> and <a href="/cisterns.html">cistern prep tips</a>.</p>
-          </article>
-          <article class="card">
-            <h3>Moss &amp; overflow</h3>
-            <p>Heavy rain saturates gutters without proper slope. Pair replacements with <a href="/rainwise.html">Rainwise installs</a> or <a href="/services.html#comparison">drainage upgrades</a>.</p>
-          </article>
-          <article class="card">
-            <h3>Siding stains</h3>
-            <p>Leaky seams leave streaks and compliance violations. Coordinate with <a href="/compliance.html">compliance audits</a> and <a href="/portfolio.html#gutters">project gallery</a>.</p>
-          </article>
+        <div class="visual-card">
+          <figure class="image-stack">
+            <img src="assets/images/gutter-full-of-leaves-before.webp" alt="Gutter full of leaves before cleaning" loading="lazy">
+            <img class="image-stack-secondary" src="assets/images/gutter-full-of-leaves-after.webp" alt="Gutter cleared after RainWise tune-up" loading="lazy">
+          </figure>
+          <div class="visual-caption">Every visit includes photo proof with notes for your maintenance log or RainWise reimbursement paperwork.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light metrics-section" aria-label="Gutter service performance metrics">
+      <div class="container">
+        <div class="section-header centered">
+          <span>Proof in the numbers</span>
+          <h2>Trusted by Seattle homeowners for responsive gutter service</h2>
+          <p>From same-week scheduling to RainWise paperwork, our crew maintains gutters as a connected system—not a one-off cleaning.</p>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span class="metric-value">87</span>
+            <span class="metric-label">Documented RainWise-ready gutter reviews</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">24 hrs</span>
+            <span class="metric-label">Photo report delivery after each project</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">3 yrs</span>
+            <span class="metric-label">Average client relationship duration</span>
+          </div>
         </div>
       </div>
     </section>
@@ -197,23 +1131,24 @@
       <div class="container">
         <div class="section-header">
           <span>Our solution</span>
-          <h2>Seamless gutters plus Rainwise-ready guards</h2>
-          <p>Every install includes custom color matching, Rainwise tie-ins, and lifetime craftsmanship warranty.</p>
+          <h2>Seamless gutters plus RainWise-ready guards</h2>
+          <p>Every install includes custom color matching, RainWise tie-ins, and lifetime craftsmanship warranty.</p>
         </div>
-        <div class="card-grid">
+        <div class="feature-grid">
           <article class="card">
             <h3>Seamless aluminum or steel</h3>
-            <p>Choose 5" or 6" K-style profiles. We match fascia colors and integrate with <a href="/cisterns.html">cistern downspouts</a>.</p>
+            <p>Choose 5" or 6" K-style profiles to match your fascia. We integrate with <a href="/cisterns.html">cistern downspouts</a> and fascia board repairs.</p>
           </article>
           <article class="card">
-            <h3>Custom mesh guards</h3>
-            <p>Fine stainless micro-mesh comparable to big brands without the markup. Learn more in our <a href="#comparison">comparison chart</a>.</p>
+            <h3>Custom micro-mesh guards</h3>
+            <p>Stainless micro-mesh comparable to national brands without the markup. See data in our <a href="#comparison">comparison chart</a>.</p>
           </article>
           <article class="card">
             <h3>Lifetime install guarantee</h3>
-            <p>Backed by Rainwise certification and <a href="/compliance.html">compliance documentation</a> to pass inspections.</p>
+            <p>Backed by RainWise certification and <a href="/compliance.html">compliance documentation</a> that passes inspections without a revisit.</p>
           </article>
         </div>
+        <div class="feature-note">All packages include debris removal, downspout flush, and guard tuning so RainWise cisterns receive clean flow.</div>
       </div>
     </section>
 
@@ -222,7 +1157,7 @@
         <div class="section-header">
           <span>Comparison</span>
           <h2>Local installer advantage versus national filters</h2>
-          <p>Compare Osprey Exterior to Leaf Filter and DIY screens. Each row references Rainwise compatibility and local support.</p>
+          <p>Compare Osprey Exterior to Leaf Filter and DIY screens. Each row references RainWise compatibility and local support.</p>
         </div>
         <div class="table-responsive">
           <table>
@@ -261,48 +1196,80 @@
               </tr>
               <tr>
                 <td>Rebate eligible</td>
-                <td>Yes with <a href="/rainwise.html">Rainwise installs</a></td>
+                <td>Yes with <a href="/rainwise.html">RainWise installs</a></td>
                 <td>No</td>
                 <td>No</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p class="comparison-note">We stage every guard and downspout so Seattle Public Utilities can verify RainWise compliance on the first review.</p>
       </div>
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Osprey Exterior Gutters",
-        "description": "Seamless gutter replacement with Rainwise-compatible mesh guards.",
+        "description": "Seamless gutter replacement with RainWise-compatible mesh guards.",
         "brand": "Osprey Exterior"
       }
       </script>
+    </section>
+
+    <section class="section section-contrast process-section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <span>How it works</span>
+          <h2>RainWise-ready service in three steps</h2>
+          <p>Our technicians photograph every detail so you can submit for rebates, share updates with your HOA, or track maintenance history in one place.</p>
+        </div>
+        <ol class="process-steps">
+          <li class="process-step">
+            <div class="step-number">1</div>
+            <h3>Measure &amp; scope runoff</h3>
+            <p>We map roof planes, downspouts, and cistern tie-ins to spec the right guard and gutter profile.</p>
+            <div class="step-meta">Includes drone mapping when required</div>
+          </li>
+          <li class="process-step">
+            <div class="step-number">2</div>
+            <h3>Install &amp; flow test</h3>
+            <p>Seamless fabrication on-site, precision hanger spacing, and micro-mesh guard installation with live water testing.</p>
+            <div class="step-meta">RainWise compliance checklist completed</div>
+          </li>
+          <li class="process-step">
+            <div class="step-number">3</div>
+            <h3>Document &amp; maintain</h3>
+            <p>Receive a photo report, slope readings, and custom maintenance plan to keep debris out and rebates valid.</p>
+            <div class="step-meta">24-hour turnaround on documentation</div>
+          </li>
+        </ol>
+      </div>
     </section>
 
     <section class="section section-light" id="gallery">
       <div class="container">
         <div class="section-header">
           <span>Before &amp; after</span>
-          <h2>Rainwise gutter transformations</h2>
+          <h2>RainWise gutter transformations</h2>
           <p>Interactive sliders show Bellevue and Seattle projects. Alt text includes city and service for SEO.</p>
         </div>
         <div class="before-after">
-          <img src="assets/images/gutter-inside-corner-before.webp" alt="Inside gutter corner before replacement" loading="lazy">
+          <img src="assets/images/gutter-inside-corner-before.webp" alt="Inside gutter corner before replacement in Seattle" loading="lazy">
           <div class="after-image">
-            <img src="assets/images/gutter-inside-corner-after.webp" alt="Inside gutter corner after replacement" loading="lazy">
+            <img src="assets/images/gutter-inside-corner-after.webp" alt="Inside gutter corner after replacement in Seattle" loading="lazy">
           </div>
           <input type="range" min="0" max="100" value="50" aria-label="Adjust inside gutter corner comparison">
         </div>
+        <p class="before-after-caption">Slide to reveal seamless inside corner rebuild for a Ballard RainWise project.</p>
         <div class="before-after" style="margin-top:3rem;">
-          <img src="assets/images/rusted-screw-replacement-before.webp" alt="Rusted gutter screw before replacement" loading="lazy">
+          <img src="assets/images/rusted-screw-replacement-before.webp" alt="Rusted gutter screw before replacement in Bellevue" loading="lazy">
           <div class="after-image">
-            <img src="assets/images/rusted-screw-replacement-after.webp" alt="New stainless screw after gutter repair" loading="lazy">
+            <img src="assets/images/rusted-screw-replacement-after.webp" alt="New stainless screw after gutter repair in Bellevue" loading="lazy">
           </div>
           <input type="range" min="0" max="100" value="50" aria-label="Adjust rusted screw replacement comparison">
         </div>
         <div class="before-after" style="margin-top:3rem;">
-          <img src="assets/images/gutter-hardware-replacement-lynnwood-before.webp" alt="Loose gutter brackets before hardware replacement in Lynnwood" loading="lazy">
+          <img src="assets/images/gutter-hardware-replacement-lynnwood-before.webp" alt="Loose gutter brackets before reinforcement in Lynnwood" loading="lazy">
           <div class="after-image">
             <img src="assets/images/gutter-hardware-replacement-lynnwood-after.webp" alt="Secure gutter brackets after reinforcement in Lynnwood" loading="lazy">
           </div>
@@ -316,16 +1283,16 @@
         <div class="section-header">
           <span>Maintenance plans</span>
           <h2>Stay off the ladder with quarterly or annual care</h2>
-          <p>Choose a plan that fits your gutter system. Each plan links to contact and Rainwise integration options.</p>
+          <p>Choose a plan that fits your gutter system. Each plan links to contact and RainWise integration options.</p>
         </div>
-        <div class="card-grid">
+        <div class="plan-grid">
           <article class="card">
             <h3>Quarterly clean &amp; flush</h3>
             <p class="plan-price">$189 per visit</p>
             <ul class="plan-inclusions">
               <li>Downspout flush and debris removal</li>
               <li>Mesh guard inspection and adjustment</li>
-              <li>Bundle with <a href="/rainwise.html">Rainwise service</a> or <a href="/compliance.html">inspection prep</a></li>
+              <li>Bundle with <a href="/rainwise.html">RainWise service</a> or <a href="/compliance.html">inspection prep</a></li>
             </ul>
             <a href="/contact.html#form">Enroll now</a>
           </article>
@@ -340,14 +1307,44 @@
             <a href="/contact.html">Talk with scheduling</a>
           </article>
           <article class="card">
-            <h3>Rainwise bundle</h3>
+            <h3>RainWise bundle</h3>
             <p class="plan-price">$349 per visit</p>
             <ul class="plan-inclusions">
-              <li>Rainwise compliance audit with documentation</li>
+              <li>RainWise compliance audit with documentation</li>
               <li>Priority scheduling for rebate deadlines</li>
               <li><a href="/services.html">Service comparison review</a> for add-ons</li>
             </ul>
-            <a href="/rainwise.html#cta">Book Rainwise visit</a>
+            <a href="/rainwise.html#cta">Book RainWise visit</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span>Social proof</span>
+          <h2>Homeowners rely on us for RainWise-ready gutters</h2>
+          <p>These Seattle-area clients describe the clarity of our photo reports, craftsmanship, and support.</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>“The crew was on-site within two days, cleaned every downspout, and handed me a RainWise compliance packet the same night.”</p>
+            <div class="author">Maya H., Phinney Ridge</div>
+            <div class="author-note">Quarterly clean &amp; flush plan</div>
+          </article>
+          <article class="testimonial-card">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>“Osprey engineered custom guards that actually stop fir needles. Our cistern now fills without clogging and the rebate check cleared fast.”</p>
+            <div class="author">Chris D., Bellevue</div>
+            <div class="author-note">RainWise bundle install</div>
+          </article>
+          <article class="testimonial-card">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>“They documented slope corrections with measurements, so my HOA signed off immediately. Service reminders keep us off the ladder.”</p>
+            <div class="author">Elena S., Capitol Hill</div>
+            <div class="author-note">Biannual tune-up</div>
           </article>
         </div>
       </div>
@@ -357,8 +1354,8 @@
       <div class="container">
         <div class="section-header">
           <span>FAQ</span>
-          <h2>Questions about gutters and Rainwise</h2>
-          <p>Accordion answers cover service life, gutter guards, and Rainwise integration.</p>
+          <h2>Questions about gutters and RainWise</h2>
+          <p>Accordion answers cover service life, gutter guards, and RainWise integration.</p>
         </div>
         <div class="accordion">
           <div class="accordion-item">
@@ -370,13 +1367,13 @@
           <div class="accordion-item">
             <button class="accordion-button">Do I need gutter guards?</button>
             <div class="accordion-content">
-              <p>Mesh guards block needles and keep Rainwise cisterns clean. Compare guard options in the <a href="#comparison">comparison chart</a> and <a href="/rainwise.html#cistern-systems">cistern section</a>.</p>
+              <p>Mesh guards block needles and keep RainWise cisterns clean. Compare guard options in the <a href="#comparison">comparison chart</a> and <a href="/rainwise.html#cistern-systems">cistern section</a>.</p>
             </div>
           </div>
           <div class="accordion-item">
-            <button class="accordion-button">Can I include gutter work in my Rainwise project?</button>
+            <button class="accordion-button">Can I include gutter work in my RainWise project?</button>
             <div class="accordion-content">
-              <p>Yes—Rainwise rebates cover gutter tie-ins and downspout upgrades. Explore bundling on our <a href="/rainwise.html">Rainwise page</a> and <a href="/contact.html">contact form</a>.</p>
+              <p>Yes—RainWise rebates cover gutter tie-ins and downspout upgrades. Explore bundling on our <a href="/rainwise.html">RainWise page</a> and <a href="/contact.html">contact form</a>.</p>
             </div>
           </div>
         </div>
@@ -394,22 +1391,22 @@
           {
             "@type": "Question",
             "name": "Do I need gutter guards?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Mesh guards block debris and support Rainwise cistern performance."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Mesh guards block debris and support RainWise cistern performance."}
           },
           {
             "@type": "Question",
-            "name": "Can I include gutter work in my Rainwise project?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes—Rainwise rebates cover gutter tie-ins and downspout upgrades."}
+            "name": "Can I include gutter work in my RainWise project?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes—RainWise rebates cover gutter tie-ins and downspout upgrades."}
           }
         ]
       }
       </script>
     </section>
 
-    <section class="feature-band" id="quote">
+    <section class="feature-band quote-band" id="quote">
       <div class="container">
         <h2>Upgrade once—never climb a ladder again</h2>
-        <p>Send us your info for a Rainwise-ready gutter quote. We’ll share pricing, rebate bundling options, and maintenance plans.</p>
+        <p>Send us your info for a RainWise-ready gutter quote. We’ll share pricing, rebate bundling options, and maintenance plans.</p>
         <script src="https://js-na2.hsforms.net/forms/embed/244291121.js" defer></script>
         <div class="hs-form-frame" data-region="na2" data-form-id="198e9b40-f90d-40ca-9a46-4af906a2699d" data-portal-id="244291121"></div>
       </div>
@@ -427,7 +1424,7 @@
           <img src="assets/images/Osprey-Exterior-Icon-03-white.png" alt="Osprey Exterior emblem">
           <img src="assets/images/rainwiselogo.png" alt="Seattle Public Utilities RainWise partner logo" class="rainwise-badge">
         </div>
-        <p>Rainwise-certified exterior contractor delivering gutters, cisterns, drainage, and compliance installs across Puget Sound.</p>
+        <p>RainWise-certified exterior contractor delivering gutters, cisterns, drainage, and compliance installs across Puget Sound.</p>
         <ul class="service-area-list">
           <li><a href="/service-areas/seattle.html">Seattle</a></li>
           <li><a href="/service-areas/bellevue.html">Bellevue</a></li>
@@ -439,12 +1436,12 @@
       <div>
         <h4 style="font-family:var(--font-heading);">Contact</h4>
         <p>Phone: <a href="tel:+14255501727">(425) 550-1727</a></p>
-        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>RainWise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
         <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Resources</h4>
-        <p><a href="/rainwise.html">Rainwise contractor</a></p>
+        <p><a href="/rainwise.html">RainWise contractor</a></p>
         <p><a href="/cisterns.html">Cistern installs</a></p>
         <p><a href="/compliance.html">Compliance support</a></p>
       </div>
