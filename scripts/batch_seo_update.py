@@ -172,14 +172,19 @@ def get_adjacent_cities(city_slug: str, city_slugs: List[str]) -> List[str]:
     return [city_slugs[i] for i in selected_indices]
 
 
-def ensure_nearby_links(content: str, city_slug: str, neighbors: List[str]) -> tuple[str, bool]:
+def ensure_nearby_links(
+    content: str, city_slug: str, service_slug: str, neighbors: List[str]
+) -> tuple[str, bool]:
     if not neighbors:
         return content, False
     lines = ["  <section id=\"nearby-links\">", "    <h2>Nearby Service Areas</h2>", "    <ul>"]
+    service_title = slug_to_title(service_slug) or service_slug.replace("-", " ").title()
+
     for neighbor_slug in neighbors:
         neighbor_name = slug_to_title(neighbor_slug) or neighbor_slug
-        href = f"{ROOT_URL}/pages/{neighbor_slug}/"
-        lines.append(f"      <li><a href=\"{href}\">{neighbor_name}</a></li>")
+        # Use the service slug in the URL and the service title in the anchor text
+        href = build_canonical(neighbor_slug, service_slug)
+        lines.append(f"      <li><a href=\"{href}\">{service_title} in {neighbor_name}</a></li>")
     lines.extend(["    </ul>", "  </section>\n"])
     block = "\n" + "\n".join(lines)
 
@@ -233,7 +238,9 @@ def main() -> None:
             file_changed = True
 
         neighbors = get_adjacent_cities(city_slug, city_slugs)
-        updated, nearby_changed = ensure_nearby_links(updated, city_slug, neighbors)
+        updated, nearby_changed = ensure_nearby_links(
+            updated, city_slug, service_slug, neighbors
+        )
         if nearby_changed:
             file_changed = True
 
