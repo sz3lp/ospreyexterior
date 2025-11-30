@@ -1,32 +1,65 @@
-name: Run Batch SEO Update
+name: Run All SEO Generators
 
 on:
-  workflow_dispatch:    # Manual trigger from GitHub Actions tab
+  workflow_dispatch:      # Manual trigger
   push:
-    branches: [ main ]  # Run when you push to main
+    branches: [ main ]    # On push to main
   schedule:
-    - cron: "0 * * * *"  # Run every hour (optional)
+    - cron: "0 * * * *"   # Optional: run hourly
+    # Remove if you don't want cron
 
 jobs:
-  run-python:
+  run-generators:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-        # If you have submodules, uncomment:
-        # with:
-        #   submodules: true
-
-      - name: Set up Python 3.11
+      # --------------------
+      # PYTHON ENV
+      # --------------------
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install Python dependencies (if any)
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run Batch SEO Script
-        run: python scripts/batch_seo_update.py
+      # --------------------
+      # NODE ENV (for .mjs)
+      # --------------------
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Node dependencies (if any)
+        run: |
+          if [ -f package.json ]; then npm install; fi
+
+      # --------------------
+      # RUN PYTHON SCRIPTS
+      # --------------------
+      - name: Run batch_seo_update.py
+        run: python batch_seo_update.py
+
+      - name: Run generate_city_service_pages.py
+        run: python generate_city_service_pages.py
+
+      # --------------------
+      # RUN NODE SCRIPT (.mjs)
+      # --------------------
+      - name: Run generate-localized-pages.mjs
+        run: node generate-localized-pages.mjs
+
+      # --------------------
+      # PASS SECRETS TO SCRIPTS
+      # --------------------
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        OTHER_SECRET: ${{ secrets.OTHER_SECRET }} # remove if not needed
