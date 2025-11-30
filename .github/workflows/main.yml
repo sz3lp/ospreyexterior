@@ -52,6 +52,9 @@ jobs:
 
       - name: Run generate_city_service_pages.py
         run: python scripts/generate_city_service_pages.py
+      - name: Run update_favicon.py
+        run: python scripts/update_favicon.py
+
 
       # --------------------
       # RUN NODE SCRIPT
