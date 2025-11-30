@@ -1,10 +1,21 @@
 import json
 import re
 from pathlib import Path
-from typing import List
+from typing import Dict, List
 
 ROOT_URL = "https://ospreyexterior.com"
 PAGES_DIR = Path(__file__).resolve().parents[1] / "pages"
+LOCATIONS_PATH = PAGES_DIR / "locations.json"
+
+
+def load_locations() -> Dict[str, dict]:
+    if not LOCATIONS_PATH.exists():
+        raise SystemExit("locations.json not found in pages directory")
+    data = json.loads(LOCATIONS_PATH.read_text(encoding="utf-8"))
+    return {entry["slug"]: entry for entry in data}
+
+
+LOCATIONS = load_locations()
 
 
 def slug_to_title(slug: str) -> str:
@@ -36,6 +47,34 @@ def insert_before_tag(content: str, tag: str, insertion: str) -> str:
     return content[:idx] + insertion + content[idx:]
 
 
+def build_geo_tags(location: dict) -> str:
+    city = location.get("city", "")
+    state = location.get("state", "")
+    latitude = location.get("latitude")
+    longitude = location.get("longitude")
+    parts = [
+        f'  <meta name="geo.region" content="US-{state}">',
+        f'  <meta name="geo.placename" content="{city}">',
+        f'  <meta name="geo.position" content="{latitude};{longitude}">',
+        f'  <meta name="ICBM" content="{latitude}, {longitude}">',
+    ]
+    return "\n".join(parts) + "\n"
+
+
+def ensure_geo_tags(content: str, location: dict) -> tuple[str, bool]:
+    block = build_geo_tags(location)
+    if block.strip() in content:
+        return content, False
+    cleaned = re.sub(
+        r"\s*<meta name=\"(?:geo\.region|geo\.placename|geo\.position|ICBM)\"[^>]*>\s*",
+        "",
+        content,
+        flags=re.IGNORECASE,
+    )
+    new_content = insert_before_tag(cleaned, "head", block)
+    return new_content, True
+
+
 def update_canonical(content: str, canonical_url: str) -> tuple[str, bool]:
     canonical_tag = f'<link rel="canonical" href="{canonical_url}">'  # exact format we will enforce
     if canonical_tag in content:
@@ -49,8 +88,11 @@ def update_canonical(content: str, canonical_url: str) -> tuple[str, bool]:
     return new_content, True
 
 
-def build_schema_block(city_slug: str, service_slug: str) -> str:
-    city_name = slug_to_title(city_slug) or city_slug
+def build_schema_block(city_slug: str, service_slug: str, location: dict) -> str:
+    city_name = location.get("city") or slug_to_title(city_slug) or city_slug
+    state = location.get("state", "WA")
+    latitude = location.get("latitude")
+    longitude = location.get("longitude")
     canonical_url = build_canonical(city_slug, service_slug)
     service_slug_for_display = service_slug or "services"
     service_name = slug_to_title(service_slug_for_display) or service_slug_for_display
@@ -59,17 +101,20 @@ def build_schema_block(city_slug: str, service_slug: str) -> str:
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Osprey Exterior",
-        "areaServed": city_name,
+        "areaServed": {"@type": "City", "name": city_name},
         "telephone": "(425) 550-1727",
         "url": canonical_url,
         "address": {
             "@type": "PostalAddress",
             "addressLocality": city_name,
-            "addressRegion": "WA",
+            "addressRegion": state,
             "addressCountry": "US",
         },
-        "hasMap": False,
-        "geo": None,
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": latitude,
+            "longitude": longitude,
+        },
     }
 
     service_schema = {
@@ -77,6 +122,9 @@ def build_schema_block(city_slug: str, service_slug: str) -> str:
         "@type": "Service",
         "serviceType": f"{service_name} in {city_name}",
         "provider": {"@id": f"{ROOT_URL}/#organization"},
+        "areaServed": {"@type": "City", "name": city_name},
+        "serviceArea": {"@type": "AdministrativeArea", "name": f"{city_name}, {state}"},
+        "url": canonical_url,
     }
 
     faq_schema = {
@@ -95,13 +143,17 @@ def build_schema_block(city_slug: str, service_slug: str) -> str:
     return "".join(scripts)
 
 
-def ensure_schema(content: str, city_slug: str, service_slug: str) -> tuple[str, int, bool]:
-    schema_block = build_schema_block(city_slug, service_slug)
+def ensure_schema(content: str, city_slug: str, service_slug: str, location: dict) -> tuple[str, int, bool]:
+    schema_block = build_schema_block(city_slug, service_slug, location)
     if schema_block.strip() in content:
         return content, 0, False
-    if '"hasMap": false' in content and '"@type": "FAQPage"' in content:
-        return content, 0, False
-    new_content = insert_before_tag(content, "head", schema_block)
+    cleaned = re.sub(
+        r"\s*<script type=\"application/ld\+json\">.*?@type\":\s*\"(?:LocalBusiness|Service|FAQPage)\".*?</script>\s*",
+        "",
+        content,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    new_content = insert_before_tag(cleaned, "head", schema_block)
     return new_content, 3, True
 
 
@@ -157,6 +209,9 @@ def main() -> None:
         city_slug = relative_parts[0]
         if city_slug not in city_slugs:
             continue
+        location = LOCATIONS.get(city_slug)
+        if not location:
+            continue
         processed_cities.add(city_slug)
         service_slug = determine_service_slug(list(relative_parts))
 
@@ -164,11 +219,15 @@ def main() -> None:
         updated = original
         file_changed = False
 
+        updated, geo_changed = ensure_geo_tags(updated, location)
+        if geo_changed:
+            file_changed = True
+
         updated, changed = update_canonical(updated, build_canonical(city_slug, service_slug))
         if changed:
             file_changed = True
 
-        updated, inserted, schema_changed = ensure_schema(updated, city_slug, service_slug)
+        updated, inserted, schema_changed = ensure_schema(updated, city_slug, service_slug, location)
         if schema_changed:
             schema_blocks += inserted
             file_changed = True

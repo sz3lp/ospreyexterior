@@ -1,0 +1,266 @@
+[
+  {
+    "slug": "beaux-arts-village",
+    "city": "Beaux Arts Village",
+    "state": "WA",
+    "latitude": 47.587,
+    "longitude": -122.205,
+    "canonical_url": "https://ospreyexterior.com/pages/beaux-arts-village/"
+  },
+  {
+    "slug": "bel-red",
+    "city": "Bel-Red",
+    "state": "WA",
+    "latitude": 47.624,
+    "longitude": -122.143,
+    "canonical_url": "https://ospreyexterior.com/pages/bel-red/"
+  },
+  {
+    "slug": "bellevue",
+    "city": "Bellevue",
+    "state": "WA",
+    "latitude": 47.61,
+    "longitude": -122.201,
+    "canonical_url": "https://ospreyexterior.com/pages/bellevue/"
+  },
+  {
+    "slug": "bridle-trails",
+    "city": "Bridle Trails",
+    "state": "WA",
+    "latitude": 47.64,
+    "longitude": -122.173,
+    "canonical_url": "https://ospreyexterior.com/pages/bridle-trails/"
+  },
+  {
+    "slug": "clyde-hill",
+    "city": "Clyde Hill",
+    "state": "WA",
+    "latitude": 47.631,
+    "longitude": -122.217,
+    "canonical_url": "https://ospreyexterior.com/pages/clyde-hill/"
+  },
+  {
+    "slug": "coal-creek",
+    "city": "Coal Creek",
+    "state": "WA",
+    "latitude": 47.538,
+    "longitude": -122.167,
+    "canonical_url": "https://ospreyexterior.com/pages/coal-creek/"
+  },
+  {
+    "slug": "cougar-mountain",
+    "city": "Cougar Mountain",
+    "state": "WA",
+    "latitude": 47.534,
+    "longitude": -122.11,
+    "canonical_url": "https://ospreyexterior.com/pages/cougar-mountain/"
+  },
+  {
+    "slug": "crossroads",
+    "city": "Crossroads",
+    "state": "WA",
+    "latitude": 47.62,
+    "longitude": -122.144,
+    "canonical_url": "https://ospreyexterior.com/pages/crossroads/"
+  },
+  {
+    "slug": "downtown-bellevue",
+    "city": "Downtown Bellevue",
+    "state": "WA",
+    "latitude": 47.614,
+    "longitude": -122.193,
+    "canonical_url": "https://ospreyexterior.com/pages/downtown-bellevue/"
+  },
+  {
+    "slug": "eastgate",
+    "city": "Eastgate",
+    "state": "WA",
+    "latitude": 47.575,
+    "longitude": -122.15,
+    "canonical_url": "https://ospreyexterior.com/pages/eastgate/"
+  },
+  {
+    "slug": "factoria",
+    "city": "Factoria",
+    "state": "WA",
+    "latitude": 47.575,
+    "longitude": -122.168,
+    "canonical_url": "https://ospreyexterior.com/pages/factoria/"
+  },
+  {
+    "slug": "hazelwood",
+    "city": "Hazelwood",
+    "state": "WA",
+    "latitude": 47.547,
+    "longitude": -122.167,
+    "canonical_url": "https://ospreyexterior.com/pages/hazelwood/"
+  },
+  {
+    "slug": "hunts-point",
+    "city": "Hunts Point",
+    "state": "WA",
+    "latitude": 47.64,
+    "longitude": -122.232,
+    "canonical_url": "https://ospreyexterior.com/pages/hunts-point/"
+  },
+  {
+    "slug": "issaquah",
+    "city": "Issaquah",
+    "state": "WA",
+    "latitude": 47.53,
+    "longitude": -122.032,
+    "canonical_url": "https://ospreyexterior.com/pages/issaquah/"
+  },
+  {
+    "slug": "issaquah-bellevue-highlands",
+    "city": "Issaquah Highlands",
+    "state": "WA",
+    "latitude": 47.546,
+    "longitude": -122.043,
+    "canonical_url": "https://ospreyexterior.com/pages/issaquah-bellevue-highlands/"
+  },
+  {
+    "slug": "kirkland",
+    "city": "Kirkland",
+    "state": "WA",
+    "latitude": 47.676,
+    "longitude": -122.205,
+    "canonical_url": "https://ospreyexterior.com/pages/kirkland/"
+  },
+  {
+    "slug": "lake-hills",
+    "city": "Lake Hills",
+    "state": "WA",
+    "latitude": 47.603,
+    "longitude": -122.132,
+    "canonical_url": "https://ospreyexterior.com/pages/lake-hills/"
+  },
+  {
+    "slug": "lakemont",
+    "city": "Lakemont",
+    "state": "WA",
+    "latitude": 47.557,
+    "longitude": -122.114,
+    "canonical_url": "https://ospreyexterior.com/pages/lakemont/"
+  },
+  {
+    "slug": "lakemont-ridge",
+    "city": "Lakemont Ridge",
+    "state": "WA",
+    "latitude": 47.551,
+    "longitude": -122.107,
+    "canonical_url": "https://ospreyexterior.com/pages/lakemont-ridge/"
+  },
+  {
+    "slug": "mercer-island",
+    "city": "Mercer Island",
+    "state": "WA",
+    "latitude": 47.57,
+    "longitude": -122.224,
+    "canonical_url": "https://ospreyexterior.com/pages/mercer-island/"
+  },
+  {
+    "slug": "newcastle",
+    "city": "Newcastle",
+    "state": "WA",
+    "latitude": 47.539,
+    "longitude": -122.17,
+    "canonical_url": "https://ospreyexterior.com/pages/newcastle/"
+  },
+  {
+    "slug": "northup-corridor",
+    "city": "Northup Corridor",
+    "state": "WA",
+    "latitude": 47.639,
+    "longitude": -122.169,
+    "canonical_url": "https://ospreyexterior.com/pages/northup-corridor/"
+  },
+  {
+    "slug": "overlake",
+    "city": "Overlake",
+    "state": "WA",
+    "latitude": 47.641,
+    "longitude": -122.134,
+    "canonical_url": "https://ospreyexterior.com/pages/overlake/"
+  },
+  {
+    "slug": "phantom-lake",
+    "city": "Phantom Lake",
+    "state": "WA",
+    "latitude": 47.6,
+    "longitude": -122.12,
+    "canonical_url": "https://ospreyexterior.com/pages/phantom-lake/"
+  },
+  {
+    "slug": "redmond",
+    "city": "Redmond",
+    "state": "WA",
+    "latitude": 47.673,
+    "longitude": -122.121,
+    "canonical_url": "https://ospreyexterior.com/pages/redmond/"
+  },
+  {
+    "slug": "renton",
+    "city": "Renton",
+    "state": "WA",
+    "latitude": 47.482,
+    "longitude": -122.217,
+    "canonical_url": "https://ospreyexterior.com/pages/renton/"
+  },
+  {
+    "slug": "sammamish",
+    "city": "Sammamish",
+    "state": "WA",
+    "latitude": 47.616,
+    "longitude": -122.035,
+    "canonical_url": "https://ospreyexterior.com/pages/sammamish/"
+  },
+  {
+    "slug": "somerset",
+    "city": "Somerset",
+    "state": "WA",
+    "latitude": 47.568,
+    "longitude": -122.156,
+    "canonical_url": "https://ospreyexterior.com/pages/somerset/"
+  },
+  {
+    "slug": "south-kirkland",
+    "city": "South Kirkland",
+    "state": "WA",
+    "latitude": 47.653,
+    "longitude": -122.196,
+    "canonical_url": "https://ospreyexterior.com/pages/south-kirkland/"
+  },
+  {
+    "slug": "west-lake-sammamish",
+    "city": "West Lake Sammamish",
+    "state": "WA",
+    "latitude": 47.585,
+    "longitude": -122.085,
+    "canonical_url": "https://ospreyexterior.com/pages/west-lake-sammamish/"
+  },
+  {
+    "slug": "wilburton",
+    "city": "Wilburton",
+    "state": "WA",
+    "latitude": 47.616,
+    "longitude": -122.18,
+    "canonical_url": "https://ospreyexterior.com/pages/wilburton/"
+  },
+  {
+    "slug": "woodridge",
+    "city": "Woodridge",
+    "state": "WA",
+    "latitude": 47.615,
+    "longitude": -122.172,
+    "canonical_url": "https://ospreyexterior.com/pages/woodridge/"
+  },
+  {
+    "slug": "yarrow-point",
+    "city": "Yarrow Point",
+    "state": "WA",
+    "latitude": 47.644,
+    "longitude": -122.213,
+    "canonical_url": "https://ospreyexterior.com/pages/yarrow-point/"
+  }
+]
