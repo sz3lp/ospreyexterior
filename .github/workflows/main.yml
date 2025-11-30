@@ -1,16 +1,20 @@
 name: Run All SEO Generators
 
 on:
-  workflow_dispatch:      # Manual trigger
+  workflow_dispatch:
   push:
-    branches: [ main ]    # On push to main
+    branches: [ main ]
   schedule:
-    - cron: "0 * * * *"   # Optional: run hourly
-    # Remove if you don't want cron
+    - cron: "0 * * * *"
 
 jobs:
   run-generators:
     runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      OTHER_SECRET: ${{ secrets.OTHER_SECRET }} # optional
 
     steps:
       - name: Checkout repository
@@ -29,7 +33,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # --------------------
-      # NODE ENV (for .mjs)
+      # NODE ENV
       # --------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -50,16 +54,7 @@ jobs:
         run: python generate_city_service_pages.py
 
       # --------------------
-      # RUN NODE SCRIPT (.mjs)
+      # RUN NODE SCRIPT
       # --------------------
       - name: Run generate-localized-pages.mjs
         run: node generate-localized-pages.mjs
-
-      # --------------------
-      # PASS SECRETS TO SCRIPTS
-      # --------------------
-      env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        OTHER_SECRET: ${{ secrets.OTHER_SECRET }} # remove if not needed
