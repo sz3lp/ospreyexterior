@@ -1,0 +1,32 @@
+name: Run Batch SEO Update
+
+on:
+  workflow_dispatch:    # Manual trigger from GitHub Actions tab
+  push:
+    branches: [ main ]  # Run when you push to main
+  schedule:
+    - cron: "0 * * * *"  # Run every hour (optional)
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+        # If you have submodules, uncomment:
+        # with:
+        #   submodules: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Batch SEO Script
+        run: python scripts/batch_seo_update.py
