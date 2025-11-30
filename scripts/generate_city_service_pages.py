@@ -266,8 +266,8 @@ def _hero_block(service_slug: str, service_name: str, city_name: str, intro: str
         <section class=\"hero\" style=\"background-image: linear-gradient(120deg, rgba(16,32,41,0.92), rgba(26,76,96,0.8)), url('/assets/images/new-downspout-installation.webp');\">
           <div class=\"hero-inner\">
             <div class=\"hero-copy\">
-              <p class=\"eyebrow\">Trusted {service_name}</p>
-              <h1>{service_name} {city_html}</h1>
+              <p class=\"eyebrow\">Top-Rated Local Service</p>
+              <h1>Professional {service_name} in {city_html}</h1>
               <p>{intro}</p>
               <ul class=\"checklist\">
 {list_items}
@@ -785,7 +785,21 @@ def generate_city_service_page(city_slug: str, city_name: str, service_slug: str
     highlights = config["highlights"]
     sections_fn = config["sections"]
 
-    head = _base_head(city_slug, city_name, service_slug, service_name, f"{service_name} {city_name} | Osprey Exterior", description)
+    # GSC Report Recommendation: Update Title Tag/Description for better CTR (High Imp, Low CTR section)
+    optimized_title = f"{service_name} {city_name} | Fast Quotes & Expert Service"
+    optimized_description = (
+        f"Stop water damage. Get top-rated, full-service {service_name.lower()} in {city_name}. "
+        "Certified installation, full cleanups, and free estimates. Book today."
+    )
+
+    head = _base_head(
+        city_slug,
+        city_name,
+        service_slug,
+        service_name,
+        optimized_title,
+        optimized_description,
+    )
     hero = _hero_block(service_slug, service_name, city_name, intro, highlights)
     body_top = _base_body_top(hero)
     sections = sections_fn(city_name)
