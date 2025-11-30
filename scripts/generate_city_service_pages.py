@@ -32,30 +32,30 @@ FOOTER_HTML = dedent(
               <a class=\"logo\" href=\"/\">
                 <img src=\"/assets/images/Osprey-Exterior-Logo3-01-WHITE.png\" alt=\"Osprey Exterior logo\">
               </a>
-              <p>RainWise-certified gutter specialists serving Bellevue, Redmond, Kirkland, Sammamish, and greater Seattle.</p>
+              <p>Experts in seamless gutter installation, gutter guards, and exterior water management for the Puget Sound region.</p>
             </div>
             <div>
               <h3>Contact</h3>
               <ul>
                 <li><a href=\"tel:+14255501727\">(425) 550-1727</a></li>
                 <li><a href=\"mailto:inquiries@ospreyexterior.com\">inquiries@ospreyexterior.com</a></li>
-                <li>Bellevue, WA 98004</li>
+                <li>Seattle, WA 98004</li>
               </ul>
             </div>
             <div>
               <h3>Services</h3>
               <ul>
                 <li><a href=\"/gutters.html\">Gutter installations</a></li>
-                <li><a href=\"/rainwise.html\">RainWise projects</a></li>
+                <li><a href=\"/compliance.html\">Drainage Compliance</a></li>
                 <li><a href=\"/service-areas/bellevue.html\">Bellevue service area</a></li>
               </ul>
             </div>
-            <div class=\"footer-mesh\">
-              <h3>RainWise resources</h3>
+            <div class=\"footer-resources\">
+              <h3>Resources</h3>
               <ul>
-                <li><a href=\"/rainwise.html\">Plan your RainWise rebate project</a></li>
-                <li><a href=\"/contact.html\">Schedule a RainWise consultation</a></li>
-                <li><a href=\"/blog/rainwise-rebate-guide.html\">Review our RainWise rebate guide</a></li>
+                <li><a href=\"/blog.html\">Read our maintenance guides</a></li>
+                <li><a href=\"/contact.html\">Schedule a consultation</a></li>
+                <li><a href=\"/portfolio.html\">View project portfolio</a></li>
               </ul>
             </div>
           </div>
@@ -456,17 +456,17 @@ def _gutter_installation_sections(city_name: str) -> list[str]:
         f"""
         <section class=\"feature-band\" id=\"financing\">
           <div class=\"container\">
-            <h2>Flexible financing</h2>
-            <p>Pair your seamless gutter installation with RainWise rebates or monthly payments starting under $75.</p>
+            <h2>Flexible Financing & Drainage Solutions</h2>
+            <p>We help integrate your seamless gutter installation with existing or new stormwater management systems, along with flexible monthly payments starting under $75.</p>
             <div class=\"hero-ctas\">
               <a class=\"btn btn-primary\" href=\"#quote\" data-track=\"gutter-installation_financing_apply\">Review financing options</a>
-              <a class=\"btn btn-outline\" href=\"/rainwise.html\" data-track=\"gutter-installation_financing_rainwise\">See RainWise bundle</a>
+              <a class=\"btn btn-outline\" href=\"/compliance.html\" data-track=\"gutter-installation_financing_drainage\">See Drainage Compliance Options</a>
             </div>
           </div>
         </section>
         """
     ).strip()
-
+    
     return [product_types, colors, warranty, financing]
 
 
@@ -726,7 +726,7 @@ SERVICE_CONFIGS = {
     "gutter-installation": {
         "service_name": "Seamless Gutter Installation",
         "sections": _gutter_installation_sections,
-        "description": lambda city: f"Custom seamless gutter installation in {city} with onsite fabrication, color-matched finishes, and RainWise-ready drainage.",
+        "description": lambda city: f"Custom seamless gutter installation in {city} with onsite fabrication, color-matched finishes, and sturdy gutter covers.",
         "intro": lambda city: f"We design seamless gutter systems for {city} homes and commercial builds, fabricating each run onsite for a perfect fit and immediate performance.",
         "highlights": [
             "Onsite fabrication for exact lengths",
@@ -748,12 +748,12 @@ SERVICE_CONFIGS = {
     "gutter-guard-installation": {
         "service_name": "Gutter Guard Installation",
         "sections": _gutter_guard_sections,
-        "description": lambda city: f"Gutter guard installation in {city} with tested systems that block debris, cut maintenance, and protect RainWise conveyance.",
+        "description": lambda city: f"Gutter guard installation in {city} with tested systems that block debris, cut maintenance, and protect your investment.",
         "intro": lambda city: f"Upgrade to gutter guards built for {city} tree cover. We compare systems, install them to manufacturer specs, and document maintenance routines.",
         "highlights": [
             "Micro-mesh, perforated, and reverse-curve options",
             "Annual maintenance plans available",
-            "RainWise-friendly installation techniques",
+            "Drainage-friendly installation techniques",
         ],
     },
     "roof-cleaning": {
