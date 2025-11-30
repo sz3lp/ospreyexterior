@@ -1,8 +1,8 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "Osprey Exterior Insights",
-  "home_page_url": "https://www.ospreyexterior.com/",
-  "feed_url": "https://www.ospreyexterior.com/feed.json",
+  "home_page_url": "https://ospreyexterior.com/",
+  "feed_url": "https://ospreyexterior.com/feed.json",
   "description": "Rainwise rebates, gutters, cisterns, and compliance updates from Osprey Exterior.",
   "items": [
     {
