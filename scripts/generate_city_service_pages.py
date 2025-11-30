@@ -140,6 +140,8 @@ FONTS = dedent(
       <link rel=\"manifest\" href=\"/manifest.json\">
       <link rel=\"alternate\" type=\"application/rss+xml\" title=\"Osprey Exterior Insights\" href=\"/rss.xml\">
       <link rel=\"alternate\" type=\"application/feed+json\" title=\"Osprey Exterior Insights\" href=\"/feed.json\">
+      <link rel=\"icon\" type=\"image/png\" href=\"/assets/images/favicon.png\" media=\"(prefers-color-scheme: light)\">
+      <link rel=\"icon\" type=\"image/png\" href=\"/assets/images/Osprey-Exterior-Icon-03-white.png\" media=\"(prefers-color-scheme: dark)\">
     """
 ).strip()
 
