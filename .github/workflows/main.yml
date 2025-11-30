@@ -48,13 +48,13 @@ jobs:
       # RUN PYTHON SCRIPTS
       # --------------------
       - name: Run batch_seo_update.py
-        run: python batch_seo_update.py
+        run: python scripts/batch_seo_update.py
 
       - name: Run generate_city_service_pages.py
-        run: python generate_city_service_pages.py
+        run: python scripts/generate_city_service_pages.py
 
       # --------------------
       # RUN NODE SCRIPT
       # --------------------
       - name: Run generate-localized-pages.mjs
-        run: node generate-localized-pages.mjs
+        run: node scripts/generate-localized-pages.mjs
