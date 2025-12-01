@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Legal Value AI | Injury Claim Valuation in 60 Seconds</title>
+    <meta
+      name="description"
+      content="Discover the probable value of your personal injury claim in under a minute. Legal Value AI analyzes verdict data to deliver secure, confidential case insights."
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                amber: '#f59f0b',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://unpkg.com/aos@next/dist/aos.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: 'Inter', ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .cta-pulse {
+        animation: pulse 2s infinite;
+      }
+    </style>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l !== 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5LGAI23');
+    </script>
+  </head>
+  <body class="bg-white text-slate-900 antialiased">
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5LGAI23"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <div class="relative min-h-screen overflow-hidden">
+      <header
+        class="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white"
+      >
+        <div
+          class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-24 lg:flex-row lg:items-center lg:py-32"
+          data-aos="fade-up"
+        >
+          <div class="w-full lg:w-1/2">
+            <div class="mb-6 flex items-center gap-4 text-xs uppercase tracking-wide text-slate-300">
+              <span class="inline-flex items-center gap-2 rounded-full bg-slate-800/70 px-3 py-1">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Secure
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-slate-800/70 px-3 py-1">
+                <span class="h-2 w-2 rounded-full bg-blue-400"></span> Confidential
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-slate-800/70 px-3 py-1">
+                <span class="h-2 w-2 rounded-full bg-amber-400"></span> No Obligation
+              </span>
+            </div>
+            <h1 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              Injured? Find out what your case could be worth in 60 seconds
+            </h1>
+            <p class="mt-6 text-lg text-slate-200">
+              AI analyzes verdict data to estimate your claim’s true value before you talk to a lawyer.
+            </p>
+            <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+              <button
+                id="estimate"
+                class="cta-pulse rounded-full bg-brand-amber px-8 py-3 text-base font-semibold text-slate-900 shadow-lg shadow-amber-500/30 transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                type="button"
+              >
+                Get Your Free Case Estimate
+              </button>
+              <div class="flex items-center gap-3 text-sm text-slate-300">
+                <span class="inline-flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 12.75 6 6 9-13.5"
+                    />
+                  </svg>
+                  Verified Attorneys
+                </span>
+                <span class="inline-flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 3v7.5a2.25 2.25 0 1 0 4.5 0V3m-9 0v7.5a2.25 2.25 0 1 1-4.5 0V3m18 18H3a1.5 1.5 0 0 1-1.5-1.5V9.75A2.25 2.25 0 0 1 3.75 7.5h16.5A2.25 2.25 0 0 1 22.5 9.75V19.5A1.5 1.5 0 0 1 21 21Z"
+                    />
+                  </svg>
+                  Encrypted Data
+                </span>
+                <span class="inline-flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75V21h15V9.75"
+                    />
+                  </svg>
+                  Nationwide Network
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="relative w-full lg:w-1/2">
+            <div
+              class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-2xl"
+            >
+              <img
+                src="/img/attorney-hero.webp"
+                alt="Attorney reviewing legal documents on a tablet"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-slate-900/30"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="bg-white py-20">
+          <div class="mx-auto max-w-6xl px-6">
+            <h2 class="text-center text-3xl font-semibold text-slate-900 sm:text-4xl" data-aos="fade-up">
+              Estimate Any Injury Claim with Precision
+            </h2>
+            <p class="mx-auto mt-4 max-w-2xl text-center text-base text-slate-600" data-aos="fade-up" data-aos-delay="100">
+              Legal Value AI examines millions of dollars in settlements to forecast outcomes across the most common personal injury case types.
+            </p>
+            <div
+              class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="50">
+                <lottie-player
+                  src="/anim/car.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Car Accidents</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  AI compares impact data and verdict trends to project payout range.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="100">
+                <lottie-player
+                  src="/anim/workplace.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="150"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Workplace Injuries</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  Pinpoints wage loss, medical care, and liability factors for accurate worker protection claims.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="150">
+                <lottie-player
+                  src="/anim/medical.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="200"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Medical Malpractice</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  Factors in expert testimony benchmarks and jurisdictional caps to forecast complex outcomes.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="200">
+                <lottie-player
+                  src="/anim/slip.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="250"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Slip &amp; Fall</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  Evaluates premises safety records and comparable verdicts to establish recovery potential.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="250">
+                <lottie-player
+                  src="/anim/wrongful-death.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="300"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Wrongful Death</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  Considers lifetime earnings, dependents, and punitive awards for compassionate guidance.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-8 text-center shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+                <lottie-player
+                  src="/anim/insurance.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="mx-auto h-40 w-40"
+                  data-aos="zoom-in"
+                  data-aos-delay="350"
+                ></lottie-player>
+                <h3 class="mt-4 text-xl font-bold text-slate-900">Insurance Bad Faith</h3>
+                <p class="mt-2 text-sm text-slate-500">
+                  Detects undervaluation tactics and recommends leverage points to secure fair settlements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="trust"
+          class="bg-slate-100 py-20"
+          data-observe-section="section3"
+        >
+          <div class="mx-auto max-w-6xl px-6">
+            <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+              <div class="flex justify-center" data-aos="fade-up">
+                <lottie-player
+                  src="/anim/scales.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="h-72 w-72"
+                ></lottie-player>
+              </div>
+              <div>
+                <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl" data-aos="fade-up">
+                  Why people trust Legal Value AI
+                </h2>
+                <p class="mt-4 text-base text-slate-600" data-aos="fade-up" data-aos-delay="100">
+                  We use real settlement data, not guesswork. Every estimate is generated from verified verdicts and adjusted for injury type, location, and claim complexity.
+                </p>
+                <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2" data-aos="fade-up" data-aos-delay="150">
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">47,000+</p>
+                    <p class="mt-1 text-sm text-slate-500">Cases analyzed</p>
+                  </div>
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">&lt; 60 seconds</p>
+                    <p class="mt-1 text-sm text-slate-500">Average response</p>
+                  </div>
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">Nationwide</p>
+                    <p class="mt-1 text-sm text-slate-500">Verified network</p>
+                  </div>
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">HIPAA-grade</p>
+                    <p class="mt-1 text-sm text-slate-500">Encryption safeguards</p>
+                  </div>
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">$0</p>
+                    <p class="mt-1 text-sm text-slate-500">Cost for valuation</p>
+                  </div>
+                  <div class="rounded-xl bg-white p-6 shadow-sm">
+                    <p class="text-2xl font-bold text-slate-900">Attorney trusted</p>
+                    <p class="mt-1 text-sm text-slate-500">Licensed partners nationwide</p>
+                  </div>
+                </div>
+                <div class="mt-12 space-y-6" data-aos="fade-up" data-aos-delay="200">
+                  <blockquote class="rounded-xl border border-slate-200 bg-white/80 p-6 shadow-sm" data-aos="fade-up" data-aos-delay="0">
+                    <p class="text-sm text-slate-700">
+                      “Legal Value AI gave us a settlement target that kept the insurer honest. The estimate was within 5% of the final award.”
+                    </p>
+                    <cite class="mt-3 block text-xs font-semibold uppercase tracking-wide text-slate-500">Jordan M., Atlanta GA</cite>
+                  </blockquote>
+                  <blockquote class="rounded-xl border border-slate-200 bg-white/80 p-6 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-sm text-slate-700">
+                      “The platform explained the valuation assumptions clearly, so I felt confident talking numbers with counsel.”
+                    </p>
+                    <cite class="mt-3 block text-xs font-semibold uppercase tracking-wide text-slate-500">Priya R., Austin TX</cite>
+                  </blockquote>
+                  <blockquote class="rounded-xl border border-slate-200 bg-white/80 p-6 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-sm text-slate-700">
+                      “Fast, private, and precise. I knew what to expect before the first legal consultation.”
+                    </p>
+                    <cite class="mt-3 block text-xs font-semibold uppercase tracking-wide text-slate-500">Christopher L., Seattle WA</cite>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.AOS) {
+          window.AOS.init({ duration: 600, once: true });
+        }
+
+        var ctaButton = document.getElementById('estimate');
+        if (ctaButton) {
+          ctaButton.addEventListener('click', function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'cta_click',
+              category: 'Hero',
+              label: 'Get Free Case Estimate',
+            });
+          });
+        }
+
+        var sectionElement = document.querySelector('[data-observe-section="section3"]');
+        if (sectionElement && 'IntersectionObserver' in window) {
+          var seen = false;
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting && !seen) {
+                  seen = true;
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    event: 'section3_view',
+                    category: 'trust',
+                  });
+                  observer.disconnect();
+                }
+              });
+            },
+            { threshold: 0.4 }
+          );
+          observer.observe(sectionElement);
+        }
+
+        var scrollMilestones = [0.25, 0.5, 0.75];
+        var firedMilestones = {};
+        window.addEventListener('scroll', function () {
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var docHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          if (docHeight <= 0) {
+            return;
+          }
+          var progress = scrollTop / docHeight;
+          scrollMilestones.forEach(function (milestone) {
+            if (!firedMilestones[milestone] && progress >= milestone) {
+              firedMilestones[milestone] = true;
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                event: 'scroll_' + Math.round(milestone * 100),
+                milestone: milestone,
+              });
+            }
+          });
+        });
+
+        var formTracked = new WeakSet();
+        var handleFormFocus = function (event) {
+          var form = event.target.closest('form');
+          if (form && !formTracked.has(form)) {
+            formTracked.add(form);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'form_start', formId: form.id || null });
+          }
+        };
+        document.addEventListener('focusin', handleFormFocus);
+
+        document.addEventListener('submit', function (event) {
+          var form = event.target;
+          if (form && form.nodeName === 'FORM') {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'form_submit_success',
+              formId: form.id || null,
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
