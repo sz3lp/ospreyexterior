@@ -2,6 +2,8 @@
 
 A production-ready Node.js workflow that ingests raw photos, detects job metadata automatically, converts to optimized WebP variants, uploads to Supabase Storage, and emits JSON feeds for static HTML components.
 
+> **Vercel-friendly ingest**: The `/api/uploadImage` serverless function now performs the same detection work without relying on the local file system. Field uploads land in Supabase Storage, and the serverless function downloads the `full` variant, analyzes it, and records metadata into a `jobs_table` row you can drive with Supabase triggers.
+
 ## Setup
 1. Install dependencies (Node 18+):
    ```bash
@@ -11,20 +13,19 @@ A production-ready Node.js workflow that ingests raw photos, detects job metadat
    ```bash
    export SUPABASE_URL="https://your-project.supabase.co"
    export SUPABASE_SERVICE_ROLE_KEY="service-role-key"
+   export SUPABASE_BUCKET="public" # optional if you use a different bucket
    ```
 3. Confirm the storage bucket `public` exists in Supabase with public access enabled.
 
+## Serverless flow on Vercel + Supabase
+1. Field techs upload directly to Supabase Storage (e.g., via `app/upload/`).
+2. Each upload calls `/api/uploadImage` with the storage object path.
+3. The function records the asset in `image_assets`, downloads the `full` image, runs the same image heuristics, and upserts a metadata row into `jobs_table` (`job_id`, `bucket`, `object_path`, `service_type`, descriptors, city/region/zip/lat/lng, `alt_text`).
+4. Add a Supabase trigger (or cron) that listens to `jobs_table` inserts/updates to fan out work (e.g., build public JSON, notify a worker, or update a CDN feed). This replaces the local batch job that previously wrote `jobs/{jobId}.json`.
+
 ## Automatic Job Ingestion
-- Drop **any** supported images (JPG, JPEG, PNG, WEBP, TIFF) directly into `./incoming-photos/` (no folders or naming required).
-- Run the pipeline (`npm run pipeline`), and the system will:
-  - Read EXIF GPS + timestamp (fallback: file creation time).
-  - Reverse-geocode GPS to city/region/zip (OpenStreetMap provider).
-  - Cluster photos into jobs when they are **<1 mile** and **<4 hours** apart (timestamp-only clustering if GPS is missing).
-  - Auto-detect service type with visual heuristics (moss → roof cleaning; brown needle clusters → gutter cleaning; bright concrete whitening → pressure washing; colorful point lights → holiday lighting; otherwise unknown).
-  - Score debris to assign **before**/**after** (dirtiest → before, cleanest → after).
-  - Generate SEO filenames, three WebP sizes, and Supabase public URLs.
-  - Build `/jobs/{jobId}.json` and refresh `/jobs/index.json`.
-  - Archive originals to `./incoming-photos/processed/{jobId}/`.
+- **Preferred (cloud)**: Let Supabase Storage + `/api/uploadImage` handle processing as described above. Use Supabase triggers to distribute JSON or notifications from `jobs_table`.
+- **Legacy local batch**: Drop supported images (JPG, JPEG, PNG, WEBP, TIFF) into `./incoming-photos/` and run `npm run pipeline` to execute the original file-system workflow (EXIF parsing, clustering, JSON writing, archive of originals, etc.).
 
 ## Running the Pipeline
 - One-time run:
@@ -97,7 +98,7 @@ Global index (`./jobs/index.json`):
     window.__SUPABASE_BUCKET__ = 'public';
   </script>
   ```
-- On your phone, open `/app/upload/`, enter a `job-...` ID, and capture a photo (rear camera enforced). The UI compresses to thumb/medium/full JPEGs, uploads to `jobs/{jobId}/{variant}/{timestamp}.jpg`, and posts metadata to `/api/uploadImage`.
+- On your phone, open `/app/upload/`, enter a `job-...` ID, and capture a photo (rear camera enforced). The UI compresses to thumb/medium/full JPEGs, uploads to `jobs/{jobId}/{variant}/{timestamp}.jpg`, and posts metadata (including the storage object path) to `/api/uploadImage` for serverless processing.
 - Progress indicators update per variant; errors surface inline. The last-used job ID persists locally for quicker field use.
 - If Supabase globals are missing at load time, the page will fetch `/api/uploadConfig` (anon key + bucket) and show a clear error if credentials are not present in the environment.
 

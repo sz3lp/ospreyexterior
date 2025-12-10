@@ -150,7 +150,7 @@ async function uploadVariant(supabase, jobId, variant, blob) {
     .upload(path, blob, { contentType: 'image/jpeg', upsert: false });
   if (error) throw error;
   const { data: publicData } = supabase.storage.from(supabaseConfig.bucket).getPublicUrl(path);
-  return { filename, url: publicData.publicUrl, variant };
+  return { filename, url: publicData.publicUrl, variant, path };
 }
 
 async function notifyBackend(payload) {
@@ -203,6 +203,7 @@ async function processFile(supabase, jobId, file) {
       variant: variant.label,
       type: 'photo',
       url: result.url,
+      objectPath: result.path,
       originalName: file.name,
     });
     statusSpan.textContent = 'done';
