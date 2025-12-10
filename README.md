@@ -1,6 +1,6 @@
 # Osprey Exterior Image Pipeline
 
-A production-ready Node.js workflow that converts raw job photos into optimized WebP assets, publishes them to Supabase Storage, and outputs JSON feeds for your static HTML components.
+SA production-ready Node.js workflow that ingests raw photos, detects job metadata automatically, converts to optimized WebP variants, uploads to Supabase Storage, and emits JSON feeds for static HTML components.
 
 ## Setup
 1. Install dependencies (Node 18+):
@@ -14,11 +14,17 @@ A production-ready Node.js workflow that converts raw job photos into optimized 
    ```
 3. Confirm the storage bucket `public` exists in Supabase with public access enabled.
 
-## Folder Conventions
-- Drop raw images into `./incoming-photos/` using **one folder per job** with the pattern `city-service-word2-YYYY-MM-DD`, e.g. `incoming-photos/anacortes-gutter-cleaning-2025-01-14/`.
-- The pipeline parses the folder name into city, service, and job date automatically. Job IDs are generated as `job-YYYYMMDD-<shortid>`.
-- Supported formats: JPG, JPEG, PNG, WEBP, TIFF.
-- Filenames can be anything; tokens still help alt text (e.g., include "overflow" or "moss" if present), but no manual metadata entry is required.
+## Automatic Job Ingestion
+- Drop **any** supported images (JPG, JPEG, PNG, WEBP, TIFF) directly into `./incoming-photos/` (no folders or naming required).
+- Run the pipeline (`npm run pipeline`), and the system will:
+  - Read EXIF GPS + timestamp (fallback: file creation time).
+  - Reverse-geocode GPS to city/region/zip (OpenStreetMap provider).
+  - Cluster photos into jobs when they are **<1 mile** and **<4 hours** apart (timestamp-only clustering if GPS is missing).
+  - Auto-detect service type with visual heuristics (moss → roof cleaning; brown needle clusters → gutter cleaning; bright concrete whitening → pressure washing; colorful point lights → holiday lighting; otherwise unknown).
+  - Score debris to assign **before**/**after** (dirtiest → before, cleanest → after).
+  - Generate SEO filenames, three WebP sizes, and Supabase public URLs.
+  - Build `/jobs/{jobId}.json` and refresh `/jobs/index.json`.
+  - Archive originals to `./incoming-photos/processed/{jobId}/`.
 
 ## Running the Pipeline
 - One-time run:
@@ -30,28 +36,26 @@ A production-ready Node.js workflow that converts raw job photos into optimized 
   npm run pipeline:watch
   ```
 
-The script will:
-1. Detect city, service, date, descriptors, story height, and before/after status automatically from the **job folder name** plus quick image-content analysis (brightness, color dominance, debris heuristics).
-2. Generate SEO filenames like `ospreyexterior-gutter-cleaning-bellingham-heavy-clog-before-20250114-a3f-full.webp`.
-3. Produce three sizes per image (full 2400px, medium 1200px, mobile 600px) in WebP.
-4. Upload to Supabase Storage at `public/osprey/{service}/{city}/{jobID}/{before|after}/` and return public URLs.
-5. Auto-build per-job JSON at `./jobs/{city}/{service}/{jobID}.json` (including descriptors and image metadata) and refresh `./jobs/index.json` using the first after-image as the thumbnail.
-6. Archive originals to `./incoming-photos/processed/{jobID}/` to avoid reprocessing.
+## Storage Layout
+- Supabase uploads: `public/{jobId}/{filename}.webp` (variants: full/medium/mobile).
+- Originals archived at `./incoming-photos/processed/{jobId}/`.
 
 ## JSON Output
-Per job (`./jobs/{city}/{service}/{jobID}.json`):
+Per job (`./jobs/{jobId}.json`):
 ```json
 {
+  "job_id": "job-20250114-a3f29",
   "city": "Bellingham",
-  "service": "Gutter Cleaning",
-  "date": "2025-01-14",
-  "jobID": "job-20250114-a3f",
-  "images": [
-    { "src": "PUBLIC_URL", "alt": "...", "size": "full", "type": "before" },
-    { "src": "PUBLIC_URL", "alt": "...", "size": "medium", "type": "before" },
-    { "src": "PUBLIC_URL", "alt": "...", "size": "mobile", "type": "before" },
-    { "src": "PUBLIC_URL", "alt": "...", "size": "full", "type": "after" }
-  ]
+  "region": "Washington",
+  "zip": "98225",
+  "lat": 48.7423,
+  "lng": -122.4781,
+  "service_type": "gutter-cleaning",
+  "start_time": 1736898322000,
+  "end_time": 1736900028000,
+  "before": [{ "src": "...", "alt": "...", "size": "full", "type": "before" }],
+  "after": [{ "src": "...", "alt": "...", "size": "full", "type": "after" }],
+  "all_photos": [{ "src": "...", "alt": "...", "size": "full", "type": "before" }, { "src": "...", "size": "medium", "type": "before" }]
 }
 ```
 
@@ -60,8 +64,8 @@ Global index (`./jobs/index.json`):
 [
   {
     "city": "Bellingham",
-    "service": "Gutter Cleaning",
-    "jobID": "job-20250114-a3f",
+    "service": "gutter-cleaning",
+    "jobID": "job-20250114-a3f29",
     "date": "2025-01-14",
     "thumb": "FIRST_AFTER_IMAGE_URL"
   }
@@ -69,30 +73,21 @@ Global index (`./jobs/index.json`):
 ```
 
 ## Alt Text Strategy
-The pipeline builds descriptive, SEO-focused alt text using:
-- Detected service and city
-- Before/after context
-- Debris and water-flow keywords from filenames
-- Roof condition hints
-- Story height phrases
+- Descriptive SEO phrasing leveraging detected service type, locality (city/region), and before/after context.
+- Debris-focused language for before shots; clean/flow-focused language for after shots.
 
-Before shots emphasize the problem (clogging, overflow, staining); after shots highlight restored flow and clean roof edges.
-
-## Autodetection Logic
-- **Job metadata**: Folder name `city-service-word2-YYYY-MM-DD` yields city, service, and date; the pipeline auto-generates a job ID (`job-YYYYMMDD-xxxx`).
-- **Descriptors**: Quick image statistics drive descriptors: dark, low-light channels → `heavy-clog`; warm sandy tones → `granule-build-up`; green-dominant → `moss`; blue/edge highlights or filename tokens → `overflow`; `guard/mesh` tokens → `installed-guard`; bright/low-variance → `clean-gutter`.
-- **Before/after**: Each image gets a debris score (inverse brightness + variance plus organic-weighting). Higher scores become **before**; cleaner scores become **after**. If scores are nearly identical, the first half of images are treated as before and the rest as after.
-
-## Adding Services or Cities
-Edit `imagePipeline.config.js`:
-- Add to `services` with `slug`, `name`, `keywords`, `descriptors`, and `flowKeywords`.
-- Add to `cities` with `slug`, `name`, `state`, and `keywords`.
+## Detection Logic
+- **Clustering:** Photos are grouped into a job when they are captured within 4 hours and within 1 mile (distance check skipped if GPS is missing; timestamp-only clustering used instead).
+- **Location:** EXIF GPS → reverse geocode → city/region/zip; if absent, reuse the last known location; otherwise city becomes `Unknown`.
+- **Service:** Visual heuristics—moss → roof cleaning; heavy debris/granules/guards → gutter cleaning; bright uniform whitening → pressure washing; high color spread with bright means → holiday lighting; fallback `unknown`.
+- **Descriptors:** Image statistics drive descriptors (heavy-clog, granule-build-up, moss, overflow, installed-guard, clean-gutter).
+- **Before/after:** Debris score ranks images (dirtiest → before, cleanest → after).
 
 ## HTML Integration
 - Use `job-gallery.html` to render a grid of jobs fed by `jobs/index.json`.
-- Use `job-slider.html` for a per-job before/after slider. Set `data-before` and `data-after` to the desired image URLs (medium size recommended).
+- Use `job-slider.html` for per-job before/after sliders. Set `data-before` and `data-after` to desired URLs (medium size recommended).
 
 ## Troubleshooting
-- If uploads fail, ensure service role key is configured and the `public` bucket allows public reads.
-- If jobs are missing, verify filenames include city/service cues and that the incoming folder is not empty.
-- Archive folder keeps originals; clear it anytime without affecting Supabase assets or JSON output.
+- Missing uploads: verify Supabase credentials and that the `public` bucket allows public reads.
+- Empty jobs: confirm EXIF timestamps exist or that files have correct creation times; ensure images reside directly in `incoming-photos/` (not inside the `processed` archive).
+- Geocode gaps: if GPS is missing, the pipeline falls back to the last known location; otherwise, city is marked as `Unknown`.
