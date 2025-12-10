@@ -1,0 +1,62 @@
+<div class="job-slider" data-before="" data-after="">
+  <div class="job-slider__images">
+    <img class="job-slider__image job-slider__image--before" src="" alt="Before" loading="lazy">
+    <img class="job-slider__image job-slider__image--after" src="" alt="After" loading="lazy">
+    <div class="job-slider__handle" id="job-slider-handle"></div>
+  </div>
+  <div class="job-slider__labels">
+    <span>Before</span>
+    <span>After</span>
+  </div>
+</div>
+
+<style>
+  .job-slider { position: relative; max-width: 960px; margin: 1.5rem auto; }
+  .job-slider__images { position: relative; overflow: hidden; border-radius: 12px; }
+  .job-slider__image { display: block; width: 100%; height: auto; }
+  .job-slider__image--after { position: absolute; inset: 0; clip-path: inset(0 0 0 50%); transition: clip-path 0.2s ease; }
+  .job-slider__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; box-shadow: 0 0 0 2px #1a202c; cursor: ew-resize; }
+  .job-slider__handle::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px; border-radius: 50%; background: #1a202c; border: 3px solid #fff; }
+  .job-slider__labels { display: flex; justify-content: space-between; margin-top: 0.5rem; font-weight: 600; color: #2d3748; }
+</style>
+
+<script>
+  (() => {
+    const slider = document.querySelector('.job-slider');
+    const beforeImage = slider.querySelector('.job-slider__image--before');
+    const afterImage = slider.querySelector('.job-slider__image--after');
+    const handle = slider.querySelector('.job-slider__handle');
+
+    const beforeSrc = slider.dataset.before;
+    const afterSrc = slider.dataset.after;
+    if (beforeSrc) beforeImage.src = beforeSrc;
+    if (afterSrc) afterImage.src = afterSrc;
+
+    const updatePosition = (clientX) => {
+      const bounds = slider.getBoundingClientRect();
+      const pos = Math.min(Math.max(clientX - bounds.left, 0), bounds.width);
+      const percent = (pos / bounds.width) * 100;
+      afterImage.style.clipPath = `inset(0 0 0 ${percent}%)`;
+      handle.style.left = `${percent}%`;
+    };
+
+    const startDrag = (event) => {
+      event.preventDefault();
+      const move = (e) => updatePosition(e.touches ? e.touches[0].clientX : e.clientX);
+      const end = () => {
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('touchmove', move);
+        window.removeEventListener('mouseup', end);
+        window.removeEventListener('touchend', end);
+      };
+      window.addEventListener('mousemove', move);
+      window.addEventListener('touchmove', move);
+      window.addEventListener('mouseup', end);
+      window.addEventListener('touchend', end);
+    };
+
+    handle.addEventListener('mousedown', startDrag);
+    handle.addEventListener('touchstart', startDrag);
+    slider.addEventListener('click', (e) => updatePosition(e.clientX));
+  })();
+</script>
