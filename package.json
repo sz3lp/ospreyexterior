@@ -1,0 +1,19 @@
+{
+  "name": "ospreyexterior-image-pipeline",
+  "version": "1.0.0",
+  "description": "Automated image processing pipeline for Osprey Exterior static site assets.",
+  "type": "commonjs",
+  "scripts": {
+    "pipeline": "node imagePipeline.js",
+    "pipeline:watch": "node imagePipeline.js --watch"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.0",
+    "chokidar": "^3.6.0",
+    "exif-parser": "^0.1.12",
+    "fs-extra": "^11.2.0",
+    "haversine-distance": "^1.1.1",
+    "node-geocoder": "^4.2.0",
+    "sharp": "^0.33.4"
+  }
+}
