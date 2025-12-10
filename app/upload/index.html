@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Osprey Exterior Upload</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script>
+    window.__SUPABASE_URL__ = window.__SUPABASE_URL__ || '';
+    window.__SUPABASE_ANON_KEY__ = window.__SUPABASE_ANON_KEY__ || '';
+    window.__SUPABASE_BUCKET__ = window.__SUPABASE_BUCKET__ || 'public';
+  </script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Field Upload Console</p>
+        <h1>Send Job Photos</h1>
+      </div>
+      <p class="status" id="status">Ready</p>
+    </header>
+    <section class="card">
+      <label class="field-label" for="jobId">Job ID</label>
+      <input id="jobId" class="text-input" type="text" placeholder="job-20250114-a3f29" autocapitalize="none" autocomplete="off" />
+
+      <label class="field-label" for="photoInput">Capture Photo</label>
+      <input id="photoInput" class="file-input" type="file" accept="image/*" capture="environment" />
+
+      <button id="uploadBtn" class="primary-btn" type="button">Upload</button>
+      <p class="helper">Take a photo, verify the job ID, then upload. Each shot creates thumb, medium, and full variants.</p>
+    </section>
+
+    <section class="card" id="progressCard">
+      <h2>Upload Progress</h2>
+      <ul id="progressList" class="progress-list"></ul>
+    </section>
+
+    <section class="card" id="messages">
+      <p class="message" id="messageText"></p>
+    </section>
+  </main>
+  <script type="module" src="./upload.js"></script>
+</body>
+</html>
