@@ -10,6 +10,9 @@ const progressList = document.getElementById('progressList');
 const uploadBtn = document.getElementById('uploadBtn');
 const jobIdInput = document.getElementById('jobId');
 const fileInput = document.getElementById('photoInput');
+const dropArea = document.getElementById('dropArea');
+const browseBtn = document.getElementById('browseBtn');
+const fileCount = document.getElementById('fileCount');
 
 const lastJobKey = 'osprey:lastJobId';
 const allowedVariants = ['thumb', 'medium', 'full'];
@@ -35,14 +38,24 @@ function ensureSupabase() {
   return createClient(supabaseUrl, supabaseKey);
 }
 
-function createListItem(label) {
+function createListItem(fileName, variantLabel) {
   const li = document.createElement('li');
+  const label = document.createElement('div');
+  label.className = 'file-label';
   const nameSpan = document.createElement('span');
-  nameSpan.textContent = label;
+  nameSpan.className = 'file-name';
+  nameSpan.textContent = fileName;
+  const variantSpan = document.createElement('span');
+  variantSpan.className = 'variant-label';
+  variantSpan.textContent = variantLabel;
+  label.appendChild(nameSpan);
+  label.appendChild(variantSpan);
+
   const statusSpan = document.createElement('span');
   statusSpan.className = 'progress-status';
   statusSpan.textContent = 'pending';
-  li.appendChild(nameSpan);
+
+  li.appendChild(label);
   li.appendChild(statusSpan);
   progressList.appendChild(li);
   return statusSpan;
@@ -111,20 +124,60 @@ async function notifyBackend(payload) {
   }
 }
 
-async function handleUpload() {
+function updateFileCount(count) {
+  fileCount.textContent = `${count} file${count === 1 ? '' : 's'}`;
+}
+
+function getSelectedFiles(event) {
+  const files = event?.dataTransfer?.files || fileInput.files;
+  const valid = Array.from(files || []).filter((file) => file.type.startsWith('image/'));
+  if (valid.length !== (files ? files.length : 0)) {
+    setMessage('Only image files are allowed.', 'error');
+  }
+  updateFileCount(valid.length);
+  return valid;
+}
+
+async function processFile(supabase, jobId, file) {
+  const variants = [
+    { label: 'thumb', maxWidth: 400 },
+    { label: 'medium', maxWidth: 800 },
+    { label: 'full', maxWidth: 1920 },
+  ];
+
+  for (const variant of variants) {
+    const statusSpan = createListItem(file.name, `${variant.label} variant`);
+    statusSpan.textContent = 'resizing';
+    const blob = await resizeImage(file, variant.maxWidth);
+    statusSpan.textContent = 'uploading';
+    const result = await uploadVariant(supabase, jobId, variant.label, blob);
+    statusSpan.textContent = 'recording';
+    await notifyBackend({
+      jobId,
+      filename: result.filename,
+      variant: variant.label,
+      type: 'photo',
+      url: result.url,
+      originalName: file.name,
+    });
+    statusSpan.textContent = 'done';
+  }
+}
+
+async function handleUpload(event) {
+  event?.preventDefault();
   setMessage('');
   progressList.innerHTML = '';
 
   const jobId = jobIdInput.value.trim();
-  const file = fileInput.files && fileInput.files[0];
-
   if (!jobId) {
     setMessage('Enter a job ID before uploading.', 'error');
     return;
   }
 
-  if (!file) {
-    setMessage('Capture or select a photo first.', 'error');
+  const files = getSelectedFiles(event);
+  if (!files || files.length === 0) {
+    setMessage('Add one or more photos first.', 'error');
     return;
   }
 
@@ -136,48 +189,54 @@ async function handleUpload() {
     return;
   }
 
-  const variants = [
-    { label: 'thumb', maxWidth: 400 },
-    { label: 'medium', maxWidth: 800 },
-    { label: 'full', maxWidth: 1920 },
-  ];
-
-  const uploads = [];
-
   setStatus('Processing', 'pending');
   uploadBtn.disabled = true;
 
-  for (const variant of variants) {
-    const statusSpan = createListItem(`${variant.label} variant`);
-    statusSpan.textContent = 'resizing';
-    try {
-      const blob = await resizeImage(file, variant.maxWidth);
-      statusSpan.textContent = 'uploading';
-      const result = await uploadVariant(supabase, jobId, variant.label, blob);
-      statusSpan.textContent = 'recording';
-      await notifyBackend({
-        jobId,
-        filename: result.filename,
-        variant: variant.label,
-        type: 'photo',
-        url: result.url,
-      });
-      uploads.push(result);
-      statusSpan.textContent = 'done';
-    } catch (err) {
-      statusSpan.textContent = 'error';
-      setStatus('Error', 'error');
-      setMessage(err.message || 'Upload failed', 'error');
-      uploadBtn.disabled = false;
-      return;
+  try {
+    for (const file of files) {
+      await processFile(supabase, jobId, file);
     }
+    localStorage.setItem(lastJobKey, jobId);
+    setStatus('Uploaded', 'success');
+    setMessage(`Uploaded ${files.length} file${files.length === 1 ? '' : 's'} with multiple variants.`, 'success');
+    fileInput.value = '';
+    updateFileCount(0);
+  } catch (err) {
+    setStatus('Error', 'error');
+    setMessage(err.message || 'Upload failed', 'error');
+  } finally {
+    uploadBtn.disabled = false;
   }
-
-  localStorage.setItem(lastJobKey, jobId);
-  setStatus('Uploaded', 'success');
-  setMessage(`Uploaded ${uploads.length} variants.`, 'success');
-  fileInput.value = '';
-  uploadBtn.disabled = false;
 }
 
 uploadBtn.addEventListener('click', handleUpload);
+browseBtn.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (event) => {
+  const files = getSelectedFiles(event);
+  if (files.length > 0) {
+    handleUpload();
+  }
+});
+
+['dragenter', 'dragover'].forEach((eventName) => {
+  dropArea.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    dropArea.classList.add('dragover');
+  });
+});
+
+['dragleave', 'drop'].forEach((eventName) => {
+  dropArea.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    dropArea.classList.remove('dragover');
+  });
+});
+
+dropArea.addEventListener('drop', (event) => {
+  const files = getSelectedFiles(event);
+  if (files.length > 0) {
+    handleUpload(event);
+  }
+});
