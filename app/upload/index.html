@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Osprey Exterior Upload</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="/app/upload/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     window.__SUPABASE_URL__ = window.__SUPABASE_URL__ || '';
     window.__SUPABASE_ANON_KEY__ = window.__SUPABASE_ANON_KEY__ || '';
@@ -13,26 +16,41 @@
 </head>
 <body>
   <main class="app-shell">
-    <header class="app-header">
+    <header class="app-hero">
       <div>
         <p class="eyebrow">Field Upload Console</p>
         <h1>Send Job Photos</h1>
+        <p class="lede">Upload multiple shots at once, track each variant, and keep your crew moving.</p>
       </div>
       <p class="status" id="status">Ready</p>
     </header>
+
     <section class="card">
-      <label class="field-label" for="jobId">Job ID</label>
-      <input id="jobId" class="text-input" type="text" placeholder="job-20250114-a3f29" autocapitalize="none" autocomplete="off" />
+      <div class="field-grid">
+        <label class="field-label" for="jobId">Job ID</label>
+        <input id="jobId" class="text-input" type="text" placeholder="job-20250114-a3f29" autocapitalize="none" autocomplete="off" />
+      </div>
 
-      <label class="field-label" for="photoInput">Capture Photo</label>
-      <input id="photoInput" class="file-input" type="file" accept="image/*" capture="environment" />
+      <div class="upload-drop" id="dropArea">
+        <div class="drop-copy">
+          <p class="drop-title">Drop images or browse</p>
+          <p class="drop-subtitle">High-res photos are resized automatically into thumb, medium, and full variants.</p>
+          <button class="ghost-btn" type="button" id="browseBtn">Choose files</button>
+        </div>
+        <input id="photoInput" class="file-input" type="file" accept="image/*" multiple />
+      </div>
 
-      <button id="uploadBtn" class="primary-btn" type="button">Upload</button>
-      <p class="helper">Take a photo, verify the job ID, then upload. Each shot creates thumb, medium, and full variants.</p>
+      <div class="actions">
+        <button id="uploadBtn" class="primary-btn" type="button">Start upload</button>
+        <p class="helper">Select or drop multiple photos. We remember the last job ID you used.</p>
+      </div>
     </section>
 
     <section class="card" id="progressCard">
-      <h2>Upload Progress</h2>
+      <div class="card-head">
+        <h2>Upload Progress</h2>
+        <span class="pill" id="fileCount">0 files</span>
+      </div>
       <ul id="progressList" class="progress-list"></ul>
     </section>
 
@@ -40,6 +58,6 @@
       <p class="message" id="messageText"></p>
     </section>
   </main>
-  <script type="module" src="./upload.js"></script>
+  <script type="module" src="/app/upload/upload.js"></script>
 </body>
 </html>

@@ -99,6 +99,7 @@ Global index (`./jobs/index.json`):
   ```
 - On your phone, open `/app/upload/`, enter a `job-...` ID, and capture a photo (rear camera enforced). The UI compresses to thumb/medium/full JPEGs, uploads to `jobs/{jobId}/{variant}/{timestamp}.jpg`, and posts metadata to `/api/uploadImage`.
 - Progress indicators update per variant; errors surface inline. The last-used job ID persists locally for quicker field use.
+- If Supabase globals are missing at load time, the page will fetch `/api/uploadConfig` (anon key + bucket) and show a clear error if credentials are not present in the environment.
 
 ## Troubleshooting
 - Missing uploads: verify Supabase credentials and that the `public` bucket allows public reads.
