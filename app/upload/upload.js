@@ -1,8 +1,14 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.47.0/dist/esm/index.js';
 
-const supabaseUrl = window.__SUPABASE_URL__;
-const supabaseKey = window.__SUPABASE_ANON_KEY__;
-const supabaseBucket = window.__SUPABASE_BUCKET__ || 'public';
+let supabaseConfig = {
+  url: window.__SUPABASE_URL__ || '',
+  key: window.__SUPABASE_ANON_KEY__ || '',
+  bucket: window.__SUPABASE_BUCKET__ || 'public',
+};
+
+let configPromise = null;
+let configResolved = Boolean(supabaseConfig.url && supabaseConfig.key);
+let configError = '';
 
 const statusEl = document.getElementById('status');
 const messageEl = document.getElementById('messageText');
@@ -31,11 +37,50 @@ function setMessage(text, tone = 'neutral') {
   messageEl.className = `message ${tone}`;
 }
 
-function ensureSupabase() {
-  if (!supabaseUrl || !supabaseKey) {
+async function fetchSupabaseConfig() {
+  try {
+    const response = await fetch('/api/uploadConfig');
+    if (!response.ok) {
+      throw new Error('Could not load upload configuration.');
+    }
+    const body = await response.json();
+    supabaseConfig = {
+      url: body.url || '',
+      key: body.anonKey || '',
+      bucket: body.bucket || 'public',
+    };
+    configResolved = Boolean(supabaseConfig.url && supabaseConfig.key);
+    if (!configResolved) {
+      throw new Error('Upload service is missing Supabase credentials.');
+    }
+    setStatus('Ready', 'success');
+    setMessage('Upload service ready.', 'success');
+  } catch (err) {
+    configResolved = false;
+    configError = err instanceof Error ? err.message : 'Unable to set up uploads yet.';
+    setStatus('Error', 'error');
+    setMessage(configError, 'error');
+  }
+}
+
+function ensureConfig() {
+  if (configResolved) return Promise.resolve();
+  if (!configPromise) {
+    setStatus('Checking settings', 'pending');
+    configPromise = fetchSupabaseConfig();
+  }
+  return configPromise;
+}
+
+async function ensureSupabase() {
+  if (!configResolved && configPromise) {
+    await configPromise;
+  }
+
+  if (!supabaseConfig.url || !supabaseConfig.key) {
     throw new Error('Supabase URL and anon key must be provided before uploading.');
   }
-  return createClient(supabaseUrl, supabaseKey);
+  return createClient(supabaseConfig.url, supabaseConfig.key);
 }
 
 function createListItem(fileName, variantLabel) {
@@ -101,10 +146,10 @@ async function uploadVariant(supabase, jobId, variant, blob) {
   const filename = `${timestamp}.jpg`;
   const path = `jobs/${jobId}/${variant}/${filename}`;
   const { error } = await supabase.storage
-    .from(supabaseBucket)
+    .from(supabaseConfig.bucket)
     .upload(path, blob, { contentType: 'image/jpeg', upsert: false });
   if (error) throw error;
-  const { data: publicData } = supabase.storage.from(supabaseBucket).getPublicUrl(path);
+  const { data: publicData } = supabase.storage.from(supabaseConfig.bucket).getPublicUrl(path);
   return { filename, url: publicData.publicUrl, variant };
 }
 
@@ -181,18 +226,12 @@ async function handleUpload(event) {
     return;
   }
 
-  let supabase;
   try {
-    supabase = ensureSupabase();
-  } catch (err) {
-    setMessage(err.message, 'error');
-    return;
-  }
+    await ensureConfig();
+    const supabase = await ensureSupabase();
+    setStatus('Processing', 'pending');
+    uploadBtn.disabled = true;
 
-  setStatus('Processing', 'pending');
-  uploadBtn.disabled = true;
-
-  try {
     for (const file of files) {
       await processFile(supabase, jobId, file);
     }
@@ -203,7 +242,8 @@ async function handleUpload(event) {
     updateFileCount(0);
   } catch (err) {
     setStatus('Error', 'error');
-    setMessage(err.message || 'Upload failed', 'error');
+    const errorText = err instanceof Error ? err.message : 'Upload failed';
+    setMessage(errorText || configError, 'error');
   } finally {
     uploadBtn.disabled = false;
   }
@@ -211,7 +251,12 @@ async function handleUpload(event) {
 
 uploadBtn.addEventListener('click', handleUpload);
 browseBtn.addEventListener('click', () => fileInput.click());
-fileInput.addEventListener('change', () => updateFileCount(fileInput.files.length));
+fileInput.addEventListener('change', (event) => {
+  const files = getSelectedFiles(event);
+  if (files.length > 0) {
+    handleUpload();
+  }
+});
 
 ['dragenter', 'dragover'].forEach((eventName) => {
   dropArea.addEventListener(eventName, (event) => {
@@ -235,3 +280,5 @@ dropArea.addEventListener('drop', (event) => {
     handleUpload(event);
   }
 });
+
+ensureConfig();
