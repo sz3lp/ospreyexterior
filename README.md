@@ -1,6 +1,6 @@
 # Osprey Exterior Image Pipeline
 
-A production-ready Node.js workflow that ingests raw photos, detects job metadata automatically, converts to optimized WebP variants, uploads to Supabase Storage, and emits JSON feeds for static HTML components.
+SA production-ready Node.js workflow that ingests raw photos, detects job metadata automatically, converts to optimized WebP variants, uploads to Supabase Storage, and emits JSON feeds for static HTML components.
 
 ## Setup
 1. Install dependencies (Node 18+):
