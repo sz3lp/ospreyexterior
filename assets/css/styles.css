@@ -1244,6 +1244,12 @@ th {
   font-weight: 600;
 }
 
+.byline {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
 .gallery {
   display: grid;
   gap: 1.5rem;
