@@ -76,24 +76,7 @@
         "image": "https://ospreyexterior.com/public/img/osprey-default-share.webp",
         "slogan": "Fall-ready exterior care for the Pacific Northwest",
         "description": "Fall gutter installation, cleaning, and holiday lighting crews keeping Seattle and Redmond homes storm-ready and festive before winter hits.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "10400 NE 4th St Suite 210",
-          "addressLocality": "Bellevue",
-          "addressRegion": "WA",
-          "postalCode": "98004",
-          "addressCountry": "US"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 47.6101,
-          "longitude": -122.2015
-        },
         "areaServed": [
-          {
-            "@type": "City",
-            "name": "Seattle"
-          },
           {
             "@type": "City",
             "name": "Bellevue"
@@ -101,6 +84,18 @@
           {
             "@type": "City",
             "name": "Redmond"
+          },
+          {
+            "@type": "City",
+            "name": "Kirkland"
+          },
+          {
+            "@type": "City",
+            "name": "Seattle"
+          },
+          {
+            "@type": "City",
+            "name": "Issaquah"
           }
         ],
         "openingHoursSpecification": [
@@ -115,27 +110,8 @@
             ],
             "opens": "08:00",
             "closes": "18:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "https://schema.org/Saturday",
-            "opens": "09:00",
-            "closes": "16:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "https://schema.org/Sunday",
-            "opens": "00:00",
-            "closes": "00:00",
-            "description": "Closed on Sunday"
           }
         ],
-        "specialOpeningHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "opens": "00:00",
-          "closes": "00:00",
-          "description": "Closed on federal holidays"
-        },
         "sameAs": [
           "https://www.google.com/maps/place/Osprey+Exterior/",
           "https://www.facebook.com/ospreyexterior",
@@ -150,8 +126,32 @@
           "reviewCount": "87"
         },
         "telephone": "+1-425-550-1727",
-        "email": "inquiries@ospreyexterior.com",
-        "priceRange": "$$"
+        "email": "luke@ospreyexterior.com",
+        "priceRange": "$$",
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "license",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Washington State Department of Labor & Industries"
+          },
+          "identifier": "OSPREE*763QD",
+          "url": "https://secure.lni.wa.gov/verify/Detail.aspx?UBI=605353403&LIC=OSPREE*763QD&SAW="
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ospreyexterior.com/#organization",
+        "name": "Osprey Exterior",
+        "url": "https://ospreyexterior.com/",
+        "logo": "https://ospreyexterior.com/assets/images/Osprey-Exterior-Logo3-01-BLUE.png",
+        "founder": {
+          "@id": "https://ospreyexterior.com/founder.html#person"
+        },
+        "sameAs": [
+          "https://share.google/TkBBuPFcKfhdDIEJD",
+          "https://www.facebook.com/profile.php?id=61568566660792#"
+        ]
       }
     ]
   }
@@ -513,13 +513,16 @@
           <li><a href="/service-areas/redmond.html">Redmond</a></li>
           <li><a href="/service-areas/issaquah.html">Issaquah</a></li>
         </ul>
-        <p style="max-width:32rem;">Serving high-value properties in 98004, 98039, 98040, 98112, 98119, 98102, 98199, 98005, 98006, 98007, 98008, 98052, 98053, 98074, 98075, 98027, 98029, 98056, 98059, and 98033.</p>
+        <p style="max-width:32rem;">Serving the Greater Puget Sound Region: Bellevue • Redmond • Kirkland • Seattle • Issaquah and surrounding communities.</p>
       </div>
       <div>
         <h4 style="font-family:var(--font-heading);">Contact</h4>
+        <p><strong>Osprey Exterior</strong></p>
+        <p>Serving the Greater Puget Sound Region<br>Bellevue • Redmond • Kirkland • Seattle</p>
         <p>Phone: <a href="tel:+14255501727" onclick="gtag('event', 'conversion', {'send_to': 'AW-11395982028/...'});">(425) 550-1727</a></p>
-        <p>Email: <a href="mailto:inquiries@ospreyexterior.com">inquiries@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
-        <p>License: OSPREE*763QD · Licensed, bonded, insured</p>
+        <p>Email: <a href="mailto:luke@ospreyexterior.com">luke@ospreyexterior.com</a><br>Rainwise: <a href="mailto:rainwise@ospreyexterior.com">rainwise@ospreyexterior.com</a></p>
+        <p>Operating Hours: 8am-6pm PST (Monday-Friday)</p>
+        <p>License: <a href="https://secure.lni.wa.gov/verify/Detail.aspx?UBI=605353403&LIC=OSPREE*763QD&SAW=" target="_blank" rel="noopener">OSPREE*763QD</a> · Licensed, bonded, insured</p>
         <p>Rainwise Partner ID: RW-7712</p>
       </div>
       <div>
@@ -553,26 +556,59 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Osprey Exterior",
-      "image": "https://ospreyexterior.com/assets/images/Osprey-Exterior-Logo3-01-BLUE.png",
-      "url": "https://ospreyexterior.com/",
-      "telephone": "+1-425-550-1727",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Seattle",
-        "addressRegion": "WA",
-        "postalCode": "98107",
-        "addressCountry": "US"
-      },
-      "areaServed": ["Seattle", "Bellevue", "Kirkland", "Redmond", "Issaquah"],
-      "openingHours": "Mo-Fr 08:00-17:00",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://share.google/TkBBuPFcKfhdDIEJD",
-        "https://www.facebook.com/profile.php?id=61568566660792#"
-      ],
-      "serviceType": ["Gutter Installation & Guards", "Seasonal Gutter Cleaning", "Holiday Lighting Design"]
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://ospreyexterior.com/#localbusiness",
+          "name": "Osprey Exterior",
+          "image": "https://ospreyexterior.com/assets/images/Osprey-Exterior-Logo3-01-BLUE.png",
+          "url": "https://ospreyexterior.com/",
+          "telephone": "+1-425-550-1727",
+          "email": "luke@ospreyexterior.com",
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Bellevue"
+            },
+            {
+              "@type": "City",
+              "name": "Redmond"
+            },
+            {
+              "@type": "City",
+              "name": "Kirkland"
+            },
+            {
+              "@type": "City",
+              "name": "Seattle"
+            },
+            {
+              "@type": "City",
+              "name": "Issaquah"
+            }
+          ],
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ],
+          "priceRange": "$$",
+          "sameAs": [
+            "https://share.google/TkBBuPFcKfhdDIEJD",
+            "https://www.facebook.com/profile.php?id=61568566660792#"
+          ],
+          "serviceType": ["Gutter Installation & Guards", "Seasonal Gutter Cleaning", "Holiday Lighting Design"]
+        }
+      ]
     }
     </script>
   </footer>
