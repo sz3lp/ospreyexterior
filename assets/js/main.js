@@ -107,6 +107,25 @@ document.addEventListener("DOMContentLoaded", () => {
           throw new Error("Supabase request failed");
         }
 
+        const result = await response.json();
+        const leadId = result && result[0] && result[0].id ? result[0].id : null;
+
+        // Sync to HubSpot in the background (don't block form submission)
+        if (leadId) {
+          fetch("/api/hubspot-sync", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              leadId,
+              action: "sync_all", // Sync contact and create deal
+            }),
+          }).catch((err) => {
+            console.error("HubSpot sync error (non-blocking):", err);
+          });
+        }
+
         const eventName = form.getAttribute("data-event") || "lead_submit";
         const cityField = form.querySelector("[name=city]");
         const serviceField =

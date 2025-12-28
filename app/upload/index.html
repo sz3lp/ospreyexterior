@@ -29,7 +29,10 @@
       <div class="field-grid">
         <label class="field-label" for="jobId">Job ID</label>
         <input id="jobId" class="text-input" type="text" placeholder="job-20250114-a3f29" autocapitalize="none" autocomplete="off" />
+        <button type="button" onclick="loadJobFromInput()" class="primary-btn">Load Job</button>
       </div>
+      
+      <div id="job-container" style="display: none;"></div>
 
       <div class="upload-drop" id="dropArea">
         <div class="drop-copy">
@@ -59,5 +62,15 @@
     </section>
   </main>
   <script type="module" src="/app/upload/upload.js"></script>
+  <script type="module" src="/app/upload/field-app.js"></script>
+  <script>
+    function loadJobFromInput() {
+      const jobId = document.getElementById('jobId').value.trim();
+      if (jobId) {
+        window.loadJob(jobId);
+        document.getElementById('job-container').style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>
