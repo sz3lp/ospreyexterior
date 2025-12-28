@@ -112,12 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Sync to HubSpot in the background (don't block form submission)
         if (leadId) {
-          const SUPABASE_FUNCTIONS_URL = SUPABASE_URL.replace('/rest/v1', '/functions/v1');
-          fetch(`${SUPABASE_FUNCTIONS_URL}/hubspot-sync`, {
+          fetch("/api/hubspot", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
             },
             body: JSON.stringify({
               leadId,
