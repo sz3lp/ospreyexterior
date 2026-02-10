@@ -13,7 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" as="script">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" defer></script>
   <link rel="canonical" href="https://ospreyexterior.com/rainwise/">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
@@ -302,22 +306,632 @@
     </section>
 
     <section class="section section-light" id="eligibility">
-      <div class="container">
-        <div class="section-header">
-          <span>Eligibility checker</span>
-          <h2>Find out if your address qualifies for Rainwise</h2>
-          <p>Use the official RainWise eligibility page embedded below to check your address. We include direct links to contact our RainWise team and the city rebate form.</p>
+      <div class="sr-only">
+        <span>Eligibility checker</span>
+        <h2>Find out if your address qualifies for Rainwise</h2>
+        <p>Use the official RainWise eligibility page embedded below to check your address. We include direct links to contact our RainWise team and the city rebate form.</p>
+      </div>
+      <div class="bounty-hunter-interface">
+        <div class="map-layer" id="bounty-map">
+          <div class="map-fallback" id="map-fallback" aria-live="polite">
+            <p>Satellite feed offline. Manual targeting available.</p>
+          </div>
         </div>
-        <div class="form-card" style="padding:0; overflow:hidden;">
-          <iframe
-            src="https://700milliongallons.org/rainwise/eligibility"
-            title="RainWise eligibility checker"
-            loading="lazy"
-            style="width:100%; min-height:720px; border:0; border-radius:16px; background:#fff;"
-            allow="clipboard-write"
-          ></iframe>
+        <div class="scan-grid" aria-hidden="true">
+          <div class="grid-lines"></div>
+          <div class="crosshair vertical"></div>
+          <div class="crosshair horizontal"></div>
+          <div class="corner" data-pos="tl"></div>
+          <div class="corner" data-pos="tr"></div>
+          <div class="corner" data-pos="bl"></div>
+          <div class="corner" data-pos="br"></div>
+        </div>
+        <div class="ui-layer">
+          <div class="ui-panel search-state active" id="search-state">
+            <div class="hud-header">
+              <h1>SECURE REBATE EXTRACTION</h1>
+              <p>The City of Seattle has allocated funds to specific coordinates. Enter target address to scan for liquidity.</p>
+            </div>
+            <div class="input-row">
+              <input type="text" id="target-address" placeholder="Enter Target Coordinates (Address)..." aria-label="Enter address to scan">
+              <button id="initiate-scan">INITIALIZE SATELLITE LOCK</button>
+            </div>
+            <div class="manual-disclaimer">RainWise rebate detection feed &bull; Seattle Public Utilities &bull; Secure Channel</div>
+            <div class="manual-mode" id="manual-mode" hidden>
+              <strong>Satellite Link Unstable. Manual Targeting Required.</strong>
+              <p>Continue with the RainWise intake to claim available funds.</p>
+              <button id="manual-authorize" class="btn-pulse">OPEN EXTRACTION FORM</button>
+              <div id="manual-form" class="manual-form"></div>
+            </div>
+          </div>
+
+          <div class="ui-panel scanner-state" id="scanner-state">
+            <div class="reticle">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <rect x="10" y="10" width="180" height="180" fill="none" stroke="#00f3ff" stroke-width="2" stroke-dasharray="12 6" />
+              </svg>
+              <div class="scan-beam" id="scan-beam"></div>
+            </div>
+            <div class="terminal-output" id="terminal-output" aria-live="polite">
+              <div>&gt;&gt; Awaiting coordinates...</div>
+            </div>
+          </div>
+
+          <div class="ui-panel result-state" id="result-state">
+            <div class="fund-counter" id="fund-counter">$0.00</div>
+            <h2>UNCLAIMED FUNDS DETECTED</h2>
+            <p>Allocated RainWise rebate available for claim at scanned coordinates.</p>
+            <button id="authorize-extraction" class="btn-pulse">AUTHORIZE EXTRACTION TEAM</button>
+            <p class="disclaimer">Funds expire if not claimed. Osprey Exterior Level-3 Clearance required for retrieval.</p>
+          </div>
         </div>
       </div>
+
+      <div class="extraction-modal" id="extraction-modal" aria-hidden="true" role="dialog" aria-labelledby="extraction-title">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-content">
+          <button class="modal-close" id="modal-close" aria-label="Close extraction form">&times;</button>
+          <h3 id="extraction-title">Authorize Extraction Team</h3>
+          <p>RainWise rebate claim channel. <span id="modal-estimate"></span></p>
+          <div id="extraction-form" class="extraction-form"></div>
+        </div>
+      </div>
+<div class="bounty-hunter-wrapper" style="position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; color: #00f3ff; font-family: monospace;">
+    
+    <div id="map-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+
+    <div id="ui-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+        
+        <div id="ui-search" style="text-align: center; max-width: 90%; padding: 40px; background: rgba(0, 0, 0, 0.8); border: 2px solid #00f3ff; box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);">
+            <h1 style="color: #00f3ff; font-size: 2.5rem; margin-bottom: 0.5rem; text-transform: uppercase;">SECURE REBATE EXTRACTION</h1>
+            <p style="color: #9dffff; margin-bottom: 2rem;">The City of Seattle is sitting on **$4,000 of your money.** Enter target address to scan for liquidity.</p>
+            <input type="text" id="address-input" placeholder="Enter Street Address, City, ZIP..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #00f3ff; background: #0a0f14; color: #00f3ff; font-size: 1.1rem; text-align: center;">
+            <button id="scan-button" style="padding: 15px 30px; font-size: 1.2rem; background: #00f3ff; color: #000; border: none; font-weight: bold; cursor: pointer;">INITIALIZE SATELLITE LOCK</button>
+        </div>
+
+        <div id="ui-scanning" style="display: none; text-align: center; padding: 40px; background: rgba(0, 0, 0, 0.8); border: 2px solid #ff4444; color: #ff4444; width: 400px; max-width: 90%;">
+            <p id="terminal-status" style="white-space: pre; text-align: left; margin: 0; font-size: 1rem;"></p>
+            <div id="scanning-reticle" style="width: 100%; height: 10px; background: repeating-linear-gradient(90deg, #ff4444, #000000 10px, #ff4444 20px); margin-top: 20px;"></div>
+        </div>
+
+        <div id="ui-results" style="display: none; text-align: center; padding: 40px; background: rgba(0, 0, 0, 0.8); border: 2px solid #3bff3b; width: 400px; max-width: 90%;">
+            <h2 style="color: #3bff3b; font-size: 2rem;">UNCLAIMED FUNDS DETECTED</h2>
+            <div id="fund-counter" style="font-size: 4rem; font-weight: bold; margin: 20px 0; color: #3bff3b;">$0</div>
+            <p style="color: #fff;">**Funds are set to expire if not claimed.**</p>
+            <button id="extract-button" style="padding: 18px 40px; font-size: 1.4rem; background: #eba742; color: #00193C; border: none; font-weight: bold; cursor: pointer; animation: pulse 1s infinite alternate;">AUTHORIZE FUND RECOVERY</button>
+        </div>
+
+    </div>
+</div>
+      <style>
+        #eligibility {
+          padding: 0;
+          position: relative;
+          background: #0a0f14;
+          color: #e7fff6;
+        }
+        .bounty-hunter-interface {
+          position: relative;
+          min-height: 90vh;
+          width: 100%;
+          overflow: hidden;
+          font-family: 'Roboto Mono', 'Courier New', monospace;
+          background: #0a0f14;
+        }
+        .map-layer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          filter: saturate(0) contrast(1.2) brightness(0.8);
+          background: #0a0f14 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=80&sat=-100') center/cover no-repeat;
+        }
+        .map-layer .mapboxgl-canvas {
+          opacity: 0.9;
+        }
+        .map-fallback {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,0,0,0.55));
+          color: #00f3ff;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          text-align: center;
+          padding: 1rem;
+          backdrop-filter: blur(2px);
+        }
+        .scan-grid {
+          pointer-events: none;
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(rgba(0,243,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.06) 1px, transparent 1px);
+          background-size: 60px 60px;
+          z-index: 1;
+        }
+        .grid-lines {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at center, rgba(0,243,255,0.2), transparent 45%);
+          mix-blend-mode: screen;
+        }
+        .crosshair {
+          position: absolute;
+          background: rgba(0,243,255,0.25);
+        }
+        .crosshair.vertical {
+          width: 1px;
+          height: 100%;
+          left: 50%;
+        }
+        .crosshair.horizontal {
+          height: 1px;
+          width: 100%;
+          top: 50%;
+        }
+        .corner {
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          border: 2px solid #00f3ff;
+          opacity: 0.4;
+        }
+        .corner[data-pos="tl"] { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+        .corner[data-pos="tr"] { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+        .corner[data-pos="bl"] { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+        .corner[data-pos="br"] { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+        .ui-layer {
+          position: relative;
+          z-index: 2;
+          height: 100%;
+          display: grid;
+          place-items: center;
+          padding: 3rem 1.5rem;
+          background: radial-gradient(circle at 20% 20%, rgba(0,243,255,0.07), transparent 35%), radial-gradient(circle at 80% 80%, rgba(0,243,255,0.05), transparent 35%);
+        }
+        .ui-panel {
+          max-width: 880px;
+          width: 100%;
+          background: rgba(10, 15, 20, 0.8);
+          border: 1px solid rgba(0,243,255,0.35);
+          box-shadow: 0 0 24px rgba(0,243,255,0.25);
+          border-radius: 18px;
+          padding: 2rem;
+          display: none;
+          color: #e7fff6;
+          backdrop-filter: blur(6px);
+        }
+        .ui-panel.active { display: block; }
+        .hud-header h1 {
+          margin: 0 0 0.5rem;
+          font-family: 'Montserrat', 'Poppins', sans-serif;
+          letter-spacing: 1px;
+        }
+        .hud-header p {
+          color: #9ae7d6;
+          margin: 0 0 1.5rem;
+        }
+        .input-row {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 1rem;
+          align-items: center;
+        }
+        .input-row input {
+          width: 100%;
+          padding: 0.95rem 1rem;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(0,243,255,0.4);
+          color: #e7fff6;
+          border-radius: 12px;
+          font-size: 1rem;
+        }
+        .input-row button,
+        #authorize-extraction,
+        #manual-authorize {
+          padding: 0.95rem 1.4rem;
+          border-radius: 12px;
+          border: 1px solid #00f3ff;
+          background: linear-gradient(90deg, rgba(0,243,255,0.15), rgba(0,243,255,0.45));
+          color: #0a0f14;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .input-row button:hover,
+        #authorize-extraction:hover,
+        #manual-authorize:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 18px rgba(0,243,255,0.5);
+        }
+        .manual-disclaimer {
+          margin-top: 1rem;
+          color: rgba(154, 231, 214, 0.8);
+          font-size: 0.95rem;
+          letter-spacing: 0.5px;
+        }
+        .manual-mode {
+          margin-top: 1.5rem;
+          padding: 1rem;
+          border: 1px dashed rgba(255, 102, 102, 0.6);
+          background: rgba(255, 0, 0, 0.08);
+          color: #ffd6d6;
+          border-radius: 12px;
+        }
+        .manual-form {
+          margin-top: 1rem;
+          background: rgba(0,0,0,0.35);
+          border: 1px solid rgba(0,243,255,0.3);
+          border-radius: 12px;
+          padding: 0.5rem;
+        }
+        .scanner-state {
+          text-align: center;
+        }
+        .reticle {
+          position: relative;
+          width: 360px;
+          max-width: 90vw;
+          margin: 0 auto 1.5rem;
+          padding: 1rem;
+          border-radius: 16px;
+          background: rgba(0,0,0,0.45);
+          box-shadow: 0 0 24px rgba(0,243,255,0.35), inset 0 0 18px rgba(0,243,255,0.25);
+        }
+        .reticle.locking {
+          animation: pulse-red 1.2s ease-in-out 3;
+          box-shadow: 0 0 26px rgba(255,66,66,0.5), inset 0 0 18px rgba(255,66,66,0.35);
+        }
+        .reticle.secured {
+          box-shadow: 0 0 28px rgba(0,255,157,0.45), inset 0 0 18px rgba(0,255,157,0.35);
+        }
+        .reticle svg { width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(0,243,255,0.6)); }
+        .scan-beam {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+          opacity: 0;
+        }
+        .scan-beam.active {
+          opacity: 1;
+          animation: scan-move 2.5s linear infinite;
+        }
+        .terminal-output {
+          max-width: 640px;
+          margin: 0 auto;
+          background: rgba(0,0,0,0.55);
+          border: 1px solid rgba(0,243,255,0.35);
+          border-radius: 12px;
+          padding: 1rem;
+          min-height: 140px;
+          text-align: left;
+          color: #b6ffe9;
+          box-shadow: inset 0 0 12px rgba(0,243,255,0.25);
+          font-size: 0.95rem;
+          overflow: hidden;
+        }
+        .terminal-output div { margin: 0.25rem 0; }
+        .result-state {
+          text-align: center;
+        }
+        .fund-counter {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          color: #00ff9d;
+          font-weight: 800;
+          margin-bottom: 0.5rem;
+          text-shadow: 0 0 12px rgba(0,255,157,0.6);
+        }
+        .btn-pulse {
+          animation: pulse-green 1.6s ease-in-out infinite;
+        }
+        .disclaimer {
+          margin-top: 0.75rem;
+          color: #9ae7d6;
+        }
+        .extraction-modal {
+          position: fixed;
+          inset: 0;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          z-index: 999;
+        }
+        .extraction-modal.active { display: flex; }
+        .modal-backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.75);
+        }
+        .modal-content {
+          position: relative;
+          background: #0a0f14;
+          border: 1px solid rgba(0,243,255,0.4);
+          padding: 2rem;
+          width: min(720px, 92vw);
+          border-radius: 16px;
+          box-shadow: 0 0 28px rgba(0,243,255,0.35);
+          z-index: 1;
+          color: #e7fff6;
+        }
+        .modal-close {
+          position: absolute;
+          top: 10px;
+          right: 12px;
+          background: transparent;
+          border: none;
+          color: #00f3ff;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+        @keyframes scan-move {
+          0% { top: 6%; }
+          100% { top: 94%; }
+        }
+        @keyframes number-tick {
+          0% { opacity: 0.5; }
+          50% { opacity: 1; }
+          100% { opacity: 0.85; }
+        }
+        @keyframes pulse-green {
+          0% { box-shadow: 0 0 0 0 rgba(0,255,157,0.5); }
+          70% { box-shadow: 0 0 0 14px rgba(0,255,157,0); }
+          100% { box-shadow: 0 0 0 0 rgba(0,255,157,0); }
+        }
+        @keyframes pulse-red {
+          0% { box-shadow: 0 0 0 0 rgba(255,66,66,0.6); }
+          70% { box-shadow: 0 0 0 14px rgba(255,66,66,0); }
+          100% { box-shadow: 0 0 0 0 rgba(255,66,66,0); }
+        }
+        @media (max-width: 768px) {
+          .ui-layer { padding: 2rem 1rem; }
+          .ui-panel { padding: 1.5rem; }
+          .input-row { grid-template-columns: 1fr; }
+          #authorize-extraction { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 2rem); }
+        }
+      </style>
+
+      <script>
+        (function() {
+          const token = 'pk.eyJ1IjoibG1wcmUiLCJhIjoiY21pbTR4NDk2MXdjODNncHFwNjhua3B2dyJ9.zSGh2ijtw9JK7c4DpK9NDg';
+          const mapContainer = document.getElementById('bounty-map');
+          const fallbackBanner = document.getElementById('map-fallback');
+          const searchState = document.getElementById('search-state');
+          const scannerState = document.getElementById('scanner-state');
+          const resultState = document.getElementById('result-state');
+          const manualMode = document.getElementById('manual-mode');
+          const addressInput = document.getElementById('target-address');
+          const scanButton = document.getElementById('initiate-scan');
+          const scanBeam = document.getElementById('scan-beam');
+          const reticle = document.querySelector('.reticle');
+          const terminalOutput = document.getElementById('terminal-output');
+          const fundCounter = document.getElementById('fund-counter');
+          const authorizeButton = document.getElementById('authorize-extraction');
+          const manualAuthorize = document.getElementById('manual-authorize');
+          const manualForm = document.getElementById('manual-form');
+          const modal = document.getElementById('extraction-modal');
+          const modalClose = document.getElementById('modal-close');
+          const modalEstimate = document.getElementById('modal-estimate');
+          const extractionForm = document.getElementById('extraction-form');
+          let rebateValue = 0;
+          let map;
+
+          function pushAnalytics(eventName, data = {}) {
+            if (typeof pushEvent === 'function') {
+              pushEvent(eventName, data);
+            } else if (window.dataLayer) {
+              window.dataLayer.push({ event: eventName, ...data });
+            }
+          }
+
+          function logTerminal(message) {
+            const line = document.createElement('div');
+            line.textContent = `>> ${message}`;
+            terminalOutput.appendChild(line);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+          }
+
+          function toggleState(state) {
+            searchState.classList.toggle('active', state === 'search');
+            scannerState.classList.toggle('active', state === 'scanner');
+            resultState.classList.toggle('active', state === 'result');
+          }
+
+          function activateManualFallback() {
+            manualMode.hidden = false;
+            toggleState('search');
+            fallbackBanner.style.display = 'flex';
+            if (manualForm && !manualForm.dataset.loaded) {
+              loadHubSpotForm(manualForm);
+            }
+          }
+
+          function animateCounter(targetValue) {
+            const duration = 1500;
+            const startTime = performance.now();
+            function step(now) {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const current = Math.floor(progress * targetValue);
+              fundCounter.textContent = `$${current.toLocaleString()}`;
+              fundCounter.style.animation = 'number-tick 0.4s ease';
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                pushAnalytics('scan_completed', { rebate_value: targetValue });
+              }
+            }
+            requestAnimationFrame(step);
+          }
+
+          function revealResults() {
+            toggleState('result');
+            reticle.classList.remove('locking');
+            reticle.classList.add('secured');
+            fundCounter.style.color = '#00ff9d';
+            animateCounter(rebateValue);
+          }
+
+          async function geocodeAddress(address) {
+            const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${token}&limit=1&proximity=-122.3321,47.6062`;
+            const response = await fetch(endpoint);
+            if (!response.ok) return null;
+            const data = await response.json();
+            return data.features && data.features.length ? data.features[0].center : null;
+          }
+
+          function calculateRebate() {
+            const estimatedRoofArea = 1500 + Math.round(Math.random() * 200 - 100);
+            rebateValue = Math.min(4000, Math.round(estimatedRoofArea * 2.5));
+          }
+
+          function loadMap() {
+            return new Promise((resolve, reject) => {
+              if (typeof mapboxgl === 'undefined') {
+                const existingScript = document.querySelector('script[src*="mapbox-gl.js"]');
+                if (existingScript && existingScript.dataset.loaded === 'true') {
+                  return reject();
+                }
+                if (existingScript) {
+                  existingScript.addEventListener('load', () => {
+                    existingScript.dataset.loaded = 'true';
+                    resolve(mapboxgl);
+                  }, { once: true });
+                  existingScript.addEventListener('error', reject, { once: true });
+                } else {
+                  reject();
+                }
+                return;
+              }
+              mapboxgl.accessToken = token;
+              if (!map) {
+                map = new mapboxgl.Map({
+                  container: mapContainer,
+                  style: 'mapbox://styles/mapbox/satellite-v9',
+                  center: [-122.3321, 47.6062],
+                  zoom: 10,
+                  interactive: false,
+                  pitch: 45,
+                  bearing: -12,
+                  cooperativeGestures: true
+                });
+                map.on('error', () => activateManualFallback());
+                map.once('load', () => {
+                  fallbackBanner.style.display = 'none';
+                });
+              }
+              resolve(mapboxgl);
+            });
+          }
+
+          async function runScanSequence(address) {
+            if (!address) return;
+            toggleState('scanner');
+            terminalOutput.innerHTML = '<div>> SAT-LINK ESTABLISHED...</div>';
+            scanBeam.classList.add('active');
+            reticle.classList.remove('secured');
+            reticle.classList.add('locking');
+
+            try {
+              await loadMap();
+              const coords = await geocodeAddress(address);
+              if (!coords) {
+                activateManualFallback();
+                return;
+              }
+              const [lng, lat] = coords;
+              const mobile = window.matchMedia('(max-width: 768px)').matches;
+              const speed = mobile ? 0.5 : 1.2;
+              map.jumpTo({ center: [lng, lat], zoom: 10 });
+              setTimeout(() => map.flyTo({ center: [lng, lat], zoom: 19, speed, curve: 1.9, essential: true }), 120);
+            } catch (error) {
+              activateManualFallback();
+              return;
+            }
+
+            setTimeout(() => logTerminal('ANALYZING ROOF PERMEABILITY...'), 1200);
+            setTimeout(() => logTerminal('CROSS-REFERENCING SEATTLE PUBLIC UTILITIES DB...'), 2400);
+            setTimeout(() => logTerminal('MATCH FOUND.'), 3600);
+            setTimeout(() => {
+              calculateRebate();
+              logTerminal(`REBATE VALUE LOCKED: $${rebateValue.toLocaleString()}`);
+            }, 4300);
+            setTimeout(() => {
+              scanBeam.classList.remove('active');
+              revealResults();
+            }, 5200);
+          }
+
+          function loadHubSpotForm(targetEl) {
+            const loadScript = () => new Promise((resolve, reject) => {
+              if (window.hbspt) return resolve();
+              const script = document.createElement('script');
+              script.src = 'https://js.hsforms.net/forms/embed/v2.js';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.body.appendChild(script);
+            });
+
+            loadScript()
+              .then(() => {
+                if (!window.hbspt || targetEl.dataset.loaded) return;
+                window.hbspt.forms.create({
+                  region: 'na2',
+                  portalId: '244291121',
+                  formId: '198e9b40-f90d-40ca-9a46-4af906a2699d',
+                  target: `#${targetEl.id}`,
+                  onFormReady: function($form) {
+                    const notesField = $form.find('textarea[name="message"], textarea[name="notes"], textarea').first();
+                    const hiddenEstimate = document.createElement('input');
+                    hiddenEstimate.type = 'hidden';
+                    hiddenEstimate.name = 'rebate_estimate_seen';
+                    hiddenEstimate.value = rebateValue ? `Client saw estimate: $${rebateValue.toLocaleString()}` : 'Client estimate pending';
+                    $form.append(hiddenEstimate);
+                    if (notesField && notesField.length) {
+                      notesField.val(hiddenEstimate.value);
+                    }
+                  }
+                });
+                targetEl.dataset.loaded = 'true';
+              })
+              .catch(() => {
+                manualMode.hidden = false;
+              });
+          }
+
+          function openModal() {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            modalEstimate.textContent = rebateValue ? `Detected allocation: $${rebateValue.toLocaleString()}` : 'Detected allocation pending';
+            if (!extractionForm.dataset.loaded) {
+              loadHubSpotForm(extractionForm);
+            }
+            pushAnalytics('extraction_authorized', { rebate_value: rebateValue || null });
+          }
+
+          function closeModal() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+          }
+
+          scanButton.addEventListener('click', () => runScanSequence(addressInput.value.trim()));
+          addressInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              runScanSequence(addressInput.value.trim());
+            }
+          });
+          authorizeButton.addEventListener('click', openModal);
+          manualAuthorize.addEventListener('click', openModal);
+          modalClose.addEventListener('click', closeModal);
+          document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+        })();
+      </script>
     </section>
 
     <section class="section" id="cistern-systems">
@@ -549,5 +1163,227 @@
   </script>
   <script src="/assets/js/tracking.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script>
+    // 1. Setup - REPLACE THIS PLACEHOLDER WITH YOUR REAL MAPBOX KEY
+    const MAPBOX_TOKEN = 'pk.eyJ1IjoibG1wcmUiLCJhIjoiY21pbTR4NDk2MXdjODNncHFwNjhua3B2dyJ9.zSGh2ijtw9JK7c4DpK9NDg'; 
+
+    // Constants from your HTML file for HubSpot integration
+    const HUBSPOT_PORTAL_ID = '244291121';
+    const HUBSPOT_FORM_ID = '198e9b40-f90d-40ca-9a46-4af906a2699d';
+    const ENDPOINT_GEOCODE = (address) => `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${MAPBOX_TOKEN}&autocomplete=true&country=us&bbox=-122.45,47.45,-122.10,47.75`;
+    
+    // UI Elements
+    const wrapper = document.querySelector('.bounty-hunter-wrapper');
+    const uiSearch = document.getElementById('ui-search');
+    const uiScanning = document.getElementById('ui-scanning');
+    const uiResults = document.getElementById('ui-results');
+    const addressInput = document.getElementById('address-input');
+    const scanButton = document.getElementById('scan-button');
+    const terminalStatus = document.getElementById('terminal-status');
+    const fundCounter = document.getElementById('fund-counter');
+    const extractButton = document.getElementById('extract-button');
+
+    let map = null;
+    let finalRebateValue = 0;
+
+    // --- Core Functions ---
+
+    /**
+     * @function initMap - Starts the map viewer.
+     */
+    function initMap() {
+        mapboxgl.accessToken = MAPBOX_TOKEN;
+        map = new mapboxgl.Map({
+            container: 'map-container',
+            style: 'mapbox://styles/mapbox/satellite-v9', // Dark satellite view
+            center: [-122.28, 47.62], // Center on Bellevue/Redmond area
+            zoom: 10,
+            projection: 'globe',
+            interactive: false // Starts locked down
+        });
+
+        // Add a grayscale filter to the satellite map for dramatic effect
+        map.on('style.load', () => {
+            map.setFilter('water', ['==', ['geometry-type'], 'Polygon']);
+            map.setPaintProperty('background', 'background-color', '#0a0f14');
+        });
+    }
+
+    /**
+     * @function startSequence - Handles button click and kicks off the sequence.
+     */
+    async function startSequence() {
+        const address = addressInput.value.trim();
+        if (!address) {
+            alert('Target coordinates required (Please enter an address).');
+            return;
+        }
+
+        uiSearch.style.display = 'none';
+        uiScanning.style.display = 'block';
+
+        const coordinates = await geocodeAddress(address);
+
+        if (coordinates) {
+            await flyoverSequence(coordinates);
+            await scanSequence(address);
+            showResults();
+        } else {
+            // Fallback for failed geocoding - show the form directly
+            terminalStatus.textContent = '>> SATELLITE LOCK FAILURE. TARGET NOT FOUND.';
+            setTimeout(() => {
+                showResults(true); // Show results immediately with a fallback value
+            }, 2000);
+        }
+    }
+
+    /**
+     * @function geocodeAddress - Converts address to coordinates.
+     */
+    async function geocodeAddress(address) {
+        terminalStatus.textContent += '>> ACQUIRING SIGNAL... \n';
+        try {
+            const response = await fetch(ENDPOINT_GEOCODE(address));
+            const data = await response.json();
+            if (data.features && data.features.length > 0) {
+                return data.features[0].center;
+            }
+        } catch (error) {
+            console.error("Geocoding failed:", error);
+            return null;
+        }
+    }
+
+    /**
+     * @function flyoverSequence - Controls the map animation.
+     */
+    function flyoverSequence(coordinates) {
+        return new Promise(resolve => {
+            map.flyTo({
+                center: coordinates,
+                zoom: 19, // Zoom right in on the rooftop
+                speed: 0.8,
+                curve: 1,
+                essential: true
+            });
+            map.once('moveend', () => {
+                terminalStatus.textContent += '>> SATELLITE LOCK ACHIEVED. \n';
+                resolve();
+            });
+        });
+    }
+
+    /**
+     * @function scanSequence - Simulates the data processing time.
+     */
+    function scanSequence(address) {
+        return new Promise(resolve => {
+            let step = 0;
+            const messages = [
+                '>> ANALYZING ROOF PERMEABILITY...',
+                '>> CROSS-REFERENCING SEATTLE PUBLIC UTILITIES DB...',
+                '>> MATCH FOUND. CALCULATING LIQUIDITY...'
+            ];
+
+            const scanInterval = setInterval(() => {
+                if (step < messages.length) {
+                    terminalStatus.textContent += messages[step] + ' \n';
+                    step++;
+                } else {
+                    clearInterval(scanInterval);
+                    resolve();
+                }
+            }, 1500);
+        });
+    }
+
+    /**
+     * @function showResults - Shows the final loot drop and CTA.
+     */
+    function showResults(fallback = false) {
+        // Simple calculation logic (simulating successful find)
+        // This simulates a roof area of ~1500 sq ft, yielding a high-end rebate.
+        finalRebateValue = fallback ? 3500 : Math.min(4000, Math.round(1500 * 2.5));
+
+        uiScanning.style.display = 'none';
+        uiResults.style.display = 'block';
+
+        // Animate the counter for dramatic effect
+        animateCounter(fundCounter, finalRebateValue, 1500);
+    }
+
+    /**
+     * @function animateCounter - Ticks the dollar amount up.
+     */
+    function animateCounter(element, target, duration) {
+        let start = 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const value = Math.floor(progress * target);
+            element.textContent = '$' + value.toLocaleString();
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = '$' + target.toLocaleString();
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    /**
+     * @function loadHubspotForm - Loads the HubSpot form into a modal/div.
+     */
+    function loadHubspotForm() {
+        // For simplicity, we redirect to contact.html as the form script is heavy.
+        // In a real implementation, you'd load a modal here.
+        alert(`You've authorized the extraction of $${finalRebateValue.toLocaleString()}! We are now redirecting you to your dedicated Extraction Team Contact Form.`);
+
+        // Important: Pass the found value to the form via URL parameter
+        window.location.href = `contact.html?rebate_found=${finalRebateValue}&address=${encodeURIComponent(addressInput.value)}`;
+
+        // Alternative (if you want an immediate modal):
+        // const formDiv = document.createElement('div');
+        // document.body.appendChild(formDiv);
+        // hbspt.forms.create({
+        //     region: "na2",
+        //     portalId: HUBSPOT_PORTAL_ID,
+        //     formId: HUBSPOT_FORM_ID,
+        //     target: formDiv
+        // });
+    }
+
+    // --- Event Listeners and Initialization ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof mapboxgl !== 'undefined') {
+            initMap();
+        } else {
+            console.error('Mapbox GL JS not loaded. Check script tags in head.');
+            // Fallback UI could be displayed here if Mapbox fails entirely
+            addressInput.placeholder = 'Map API Failed. Enter Address for Manual Review.';
+        }
+
+        scanButton.addEventListener('click', startSequence);
+        extractButton.addEventListener('click', loadHubspotForm);
+
+        // Add CSS for the pulse animation (needed since no CSS file is modified)
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                from { box-shadow: 0 0 0 0 rgba(235, 167, 66, 0.7); }
+                to { box-shadow: 0 0 0 15px rgba(235, 167, 66, 0); }
+            }
+            .btn-pulse {
+                animation: pulse 1.5s infinite;
+                transition: all 0.3s ease-in-out;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
 </body>
 </html>
