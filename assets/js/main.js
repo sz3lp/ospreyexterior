@@ -9,8 +9,7 @@ const RUNTIME_SUPABASE_CONFIG =
   (typeof window !== "undefined" && window.SUPABASE_CONFIG) || {};
 
 const SUPABASE_URL = RUNTIME_SUPABASE_CONFIG.url || DEFAULT_SUPABASE_CONFIG.url;
-const SUPABASE_TABLE =
-  RUNTIME_SUPABASE_CONFIG.table || DEFAULT_SUPABASE_CONFIG.table;
+const SUPABASE_TABLE = "leads";
 const SUPABASE_ANON_KEY =
   RUNTIME_SUPABASE_CONFIG.anonKey || DEFAULT_SUPABASE_CONFIG.anonKey;
 const SUPABASE_NOTIFICATION_EMAIL =
@@ -66,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll("form[data-supabase]").forEach((form) => {
+    form.dataset.supabaseTable = SUPABASE_TABLE;
     const geoField = form.querySelector("input[name=geo]");
     if (geoField && geoField.value.trim() === "") {
       geoField.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -92,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+        const targetTable = form.dataset.supabaseTable || SUPABASE_TABLE;
+
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/${targetTable}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
