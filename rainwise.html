@@ -13,7 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" as="script">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" defer></script>
   <link rel="canonical" href="https://ospreyexterior.com/rainwise/">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
@@ -302,22 +306,601 @@
     </section>
 
     <section class="section section-light" id="eligibility">
-      <div class="container">
-        <div class="section-header">
-          <span>Eligibility checker</span>
-          <h2>Find out if your address qualifies for Rainwise</h2>
-          <p>Use the official RainWise eligibility page embedded below to check your address. We include direct links to contact our RainWise team and the city rebate form.</p>
+      <div class="sr-only">
+        <span>Eligibility checker</span>
+        <h2>Find out if your address qualifies for Rainwise</h2>
+        <p>Use the official RainWise eligibility page embedded below to check your address. We include direct links to contact our RainWise team and the city rebate form.</p>
+      </div>
+      <div class="bounty-hunter-interface">
+          <div class="map-layer" id="bounty-map">
+            <div class="map-fallback" id="map-fallback" aria-live="polite">
+            <p>Geospatial feed offline. Manual architectural audit available.</p>
+            </div>
+          </div>
+        <div class="scan-grid" aria-hidden="true">
+          <div class="grid-lines"></div>
+          <div class="crosshair vertical"></div>
+          <div class="crosshair horizontal"></div>
+          <div class="corner" data-pos="tl"></div>
+          <div class="corner" data-pos="tr"></div>
+          <div class="corner" data-pos="bl"></div>
+          <div class="corner" data-pos="br"></div>
         </div>
-        <div class="form-card" style="padding:0; overflow:hidden;">
-          <iframe
-            src="https://700milliongallons.org/rainwise/eligibility"
-            title="RainWise eligibility checker"
-            loading="lazy"
-            style="width:100%; min-height:720px; border:0; border-radius:16px; background:#fff;"
-            allow="clipboard-write"
-          ></iframe>
+        <div class="ui-layer">
+          <div class="ui-panel search-state active" id="search-state">
+            <div class="hud-header">
+              <h1>EXCLUSIVE: MAXIMIZE RAINWISE FUND ACQUISITION</h1>
+              <p>We have identified unallocated municipal funds assigned to your property. Enter your address to initiate a precision audit.</p>
+            </div>
+            <div class="input-row">
+              <input type="text" id="target-address" placeholder="Enter Property Coordinates (Address)..." aria-label="Enter address to scan">
+              <button id="initiate-scan">INITIATE ARCHITECTURAL FUND AUDIT</button>
+            </div>
+            <div class="manual-disclaimer">RainWise Financial Acquisition System (FAS) &bull; Premium Service Zone &bull; Secure Channel</div>
+            <div class="manual-mode" id="manual-mode" hidden>
+              <strong>Geospatial link unstable. Manual architectural audit available.</strong>
+              <p>Continue with the RainWise intake to reserve your allocated funds.</p>
+              <button id="manual-authorize" class="btn-pulse">ENGAGE ACQUISITION TEAM</button>
+              <div id="manual-form" class="manual-form"></div>
+            </div>
+          </div>
+
+          <div class="ui-panel scanner-state" id="scanner-state">
+            <div class="reticle">
+                <svg viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="10" y="10" width="180" height="180" fill="none" stroke="#EBA742" stroke-width="2" stroke-dasharray="12 6" />
+                </svg>
+              <div class="scan-beam" id="scan-beam"></div>
+            </div>
+            <div class="terminal-output" id="terminal-output" aria-live="polite">
+              <div>&gt;&gt; Awaiting coordinates...</div>
+            </div>
+          </div>
+
+          <div class="ui-panel result-state" id="result-state">
+            <div class="fund-counter" id="fund-counter">$0.00</div>
+              <h2>CAPITAL ASSET LOCATED AND SECURED</h2>
+              <p>Allocated RainWise rebate reserved for your property coordinates.</p>
+              <button id="authorize-extraction" class="btn-pulse">ENGAGE OSPREY CERTIFIED ACQUISITION TEAM</button>
+              <p class="disclaimer">Your allocated funds are reserved. Osprey handles the architectural design and final municipal acquisition. You simply sign and receive your capital.</p>
+          </div>
         </div>
       </div>
+
+        <div class="extraction-modal" id="extraction-modal" aria-hidden="true" role="dialog" aria-labelledby="extraction-title">
+          <div class="modal-backdrop" id="modal-backdrop"></div>
+          <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close extraction form">&times;</button>
+          <h3 id="extraction-title">Engage Certified Acquisition Team</h3>
+          <p>RainWise Financial Acquisition System channel. <span id="modal-estimate"></span></p>
+          <div id="extraction-form" class="extraction-form"></div>
+          </div>
+        </div>
+
+      <style>
+          #eligibility {
+            padding: 0;
+            position: relative;
+            background: #0a0f14;
+            color: #f3ede4;
+          }
+          .bounty-hunter-interface {
+            position: relative;
+            min-height: 90vh;
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            background: #0a0f14;
+          }
+          .map-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: saturate(0) contrast(1.15) brightness(0.85);
+            background: #0a0f14 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=80&sat=-100') center/cover no-repeat;
+          }
+        .map-layer .mapboxgl-canvas {
+          opacity: 0.9;
+        }
+          .map-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,0,0,0.55));
+            color: #EBA742;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 1rem;
+            backdrop-filter: blur(2px);
+          }
+          .scan-grid {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(235,167,66,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(235,167,66,0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+          }
+          .grid-lines {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(235,167,66,0.18), transparent 45%);
+            mix-blend-mode: screen;
+          }
+          .crosshair {
+            position: absolute;
+            background: rgba(235,167,66,0.25);
+          }
+        .crosshair.vertical {
+          width: 1px;
+          height: 100%;
+          left: 50%;
+        }
+        .crosshair.horizontal {
+          height: 1px;
+          width: 100%;
+          top: 50%;
+        }
+          .corner {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border: 2px solid #EBA742;
+            opacity: 0.4;
+          }
+        .corner[data-pos="tl"] { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+        .corner[data-pos="tr"] { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+        .corner[data-pos="bl"] { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+        .corner[data-pos="br"] { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+          .ui-layer {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            padding: 3rem 1.5rem;
+            background: radial-gradient(circle at 20% 20%, rgba(235,167,66,0.07), transparent 35%), radial-gradient(circle at 80% 80%, rgba(235,167,66,0.05), transparent 35%);
+          }
+          .ui-panel {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(10, 15, 20, 0.8);
+            border: 1px solid rgba(235,167,66,0.35);
+            box-shadow: 0 0 24px rgba(235,167,66,0.25);
+            border-radius: 18px;
+            padding: 2rem;
+            display: none;
+            color: #f3ede4;
+            backdrop-filter: blur(6px);
+          }
+        .ui-panel.active { display: block; }
+        .hud-header h1 {
+          margin: 0 0 0.5rem;
+          font-family: 'Montserrat', 'Poppins', sans-serif;
+          letter-spacing: 1px;
+        }
+          .hud-header p {
+            color: rgba(243, 237, 228, 0.75);
+            margin: 0 0 1.5rem;
+          }
+        .input-row {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 1rem;
+          align-items: center;
+        }
+          .input-row input {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(235,167,66,0.5);
+            color: #f3ede4;
+            border-radius: 12px;
+            font-size: 1rem;
+          }
+          .input-row button,
+          #authorize-extraction,
+          #manual-authorize {
+            padding: 0.95rem 1.4rem;
+            border-radius: 12px;
+            border: 1px solid #EBA742;
+            background: linear-gradient(90deg, rgba(235,167,66,0.2), rgba(235,167,66,0.5));
+            color: #0a0f14;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+          }
+          .input-row button:hover,
+          #authorize-extraction:hover,
+          #manual-authorize:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(235,167,66,0.5);
+          }
+          .manual-disclaimer {
+            margin-top: 1rem;
+            color: rgba(243, 237, 228, 0.75);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+          }
+          .manual-mode {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border: 1px dashed rgba(235, 167, 66, 0.5);
+            background: rgba(235, 167, 66, 0.08);
+            color: #f3ede4;
+            border-radius: 12px;
+          }
+          .manual-form {
+            margin-top: 1rem;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(235,167,66,0.3);
+            border-radius: 12px;
+            padding: 0.5rem;
+          }
+        .scanner-state {
+          text-align: center;
+        }
+          .reticle {
+            position: relative;
+            width: 360px;
+            max-width: 90vw;
+            margin: 0 auto 1.5rem;
+            padding: 1rem;
+            border-radius: 16px;
+            background: rgba(0,0,0,0.45);
+            box-shadow: 0 0 24px rgba(235,167,66,0.35), inset 0 0 18px rgba(235,167,66,0.25);
+          }
+          .reticle.locking {
+            animation: pulse-gold 1.4s ease-in-out infinite;
+            box-shadow: 0 0 26px rgba(235,167,66,0.55), inset 0 0 18px rgba(235,167,66,0.4);
+          }
+          .reticle.secured {
+            box-shadow: 0 0 28px rgba(235,167,66,0.6), inset 0 0 18px rgba(235,167,66,0.5);
+          }
+          .reticle svg { width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(235,167,66,0.55)); }
+          .scan-beam {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #EBA742, transparent);
+            opacity: 0;
+          }
+        .scan-beam.active {
+          opacity: 1;
+          animation: scan-move 2.5s linear infinite;
+        }
+        .terminal-output {
+          max-width: 640px;
+          margin: 0 auto;
+            background: rgba(0,0,0,0.55);
+            border: 1px solid rgba(235,167,66,0.35);
+            border-radius: 12px;
+            padding: 1rem;
+            min-height: 140px;
+            text-align: left;
+            color: #f3ede4;
+            box-shadow: inset 0 0 12px rgba(235,167,66,0.25);
+            font-size: 0.95rem;
+            overflow: hidden;
+          }
+          .terminal-output div { margin: 0.25rem 0; }
+          .result-state {
+          text-align: center;
+        }
+          .fund-counter {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #EBA742;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 12px rgba(235,167,66,0.4);
+          }
+          .btn-pulse {
+            animation: pulse-gold 1.6s ease-in-out infinite;
+          }
+          .disclaimer {
+            margin-top: 0.75rem;
+            color: rgba(243, 237, 228, 0.8);
+          }
+        .extraction-modal {
+          position: fixed;
+          inset: 0;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          z-index: 999;
+        }
+        .extraction-modal.active { display: flex; }
+        .modal-backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.75);
+        }
+        .modal-content {
+          position: relative;
+            background: #0a0f14;
+            border: 1px solid rgba(235,167,66,0.4);
+            padding: 2rem;
+            width: min(720px, 92vw);
+            border-radius: 16px;
+            box-shadow: 0 0 28px rgba(235,167,66,0.35);
+            z-index: 1;
+            color: #f3ede4;
+          }
+          .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            color: #EBA742;
+            font-size: 1.5rem;
+            cursor: pointer;
+          }
+        @keyframes scan-move {
+          0% { top: 6%; }
+          100% { top: 94%; }
+        }
+        @keyframes number-tick {
+          0% { opacity: 0.5; }
+          50% { opacity: 1; }
+          100% { opacity: 0.85; }
+        }
+          @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(235,167,66,0.45); }
+            70% { box-shadow: 0 0 0 14px rgba(235,167,66,0); }
+            100% { box-shadow: 0 0 0 0 rgba(235,167,66,0); }
+          }
+        @media (max-width: 768px) {
+          .ui-layer { padding: 2rem 1rem; }
+          .ui-panel { padding: 1.5rem; }
+          .input-row { grid-template-columns: 1fr; }
+          #authorize-extraction { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 2rem); }
+        }
+      </style>
+
+      <script>
+        (function() {
+          const token = 'pk.eyJ1IjoicGxhY2Vob2xkZXIiLCJhIjoiY2w...';
+          const mapContainer = document.getElementById('bounty-map');
+          const fallbackBanner = document.getElementById('map-fallback');
+          const searchState = document.getElementById('search-state');
+          const scannerState = document.getElementById('scanner-state');
+          const resultState = document.getElementById('result-state');
+          const manualMode = document.getElementById('manual-mode');
+          const addressInput = document.getElementById('target-address');
+          const scanButton = document.getElementById('initiate-scan');
+          const scanBeam = document.getElementById('scan-beam');
+          const reticle = document.querySelector('.reticle');
+          const terminalOutput = document.getElementById('terminal-output');
+          const fundCounter = document.getElementById('fund-counter');
+          const authorizeButton = document.getElementById('authorize-extraction');
+          const manualAuthorize = document.getElementById('manual-authorize');
+          const manualForm = document.getElementById('manual-form');
+          const modal = document.getElementById('extraction-modal');
+          const modalClose = document.getElementById('modal-close');
+          const modalEstimate = document.getElementById('modal-estimate');
+          const extractionForm = document.getElementById('extraction-form');
+          let rebateValue = 0;
+          let map;
+
+          function pushAnalytics(eventName, data = {}) {
+            if (typeof pushEvent === 'function') {
+              pushEvent(eventName, data);
+            } else if (window.dataLayer) {
+              window.dataLayer.push({ event: eventName, ...data });
+            }
+          }
+
+          function logTerminal(message) {
+            const line = document.createElement('div');
+            line.textContent = `>> ${message}`;
+            terminalOutput.appendChild(line);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+          }
+
+          function toggleState(state) {
+            searchState.classList.toggle('active', state === 'search');
+            scannerState.classList.toggle('active', state === 'scanner');
+            resultState.classList.toggle('active', state === 'result');
+          }
+
+          function activateManualFallback() {
+            manualMode.hidden = false;
+            toggleState('search');
+            fallbackBanner.style.display = 'flex';
+            if (manualForm && !manualForm.dataset.loaded) {
+              loadHubSpotForm(manualForm);
+            }
+          }
+
+          function animateCounter(targetValue) {
+            const duration = 1500;
+            const startTime = performance.now();
+            function step(now) {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const current = Math.floor(progress * targetValue);
+              fundCounter.textContent = `$${current.toLocaleString()}`;
+              fundCounter.style.animation = 'number-tick 0.4s ease';
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                pushAnalytics('scan_completed', { rebate_value: targetValue });
+              }
+            }
+            requestAnimationFrame(step);
+          }
+
+            function revealResults() {
+              toggleState('result');
+              reticle.classList.remove('locking');
+              reticle.classList.add('secured');
+              fundCounter.style.color = '#EBA742';
+              animateCounter(rebateValue);
+            }
+
+          async function geocodeAddress(address) {
+            const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${token}&limit=1&proximity=-122.3321,47.6062`;
+            const response = await fetch(endpoint);
+            if (!response.ok) return null;
+            const data = await response.json();
+            return data.features && data.features.length ? data.features[0].center : null;
+          }
+
+          function calculateRebate() {
+            const estimatedRoofArea = 1500 + Math.round(Math.random() * 200 - 100);
+            rebateValue = Math.min(4000, Math.round(estimatedRoofArea * 2.5));
+          }
+
+          function loadMap() {
+            return new Promise((resolve, reject) => {
+              if (typeof mapboxgl === 'undefined') {
+                const existingScript = document.querySelector('script[src*="mapbox-gl.js"]');
+                if (existingScript && existingScript.dataset.loaded === 'true') {
+                  return reject();
+                }
+                if (existingScript) {
+                  existingScript.addEventListener('load', () => {
+                    existingScript.dataset.loaded = 'true';
+                    resolve(mapboxgl);
+                  }, { once: true });
+                  existingScript.addEventListener('error', reject, { once: true });
+                } else {
+                  reject();
+                }
+                return;
+              }
+              mapboxgl.accessToken = token;
+              if (!map) {
+                map = new mapboxgl.Map({
+                  container: mapContainer,
+                  style: 'mapbox://styles/mapbox/satellite-v9',
+                  center: [-122.3321, 47.6062],
+                  zoom: 10,
+                  interactive: false,
+                  pitch: 45,
+                  bearing: -12,
+                  cooperativeGestures: true
+                });
+                map.on('error', () => activateManualFallback());
+                map.once('load', () => {
+                  fallbackBanner.style.display = 'none';
+                });
+              }
+              resolve(mapboxgl);
+            });
+          }
+
+            async function runScanSequence(address) {
+              if (!address) return;
+              toggleState('scanner');
+              terminalOutput.innerHTML = '<div>> ACQUIRING GEOSPATIAL DATA...</div>';
+              scanBeam.classList.add('active');
+              reticle.classList.remove('secured');
+              reticle.classList.add('locking');
+
+            try {
+              await loadMap();
+                const coords = await geocodeAddress(address);
+                if (!coords) {
+                  activateManualFallback();
+                  return;
+                }
+                const [lng, lat] = coords;
+                const mobile = window.matchMedia('(max-width: 768px)').matches;
+                const speed = mobile ? 0.45 : 0.8;
+                map.jumpTo({ center: [lng, lat], zoom: 10 });
+                setTimeout(() => map.flyTo({ center: [lng, lat], zoom: 19, speed, curve: 1.5, essential: true }), 240);
+              } catch (error) {
+                activateManualFallback();
+                return;
+              }
+
+              setTimeout(() => logTerminal('VALIDATING PREMIUM SERVICE ZONE...'), 1400);
+              setTimeout(() => logTerminal('AUDITING WATER MITIGATION ASSET VALUE...'), 2800);
+              setTimeout(() => logTerminal('CERTIFIED FUND ALLOCATION FOUND.'), 4200);
+              setTimeout(() => {
+                calculateRebate();
+                logTerminal(`CAPITAL RESERVE CONFIRMED: $${rebateValue.toLocaleString()}`);
+              }, 5000);
+              setTimeout(() => {
+                scanBeam.classList.remove('active');
+                revealResults();
+              }, 5800);
+            }
+
+          function loadHubSpotForm(targetEl) {
+            const loadScript = () => new Promise((resolve, reject) => {
+              if (window.hbspt) return resolve();
+              const script = document.createElement('script');
+              script.src = 'https://js.hsforms.net/forms/embed/v2.js';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.body.appendChild(script);
+            });
+
+            loadScript()
+              .then(() => {
+                if (!window.hbspt || targetEl.dataset.loaded) return;
+                window.hbspt.forms.create({
+                  region: 'na2',
+                  portalId: '244291121',
+                  formId: '198e9b40-f90d-40ca-9a46-4af906a2699d',
+                  target: `#${targetEl.id}`,
+                  onFormReady: function($form) {
+                    const notesField = $form.find('textarea[name="message"], textarea[name="notes"], textarea').first();
+                    const hiddenEstimate = document.createElement('input');
+                    hiddenEstimate.type = 'hidden';
+                    hiddenEstimate.name = 'rebate_estimate_seen';
+                    hiddenEstimate.value = rebateValue ? `Client saw estimate: $${rebateValue.toLocaleString()}` : 'Client estimate pending';
+                    $form.append(hiddenEstimate);
+                    if (notesField && notesField.length) {
+                      notesField.val(hiddenEstimate.value);
+                    }
+                  }
+                });
+                targetEl.dataset.loaded = 'true';
+              })
+              .catch(() => {
+                manualMode.hidden = false;
+              });
+          }
+
+          function openModal() {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            modalEstimate.textContent = rebateValue ? `Detected allocation: $${rebateValue.toLocaleString()}` : 'Detected allocation pending';
+            if (!extractionForm.dataset.loaded) {
+              loadHubSpotForm(extractionForm);
+            }
+            pushAnalytics('extraction_authorized', { rebate_value: rebateValue || null });
+          }
+
+          function closeModal() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+          }
+
+          scanButton.addEventListener('click', () => runScanSequence(addressInput.value.trim()));
+          addressInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              runScanSequence(addressInput.value.trim());
+            }
+          });
+          authorizeButton.addEventListener('click', openModal);
+          manualAuthorize.addEventListener('click', openModal);
+          modalClose.addEventListener('click', closeModal);
+          document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+        })();
+      </script>
     </section>
 
     <section class="section" id="cistern-systems">
