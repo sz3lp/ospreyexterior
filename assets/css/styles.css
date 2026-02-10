@@ -398,6 +398,70 @@ body.lead-modal-open .sticky-cta {
   color: inherit;
 }
 
+.marquee-section {
+  background: #fff;
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(16, 32, 41, 0.08);
+  border-bottom: 1px solid rgba(16, 32, 41, 0.08);
+}
+
+.marquee-wave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.marquee-svg {
+  width: min(1100px, 100%);
+  height: clamp(110px, 18vw, 170px);
+}
+
+.marquee-wave-path {
+  fill: none;
+  stroke: rgba(31, 61, 78, 0.18);
+  stroke-width: 2.5;
+}
+
+.marquee-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: lowercase;
+  font-size: clamp(1.25rem, 2.6vw, 1.85rem);
+  letter-spacing: 0.04em;
+  fill: var(--color-dark);
+}
+
+.marquee-text textPath {
+  startOffset: 0%;
+  animation: marquee-path-slide 22s linear infinite;
+}
+
+@keyframes marquee-path-slide {
+  0% {
+    startOffset: 0%;
+  }
+  100% {
+    startOffset: -100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-text textPath {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-section {
+    padding: 2rem 0;
+  }
+
+  .marquee-svg {
+    height: clamp(100px, 24vw, 160px);
+  }
+}
+
 .before-after-grid,
 .detail-grid,
 .landscape-grid,
