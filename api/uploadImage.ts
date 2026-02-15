@@ -93,7 +93,7 @@ export default async function handler(req: HttpRequest, res: HttpResponse) {
   }
 
   try {
-    const { error } = await supabase.from<ImageAssetInsert>('image_assets').insert({
+    const { error } = await supabase.from('image_assets').insert({
       job_id: jobId,
       filename,
       variant,
