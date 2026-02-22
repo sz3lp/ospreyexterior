@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "redirects": [
     { "source": "/about/", "destination": "/about.html", "permanent": true },
     { "source": "/35r", "destination": "/35r.html", "permanent": true },
