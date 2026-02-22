@@ -1,0 +1,46 @@
+:root {
+  --bg: #f3f7fb;
+  --ink: #1b2a3a;
+  --ink-soft: #4f6074;
+  --primary: #0b66c3;
+  --card: #ffffff;
+  --line: #d8e3ef;
+  --ok: #0b7a54;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+main { max-width: 980px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 0 0 1rem;
+}
+h1,h2,h3 { font-family: Poppins, Inter, sans-serif; line-height: 1.2; margin: 0 0 .75rem; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); }
+.hero p { margin-top: 0; color: var(--ink-soft); }
+ul { margin: .75rem 0 0; padding-left: 1.1rem; }
+li { margin-bottom: .45rem; }
+.trust { display: inline-block; margin-top: .6rem; padding: .35rem .6rem; background: #eaf7f1; color: var(--ok); border-radius: 999px; font-weight: 600; font-size: .9rem; }
+.cta-btn { display:inline-block; margin-top: 1rem; background: var(--primary); color:#fff; text-decoration:none; font-weight:700; padding:.8rem 1.1rem; border-radius:10px; }
+.grid-2 { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+.card { border:1px solid var(--line); border-radius:12px; padding:1rem; background:#fdfefe; }
+.photo { border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.photo img { width:100%; aspect-ratio: 4/3; object-fit: cover; display:block; }
+.photo figcaption { padding:.7rem .9rem; font-size:.92rem; color:var(--ink-soft); }
+.timeline { list-style:none; padding:0; margin:0; }
+.timeline li { border-left:3px solid var(--primary); padding:.2rem 0 .7rem .8rem; margin-left:.4rem; }
+.faq dt { font-weight:700; margin:.9rem 0 .25rem; }
+.faq dd { margin: 0 0 .6rem; color:var(--ink-soft); }
+.hard-cta { text-align:center; background:#10253c; color:#fff; }
+.hard-cta p { color:#d7e4f5; }
+.hard-cta .cta-btn { background:#2f8fff; }
+.small { font-size:.9rem; color:var(--ink-soft); }
