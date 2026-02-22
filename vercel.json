@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/about/", "destination": "/about.html", "permanent": true },
     { "source": "/35r", "destination": "/35r.html", "permanent": true },
@@ -7,12 +8,6 @@
     { "source": "/gutter-cleaning/", "destination": "/gutter-cleaning.html", "permanent": true },
     { "source": "/rainwise", "destination": "/rainwise.html", "permanent": true },
     { "source": "/rainwise/", "destination": "/rainwise.html", "permanent": true },
-    { "source": "/pages/beaux-arts-village/:path(.*)", "destination": "/pages/bellevue/:path", "permanent": true },
-    { "source": "/pages/beaux-arts-village", "destination": "/pages/bellevue", "permanent": true },
-    { "source": "/pages/beaux-arts-village/", "destination": "/pages/bellevue", "permanent": true },
-    { "source": "/pages/bel-red/:path(.*)", "destination": "/pages/bellevue/:path", "permanent": true },
-    { "source": "/pages/bel-red", "destination": "/pages/bellevue", "permanent": true },
-    { "source": "/pages/bel-red/", "destination": "/pages/bellevue", "permanent": true },
     { "source": "/blog/bellevue-gutter-cleaning-guide/", "destination": "/blog/bellevue-gutter-cleaning-guide.html", "permanent": true },
     { "source": "/blog/compliance-blueprint/", "destination": "/blog/compliance-blueprint.html", "permanent": true },
     { "source": "/blog/first-storms-of-fall-bellevue-inspection/", "destination": "/blog/first-storms-of-fall-bellevue-inspection.html", "permanent": true },
