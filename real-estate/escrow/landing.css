@@ -44,3 +44,10 @@ li { margin-bottom: .45rem; }
 .hard-cta p { color:#d7e4f5; }
 .hard-cta .cta-btn { background:#2f8fff; }
 .small { font-size:.9rem; color:var(--ink-soft); }
+.deadline-selector { margin: 1.5rem 0; }
+.deadline-selector p { margin-bottom: 0.75rem; font-weight: 600; }
+.deadline-buttons { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+.deadline-btn { display: inline-block; padding: 0.6rem 1rem; background: rgba(255,255,255,0.15); color: #fff; border: 2px solid rgba(255,255,255,0.4); border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+.deadline-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.7); }
+.last-updated { font-size: 0.85rem; color: var(--ink-soft); margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.geo-block { margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid var(--primary); }
