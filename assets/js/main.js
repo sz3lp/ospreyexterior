@@ -436,4 +436,16 @@ document.addEventListener("DOMContentLoaded", () => {
       mapToggle.textContent = expanded ? "Show map & directions" : "Hide map";
     });
   }
+
+  const urgencyEl = document.getElementById("urgency-text");
+  if (urgencyEl) {
+    const month = new Date().getMonth();
+    const seasons = [
+      "Early Spring", "Early Spring", "Spring", "Spring", "Late Spring",
+      "Early Summer", "Summer", "Late Summer", "Early Fall", "Fall", "Late Fall",
+      "Winter"
+    ];
+    const season = seasons[month];
+    urgencyEl.textContent = `${season} Slots Filling – Limited Same-Week Availability`;
+  }
 });
