@@ -425,4 +425,15 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("pageshow", () => {
     closeLeadModal();
   });
+
+  const mapToggle = document.getElementById("map-toggle");
+  const mapWrapper = document.getElementById("map-iframe");
+  if (mapToggle && mapWrapper) {
+    mapToggle.addEventListener("click", () => {
+      const expanded = mapToggle.getAttribute("aria-expanded") === "true";
+      mapToggle.setAttribute("aria-expanded", !expanded);
+      mapWrapper.hidden = expanded;
+      mapToggle.textContent = expanded ? "Show map & directions" : "Hide map";
+    });
+  }
 });
