@@ -258,9 +258,9 @@ PAGES = [
      "causes": ["Clog at downspout opening", "Restricted elbow", "Undersized downspout", "Air trapped in flow", "Gutter guard restriction", "Standing water in low spot"],
      "local": "Heavy rain amplifies gurgling. A downspout flow test and ladder inspection find the restriction."},
     {"slug": "why-is-water-running-behind-my-gutters", "title": "Why Is Water Running Behind My Gutters", "cluster": "noise",
-     "description": "Water behind gutters means pitch failure, fascia issues, or ice dam backup. Fix pitch and attachment for proper drainage.",
+     "description": "Water behind gutters means pitch failure, missing drip edge, fascia issues, or ice dam backup. Fix pitch, drip edge, and attachment for proper drainage.",
      "hero": "readjusting-gutter-height-osprey-exterior.webp", "proof": ["gutter-falling-off-before.webp", "gutter-falling-off-after.webp", "gutter-cleaning-and-hanger-replacement-before.webp", "gutter-cleaning-and-hanger-replacement-after.webp"],
-     "causes": ["Improper pitch toward fascia", "Gutter sitting too high", "Fascia rot behind gutter", "Ice dam backup", "Seam leak behind trough", "Hanger failure allowing tilt"],
+     "causes": ["Improper pitch toward fascia", "Gutter sitting too high", "No drip edge flashing", "Fascia rot behind gutter", "Ice dam backup", "Seam leak behind trough", "Hanger failure allowing tilt"],
      "local": "This converts very well—homeowners see stains and panic. Pitch correction and reattachment route water into the trough."},
 ]
 
