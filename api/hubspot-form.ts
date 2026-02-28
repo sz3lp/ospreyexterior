@@ -47,10 +47,10 @@ function getField(fields: { name: string; value: string }[], name: string): stri
 }
 
 async function createOrUpdateContact(fields: { name: string; value: string }[]): Promise<string | null> {
-  if (!hubspotApiKey) return null;
+  if (!hubspotApiKey) throw new Error('HUBSPOT_API_KEY not configured');
   const email = getField(fields, 'email');
   const phone = getField(fields, 'phone');
-  if (!email && !phone) return null;
+  if (!email && !phone) throw new Error('Contact requires email or phone');
 
   try {
     let contactId: string | null = null;
@@ -130,6 +130,53 @@ async function createDeal(contactId: string, dealname: string): Promise<void> {
   }
 }
 
+async function sendLeadNotification(fields: { name: string; value: string }[]): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+
+  const from = process.env.RESEND_FROM || 'Osprey Exterior <onboarding@resend.dev>';
+  const name = getField(fields, 'full_name') || `${getField(fields, 'firstname')} ${getField(fields, 'lastname')}`.trim();
+  const email = getField(fields, 'email');
+  const phone = getField(fields, 'phone');
+  const address = getField(fields, 'address');
+  const message = getField(fields, 'message');
+
+  const html = [
+    '<p><strong>New gutter cleaning lead – check HubSpot</strong></p>',
+    name && `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
+    email && `<p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>`,
+    phone && `<p><strong>Phone:</strong> <a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a></p>`,
+    address && `<p><strong>Address:</strong> ${escapeHtml(address)}</p>`,
+    message && `<p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
+  ].filter(Boolean).join('');
+
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from,
+        to: ['luke@ospreyexterior.com'],
+        subject: 'Important new lead – check HubSpot',
+        html: html || '<p>New lead submitted. Check HubSpot for details.</p>',
+      }),
+    });
+  } catch {
+    /* ignore – lead is already in HubSpot */
+  }
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 export default async function handler(req: HttpRequest, res: HttpResponse) {
   applyCors(res);
 
@@ -183,10 +230,12 @@ export default async function handler(req: HttpRequest, res: HttpResponse) {
       }
     } catch (contactErr) {
       const msg = contactErr instanceof Error ? contactErr.message : String(contactErr);
+      await sendLeadNotification(fields);
       res.status(200).json({ success: true, contactCreated: false, contactError: msg });
       return;
     }
 
+    await sendLeadNotification(fields);
     res.status(200).json({ success: true, contactCreated: !!contactId });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Server error';
