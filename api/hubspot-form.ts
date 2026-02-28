@@ -96,10 +96,15 @@ async function createOrUpdateContact(fields: { name: string; value: string }[]):
     });
 
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) return null;
+    if (!res.ok) {
+      const errMsg = (data as { message?: string; errors?: { message?: string }[] })?.message
+        || (data as { errors?: { message?: string }[] })?.errors?.[0]?.message
+        || JSON.stringify(data);
+      throw new Error(`HubSpot CRM ${res.status}: ${errMsg}`);
+    }
     return data.id || contactId;
-  } catch {
-    return null;
+  } catch (err) {
+    throw err;
   }
 }
 
@@ -168,14 +173,21 @@ export default async function handler(req: HttpRequest, res: HttpResponse) {
       return;
     }
 
-    const contactId = await createOrUpdateContact(fields);
-    if (contactId) {
-      const address = getField(fields, 'address');
-      const fullName = getField(fields, 'full_name') || `${getField(fields, 'firstname')} ${getField(fields, 'lastname')}`.trim();
-      await createDeal(contactId, `Gutter Cleaning - ${address || fullName || 'Lead'}`);
+    let contactId: string | null = null;
+    try {
+      contactId = await createOrUpdateContact(fields);
+      if (contactId) {
+        const address = getField(fields, 'address');
+        const fullName = getField(fields, 'full_name') || `${getField(fields, 'firstname')} ${getField(fields, 'lastname')}`.trim();
+        await createDeal(contactId, `Gutter Cleaning - ${address || fullName || 'Lead'}`);
+      }
+    } catch (contactErr) {
+      const msg = contactErr instanceof Error ? contactErr.message : String(contactErr);
+      res.status(200).json({ success: true, contactCreated: false, contactError: msg });
+      return;
     }
 
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, contactCreated: !!contactId });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Server error';
     res.status(500).json({ success: false, message });

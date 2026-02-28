@@ -99,7 +99,7 @@
 
     /* ── HERO ── */
     .hero {
-      background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.88), rgba(26, 35, 50, 0.82)), url('/assets/images/new-downspout-installation.webp');
+      background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.92), rgba(45, 106, 79, 0.75)), url('/assets/images/readjusting-gutter-height-osprey-exterior.webp');
       background-size: cover;
       background-position: center;
       min-height: 55vh;
@@ -874,6 +874,9 @@
         });
 
         const data = await res.json().catch(() => ({}));
+        if (data.contactCreated === false && data.contactError) {
+          console.error('[Gutter form] Contact not created:', data.contactError);
+        }
 
         if (!res.ok) {
           const errMsg = data.errors?.[0]?.message || data.message || 'Submission failed';
