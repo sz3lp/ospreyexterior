@@ -17,6 +17,8 @@
     gtag('config', 'AW-11395982028');
     gtag('config', 'G-P1VX9FY873');
   </script>
+  <!-- HubSpot tracking - required for form submissions to create contacts -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="https://js-na2.hs-scripts.com/244291121.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -97,7 +99,10 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(165deg, var(--osprey-dark) 0%, #243447 50%, var(--osprey-green) 100%);
+      background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.92), rgba(45, 106, 79, 0.75)), url('/assets/images/readjusting-gutter-height-osprey-exterior.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 55vh;
       color: var(--white);
       padding: 60px 20px 50px;
       text-align: center;
