@@ -99,7 +99,7 @@
 
     /* ── HERO ── */
     .hero {
-      background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.92), rgba(45, 106, 79, 0.75)), url('/assets/images/readjusting-gutter-height-osprey-exterior.webp');
+      background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.88), rgba(26, 35, 50, 0.82)), url('/assets/images/new-downspout-installation.webp');
       background-size: cover;
       background-position: center;
       min-height: 55vh;
@@ -821,11 +821,7 @@
   </div>
 
   <script>
-    // ── FORM HANDLER: Submit to HubSpot CRM ──
-    // Uses same form as contact.html. Field names must match your HubSpot form (firstname, lastname, email, phone, message).
-    const HUBSPOT_PORTAL_ID = '244291121';
-    const HUBSPOT_FORM_GUID = '198e9b40-f90d-40ca-9a46-4af906a2699d';
-
+    // ── FORM HANDLER: Submit via /api/hubspot-form (adds IP for contact creation) ──
     async function handleSubmit() {
       const form = document.getElementById('quoteForm');
       const submitBtn = form.querySelector('.btn-submit');
@@ -838,8 +834,8 @@
       const sqft = document.getElementById('sqft').value;
       const notes = document.getElementById('notes').value.trim();
 
-      if (!fname || !phone || !address) {
-        alert('Please fill in your name, phone number, and address.');
+      if (!fname || !phone || !address || !email) {
+        alert('Please fill in your name, email, phone number, and address.');
         return;
       }
 
@@ -871,14 +867,11 @@
       submitBtn.textContent = 'Sending...';
 
       try {
-        const res = await fetch(
-          `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fields, context })
-          }
-        );
+        const res = await fetch('/api/hubspot-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields, context })
+        });
 
         const data = await res.json().catch(() => ({}));
 
