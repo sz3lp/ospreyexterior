@@ -80,7 +80,6 @@ async function createOrUpdateContact(fields: { name: string; value: string }[]):
     if (firstname) properties.firstname = firstname;
     if (lastname) properties.lastname = lastname;
     if (address) properties.address = address;
-    properties.lead_source = 'gutter-cleaning-landing';
 
     const url = contactId
       ? `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`
@@ -96,8 +95,8 @@ async function createOrUpdateContact(fields: { name: string; value: string }[]):
       body: JSON.stringify({ properties }),
     });
 
+    const data = await res.json().catch(() => ({}));
     if (!res.ok) return null;
-    const data = await res.json();
     return data.id || contactId;
   } catch {
     return null;
