@@ -876,6 +876,8 @@
         const data = await res.json().catch(() => ({}));
         if (data.contactCreated === false && data.contactError) {
           console.error('[Gutter form] Contact not created:', data.contactError);
+        } else if (data.contactCreated === true) {
+          console.log('[Gutter form] Contact created successfully. Check HubSpot CRM → Contacts.');
         }
 
         if (!res.ok) {
