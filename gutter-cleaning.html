@@ -838,7 +838,7 @@
         return;
       }
 
-      const messageParts = ['Gutter cleaning quote request', 'Address: ' + address];
+      const messageParts = ['Gutter cleaning quote request'];
       if (stories) messageParts.push(stories + ' story');
       if (sqft) messageParts.push(sqft + ' sq ft');
       if (notes) messageParts.push(notes);
@@ -848,6 +848,7 @@
         { name: 'firstname', value: fname },
         { name: 'lastname', value: lname },
         { name: 'phone', value: phone },
+        { name: 'address', value: address },
         { name: 'message', value: message }
       ];
       if (email) fields.push({ name: 'email', value: email });
