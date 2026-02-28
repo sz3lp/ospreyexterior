@@ -1,9 +1,10 @@
 /**
- * Proxy for HubSpot form submissions. Adds client IP address (required for
- * contact creation and form analytics) and forwards to HubSpot Forms API.
+ * Proxy for HubSpot form submissions. Adds client IP, forwards to Forms API,
+ * and creates contact via CRM API (form submissions alone often don't create contacts).
  */
 const HUBSPOT_PORTAL_ID = '244291121';
 const HUBSPOT_FORM_GUID = '198e9b40-f90d-40ca-9a46-4af906a2699d';
+const hubspotApiKey = process.env.HUBSPOT_API_KEY || '';
 
 type HttpRequest = {
   method?: string;
@@ -38,6 +39,91 @@ function getClientIp(headers?: Record<string, string | string[]>): string | unde
   if (typeof realIp === 'string') return realIp;
   if (Array.isArray(realIp) && realIp[0]) return String(realIp[0]);
   return undefined;
+}
+
+function getField(fields: { name: string; value: string }[], name: string): string {
+  const f = fields.find((x) => x.name === name);
+  return (f?.value || '').trim();
+}
+
+async function createOrUpdateContact(fields: { name: string; value: string }[]): Promise<string | null> {
+  if (!hubspotApiKey) return null;
+  const email = getField(fields, 'email');
+  const phone = getField(fields, 'phone');
+  if (!email && !phone) return null;
+
+  try {
+    let contactId: string | null = null;
+    const searchProp = email ? 'email' : 'phone';
+    const searchVal = email || phone;
+    const searchRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${hubspotApiKey}`,
+      },
+      body: JSON.stringify({
+        filterGroups: [{ filters: [{ propertyName: searchProp, operator: 'EQ', value: searchVal }] }],
+      }),
+    });
+    if (searchRes.ok) {
+      const data = await searchRes.json();
+      if (data.results?.length) contactId = data.results[0].id;
+    }
+
+    const properties: Record<string, string> = {};
+    if (email) properties.email = email;
+    if (phone) properties.phone = phone;
+    const firstname = getField(fields, 'firstname');
+    const lastname = getField(fields, 'lastname');
+    const address = getField(fields, 'address');
+    if (firstname) properties.firstname = firstname;
+    if (lastname) properties.lastname = lastname;
+    if (address) properties.address = address;
+    properties.lead_source = 'gutter-cleaning-landing';
+
+    const url = contactId
+      ? `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`
+      : 'https://api.hubapi.com/crm/v3/objects/contacts';
+    const method = contactId ? 'PATCH' : 'POST';
+
+    const res = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${hubspotApiKey}`,
+      },
+      body: JSON.stringify({ properties }),
+    });
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.id || contactId;
+  } catch {
+    return null;
+  }
+}
+
+async function createDeal(contactId: string, dealname: string): Promise<void> {
+  if (!hubspotApiKey) return;
+  try {
+    await fetch('https://api.hubapi.com/crm/v3/objects/deals', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${hubspotApiKey}`,
+      },
+      body: JSON.stringify({
+        properties: { dealname, dealstage: 'lead' },
+        associations: [{
+          to: { id: contactId },
+          types: [{ associationCategory: 'HUBSPOT_DEFINED', associationTypeId: 3 }],
+        }],
+      }),
+    });
+  } catch {
+    /* ignore */
+  }
 }
 
 export default async function handler(req: HttpRequest, res: HttpResponse) {
@@ -81,6 +167,13 @@ export default async function handler(req: HttpRequest, res: HttpResponse) {
       const errMsg = data.errors?.[0]?.message || data.message || 'HubSpot submission failed';
       res.status(hubspotRes.status).json({ success: false, message: errMsg });
       return;
+    }
+
+    const contactId = await createOrUpdateContact(fields);
+    if (contactId) {
+      const address = getField(fields, 'address');
+      const fullName = getField(fields, 'full_name') || `${getField(fields, 'firstname')} ${getField(fields, 'lastname')}`.trim();
+      await createDeal(contactId, `Gutter Cleaning - ${address || fullName || 'Lead'}`);
     }
 
     res.status(200).json({ success: true });
