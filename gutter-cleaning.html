@@ -844,7 +844,9 @@
       if (notes) messageParts.push(notes);
       const message = messageParts.join(' · ');
 
+      const fullName = [fname, lname].filter(Boolean).join(' ');
       const fields = [
+        { name: 'full_name', value: fullName },
         { name: 'firstname', value: fname },
         { name: 'lastname', value: lname },
         { name: 'phone', value: phone },
