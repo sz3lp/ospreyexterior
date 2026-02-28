@@ -816,46 +816,81 @@
   </div>
 
   <script>
-    // ── FORM HANDLER ──
-    // Replace this with your Supabase insert or any endpoint you use
-    function handleSubmit() {
-      const form = document.getElementById('quoteForm');
-      const fields = {
-        fname: document.getElementById('fname').value.trim(),
-        lname: document.getElementById('lname').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        address: document.getElementById('address').value.trim(),
-        stories: document.getElementById('stories').value,
-        sqft: document.getElementById('sqft').value,
-        notes: document.getElementById('notes').value.trim(),
-        source: 'google-ads-gutters',
-        timestamp: new Date().toISOString()
-      };
+    // ── FORM HANDLER: Submit to HubSpot CRM ──
+    // Uses same form as contact.html. Field names must match your HubSpot form (firstname, lastname, email, phone, message).
+    const HUBSPOT_PORTAL_ID = '244291121';
+    const HUBSPOT_FORM_GUID = '198e9b40-f90d-40ca-9a46-4af906a2699d';
 
-      // Basic validation
-      if (!fields.fname || !fields.phone || !fields.address) {
+    async function handleSubmit() {
+      const form = document.getElementById('quoteForm');
+      const submitBtn = form.querySelector('.btn-submit');
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const stories = document.getElementById('stories').value;
+      const sqft = document.getElementById('sqft').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!fname || !phone || !address) {
         alert('Please fill in your name, phone number, and address.');
         return;
       }
 
-      // ──────────────────────────────────────────────
-      // TODO: Replace with your actual Supabase call
-      // Example:
-      // const { data, error } = await supabase
-      //   .from('leads')
-      //   .insert([fields]);
-      // ──────────────────────────────────────────────
+      const messageParts = ['Gutter cleaning quote request', 'Address: ' + address];
+      if (stories) messageParts.push(stories + ' story');
+      if (sqft) messageParts.push(sqft + ' sq ft');
+      if (notes) messageParts.push(notes);
+      const message = messageParts.join(' · ');
 
-      console.log('Lead captured:', fields);
+      const fields = [
+        { name: 'firstname', value: fname },
+        { name: 'lastname', value: lname },
+        { name: 'phone', value: phone },
+        { name: 'message', value: message }
+      ];
+      if (email) fields.push({ name: 'email', value: email });
 
-      // Show success
-      form.style.display = 'none';
-      document.getElementById('formSuccess').classList.add('active');
+      const hutk = document.cookie.split('; ').find(row => row.startsWith('hubspotutk='));
+      const context = {
+        pageUri: window.location.href,
+        pageName: 'Gutter Cleaning | Osprey Exterior'
+      };
+      if (hutk) context.hutk = hutk.split('=')[1];
 
-      // Google Ads conversion tracking
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', { 'send_to': 'AW-11395982028/...' });
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fields, context })
+          }
+        );
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          const errMsg = data.errors?.[0]?.message || data.message || 'Submission failed';
+          throw new Error(errMsg);
+        }
+
+        form.style.display = 'none';
+        document.getElementById('formSuccess').classList.add('active');
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', { 'send_to': 'AW-11395982028/...' });
+        }
+      } catch (err) {
+        console.error('HubSpot submit error:', err);
+        alert(err.message || 'Something went wrong. Please call us at (425) 550-1727.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get My Free Quote';
       }
     }
   </script>
