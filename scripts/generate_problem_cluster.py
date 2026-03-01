@@ -46,7 +46,7 @@ HEAD = '''<!DOCTYPE html>
   <meta name="twitter:title" content="{title} | Osprey Exterior">
   <meta name="twitter:description" content="{description}">
   <meta name="twitter:image" content="https://ospreyexterior.com{og_image_path}">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395982028"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1VX9FY873"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','AW-11395982028');gtag('config','G-P1VX9FY873');</script>
   <script>
   !function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','841512635074584');fbq('track','PageView');
@@ -414,7 +414,7 @@ def main():
   <meta property="og:url" content="https://ospreyexterior.com/problems/gutters/">
   <meta property="og:image" content="https://ospreyexterior.com/assets/images/readjusting-gutter-height-osprey-exterior.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395982028"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1VX9FY873"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-11395982028');gtag('config','G-P1VX9FY873');</script>
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','841512635074584');fbq('track','PageView');

@@ -98,7 +98,7 @@ LOCAL_BUSINESS_SCHEMA = {
 GA_SNIPPET = dedent(
     """
       <!-- Google tag (gtag.js) -->
-      <script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-11395982028\"></script>
+      <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-P1VX9FY873\"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}

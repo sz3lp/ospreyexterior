@@ -998,7 +998,7 @@ const renderPage = (location, entry, focusDef) => {
     <meta name="twitter:title" content="${entry.title} | ${company.name}">
     <meta name="twitter:description" content="${safeDescription}">
     <meta name="twitter:image" content="${company.url}assets/images/new-downspout-installation.webp">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395982028"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1VX9FY873"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -1208,7 +1208,7 @@ const buildNavigationPage = (pagesList) => {
     <meta name="twitter:title" content="Osprey Exterior Page Directory">
     <meta name="twitter:description" content="Browse every localized service page and guide published by Osprey Exterior.">
     <meta name="twitter:image" content="${company.url}assets/images/new-downspout-installation.webp">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11395982028"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1VX9FY873"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
