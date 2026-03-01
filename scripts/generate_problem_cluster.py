@@ -255,8 +255,11 @@ def render_intent_page(page, assets):
 
     content = f'''
   <div class="topbar">
-    <span class="topbar-license">WA License #OSPREE763QD</span>
-    <span class="topbar-phone"><a href="tel:4255501727">(425) 550-1727</a></span>
+    <a href="/" class="topbar-logo"><img src="/assets/images/Osprey-Exterior-Logo3-03-WHITE.png" alt="Osprey Exterior"></a>
+    <div class="topbar-right">
+      <span class="topbar-license">WA License #OSPREE763QD</span>
+      <span class="topbar-phone"><a href="tel:4255501727">(425) 550-1727</a></span>
+    </div>
   </div>
 
   <section class="hero" style="background-image: linear-gradient(120deg, rgba(26, 35, 50, 0.92), rgba(45, 106, 79, 0.75)), url('{hero_path}');">

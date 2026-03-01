@@ -64,6 +64,20 @@ body {
   align-items: center;
   font-size: 0.85rem;
 }
+.topbar-logo {
+  display: flex;
+  align-items: center;
+}
+.topbar-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .topbar-license { opacity: 0.7; }
 .topbar-phone a { color: var(--osprey-accent); text-decoration: none; font-weight: 600; }
 
